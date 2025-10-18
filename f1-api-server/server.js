@@ -23,15 +23,7 @@ const MONGO_URI = "mongodb://localhost:27017/f1_db";
 mongoose.connect(MONGO_URI)
     .then(() => console.log("MongoDB bağlantısı başarılı!"))
     .catch(err => console.error("MongoDB bağlantı hatası:", err));
-    // PostgreSQL bağlantısı
-const pgPool = new Pool({
-    user:'f1_user',
-    host:'localhost',
-    database:'f1_static_db',
-    password:'Mkc1508156',
-    port:5432,
-});
-console.log("PostgreSQL bağlantısı başarılı!");
+    
 // --- VERİ MODELİ (SCHEMA) ---
 // MongoDB'deki verinin yapısını Mongoose'a anlatıyoruz.
 const LapSchema = new mongoose.Schema({
