@@ -1,0 +1,23 @@
+[
+  {
+    "_id": "LEC",
+    "name": "Charles Leclerc",
+    "number": 16,
+    "nationality": "Monegasque",
+    "team_id": "ferrari" 
+  },
+  {
+    "_id": "SAI",
+    "name": "Carlos Sainz",
+    "number": 55,
+    "nationality": "Spanish",
+    "team_id": "ferrari"
+  },
+  {
+    "_id": "HAM",
+    "name": "Lewis Hamilton",
+    "number": 44,
+    "nationality": "British",
+    "team_id": "mercedes"
+  }
+]

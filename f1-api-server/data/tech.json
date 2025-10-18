@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "drs",
+    "name": "DRS (Drag Reduction System)",
+    "description": "Geçişleri kolaylaştırmak için arka kanadın açılmasını sağlayan sistem...",
+    "era": "2011-Günümüz",
+    "diagram_url": "/images/tech/drs.png"
+  },
+  {
+    "_id": "ground-effect",
+    "name": "Yer Etkisi (Ground Effect)",
+    "description": "Aracın tabanını kullanarak yere basma kuvveti üreten aerodinamik felsefe...",
+    "era": "1970'ler & 2022-Günümüz",
+    "diagram_url": "/images/tech/ground_effect.png"
+  }
+]

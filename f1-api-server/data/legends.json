@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Ayrton Senna",
+    "category": "pilot",
+    "bio": "Tüm zamanların en yetenekli pilotlarından biri olarak kabul edilen Brezilyalı efsane...",
+    "image_url": "/images/legends/senna.jpg",
+    "stats": { "championships": 3, "wins": 41 }
+  },
+  {
+    "name": "Adrian Newey",
+    "category": "engineer",
+    "bio": "Aerodinami dehası olarak bilinen Newey, birçok takımla şampiyonluklar yaşamıştır...",
+    "image_url": "/images/legends/newey.jpg",
+    "stats": { "designed_championship_cars": 12 }
+  },
+  {
+    "name": "Jean Todt",
+    "category": "principal",
+    "bio": "Ferrari'nin efsanevi takım patronu, Michael Schumacher ile 5 yıl üst üste şampiyonluk yaşadı...",
+    "image_url": "/images/legends/todt.jpg",
+    "stats": { "team_championships": 8 }
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "ferrari",
+    "name": "Scuderia Ferrari",
+    "principal": "Frédéric Vasseur",
+    "base": "Maranello, Italy",
+    "logo_url": "/images/logos/ferrari.png"
+  },
+  {
+    "_id": "mercedes",
+    "name": "Mercedes-AMG PETRONAS F1 Team",
+    "principal": "Toto Wolff",
+    "base": "Brackley, UK",
+    "logo_url": "/images/logos/mercedes.png"
+  }
+]

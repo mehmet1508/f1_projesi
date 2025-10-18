@@ -4,6 +4,13 @@ const cors = require('cors');
 const {Pool} = require('pg');
 
 // --- UYGULAMA KURULUMU ---
+
+// Modelleri içe aktar
+const Team = require('./models/Team');
+
+const Legend = require('./models/Legend');
+
+
 const app = express();
 const PORT = 5000;
 
@@ -82,34 +89,36 @@ app.get('/api/fastestlaps', async (req, res) => {
         res.status(500).json({ message: "Sunucu hatası oluştu." });
     }
 });
-// PostgreSQL'den statik verileri çekmek için yeni bir endpoint
-app.get('/api/teams', async (req, res) => {
+
+
+// 1. Efsaneleri Getir
+// Kullanım: GET /api/legends veya /api/legends?category=pilot
+app.get('/api/legends', async (req, res) => {
     try {
-        console.log("Tüm takımlar isteniyor (PostgreSQL)...");
-        const allTeams = await pgPool.query('SELECT * FROM teams ORDER BY name');
-        res.status(200).json(allTeams.rows); // Sonuçlar .rows içindedir
-    } catch (error) {
-        console.error("PostgreSQL sorgu hatası:", error);
-        res.status(500).json({ message: "Sunucu hatası oluştu." });
+        const query = {};
+        if (req.query.category) {
+            query.category = req.query.category;
+        }
+        const legends = await Legend.find(query);
+        res.json(legends);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
     }
 });
 
-app.get('/api/drivers', async (req, res) => {
+// 2. Tüm (Mevcut) Takımları Getir
+// Kullanım: GET /api/teams
+app.get('/api/teams', async (req, res) => {
     try {
-        console.log("Tüm pilotlar isteniyor (PostgreSQL)...");
-        // İki tabloyu birleştirerek (JOIN) daha anlamlı veri getirelim
-        const queryText = `
-            SELECT d.code, d.full_name, d.nationality, t.name AS team_name
-            FROM drivers d
-            LEFT JOIN teams t ON d.team_id = t.team_id;
-        `;
-        const allDrivers = await pgPool.query(queryText);
-        res.status(200).json(allDrivers.rows);
-    } catch (error) {
-        console.error("PostgreSQL sorgu hatası:", error);
-        res.status(500).json({ message: "Sunucu hatası oluştu." });
+        const teams = await Team.find();
+        res.json(teams);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
     }
 });
+
+
+
 
 // --- SUNUCUYU BAŞLATMA ---
 app.listen(PORT, () => {
