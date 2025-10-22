@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Drag Reduction System (DRS)",
+    "short_description": "Aracın aerodinamik sürtünmesini azaltarak düzlüklerde hız artışı sağlayan hareketli arka kanat sistemi.",
+    "hotspot_id": "rear_wing_element",
+    "detailed_explanation": "DRS, 2011'den beri F1'de kullanılan ve geçişleri kolaylaştırmak için tasarlanmış, pilot tarafından kontrol edilen bir sistemdir. Bir pilot, öndeki araçla 1 saniye veya daha az mesafedeyse ve DRS bölgesi içindeyse arka kanadın üst kısmını açabilir. Bu, sürtünmeyi %20-30 azaltarak maksimum hızı artırır.",
+    "visualization_type": "explode_or_move"
+  },
+  {
+    "name": "Ground Effect (Zemin Etkisi)",
+    "short_description": "Aracın altındaki özel tünel (venturi) tasarımıyla yüksek hızda vakum yaratarak aracı yere bastıran aerodinamik prensip.",
+    "hotspot_id": "floor_assembly",
+    "detailed_explanation": "2022'de yeniden F1'e döndü. Amacı, downforce'un büyük bir kısmını kanatlar yerine aracın altından üretmektir. Bu, öndeki aracı takip etmeyi kolaylaştırır ve kirli havadan daha az etkilenir. Alt tabanın doğru hizalanması ve ayarı, aracın tüm performansı için hayati önem taşır.",
+    "visualization_type": "wireframe"
+  },
+  {
+    "name": "Power Unit (Güç Ünitesi)",
+    "short_description": "İçten yanmalı motor (ICE) ve iki enerji geri kazanım sistemi (MGU-H, MGU-K) dahil tüm hibrit sistemi kapsayan ünite.",
+    "hotspot_id": "engine_block",
+    "detailed_explanation": "Modern F1 motorları 1.6L V6 turbo hibrit sistemlerdir. MGU-K frenleme sırasında enerji geri kazanırken, MGU-H turboşarjdan atılan ısıyı elektrik enerjisine dönüştürür. Bu karmaşık sistem, hem termal verimlilik hem de anlık güç takviyesi sağlar.",
+    "visualization_type": "explode"
+  }
+]

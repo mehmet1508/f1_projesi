@@ -5,7 +5,9 @@ const mongoose = require('mongoose');
 // Modellerimizi import ediyoruz (verinin nasıl görüneceğini bilmeli)
 const Legend = require('./models/Legend');
 const Team = require('./models/Team');
-// const Technology = require('./models/Technology'); // Diğerlerini de eklersiniz
+const Engineer = require('./models/Engineer'); // YENİ
+const Technology = require('./models/Technology'); // YENİ
+const CriticalSituation = require('./models/CriticalSituation'); // YENİ
 
 // 1. ADIM: server.js ile AYNI veritabanına bağlan
 const MONGO_URI = "mongodb://localhost:27017/f1_db"; 
@@ -18,6 +20,9 @@ const importData = async () => {
         // 2. ADIM: Her çalıştırmada eski verileri sil (duplicate olmasın)
         await Legend.deleteMany();
         await Team.deleteMany();
+        await Engineer.deleteMany(); // YENİ
+        await Technology.deleteMany(); // YENİ
+        await CriticalSituation.deleteMany(); // YENİ
         // await Technology.deleteMany();
 
         // 3. ADIM: data/ klasöründeki JSON dosyalarını oku
@@ -27,10 +32,15 @@ const importData = async () => {
         const teamsData = JSON.parse(
             fs.readFileSync(path.join(__dirname, 'data/teams.json'), 'utf-8')
         );
-
+        const engineersData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/engineers.json'), 'utf-8')); // YENİ OKUMA
+        const technologiesData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/technologies.json'), 'utf-8')); // YENİ OKUMA
+        const situationsData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/critical_situations.json'), 'utf-8')); // YENİ OKUMA
         // 4. ADIM: Okunan verileri veritabanına topluca ekle
         await Legend.insertMany(legendsData);
         await Team.insertMany(teamsData);
+        await Engineer.insertMany(engineersData); // YENİ EKLEME
+        await Technology.insertMany(technologiesData); // YENİ EKLEME
+        await CriticalSituation.insertMany(situationsData); // YENİ EKLEME
 
         console.log('JSON dosyalarındaki veriler başarıyla MongoDB\'ye aktarıldı!');
         
