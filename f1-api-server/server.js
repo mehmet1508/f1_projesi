@@ -7,8 +7,12 @@ const {Pool} = require('pg');
 
 // Modelleri içe aktar
 const Team = require('./models/Team');
+const Driver = require('./models/Driver');
 
 const Legend = require('./models/Legend');
+const Engineer = require('./models/Engineer'); // YENİ
+const Technology = require('./models/Technology'); // YENİ
+const CriticalSituation = require('./models/CriticalSituations'); // YENİ
 
 
 const app = express();
@@ -109,7 +113,49 @@ app.get('/api/teams', async (req, res) => {
     }
 });
 
+// --- YENİ API ENDPOINTLERİ ---
 
+// 3. Efsanevi Mühendisleri Getir
+// Kullanım: GET /api/engineers
+app.get('/api/engineers', async (req, res) => {
+    try {
+        const engineers = await Engineer.find();
+        res.status(200).json(engineers);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
+// 4. F1 Teknolojilerini Getir
+// Kullanım: GET /api/technologies
+app.get('/api/technologies', async (req, res) => {
+    try {
+        const technologies = await Technology.find();
+        res.status(200).json(technologies);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
+// 5. Kritik Tarihi Durumları Getir
+// Kullanım: GET /api/critical-situations
+app.get('/api/critical-situations', async (req, res) => {
+    try {
+        const situations = await CriticalSituation.find().sort({ year: -1 }); // Yıla göre tersten sırala
+        res.status(200).json(situations);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
+app.get('/api/drivers', async (req, res) => {
+    try {
+        const drivers = await Driver.find();
+        res.json(drivers);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
 
 
 // --- SUNUCUYU BAŞLATMA ---
