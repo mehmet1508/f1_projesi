@@ -7,11 +7,12 @@ const {Pool} = require('pg');
 
 // Modelleri içe aktar
 const Team = require('./models/Team');
+const Driver = require('./models/Driver');
 
 const Legend = require('./models/Legend');
 const Engineer = require('./models/Engineer'); // YENİ
 const Technology = require('./models/Technology'); // YENİ
-const CriticalSituation = require('./models/CriticalSituation'); // YENİ
+const CriticalSituation = require('./models/CriticalSituations'); // YENİ
 
 
 const app = express();
@@ -147,7 +148,14 @@ app.get('/api/critical-situations', async (req, res) => {
     }
 });
 
-
+app.get('/api/drivers', async (req, res) => {
+    try {
+        const drivers = await Driver.find();
+        res.json(drivers);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
 
 
 // --- SUNUCUYU BAŞLATMA ---
