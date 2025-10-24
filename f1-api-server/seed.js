@@ -3,11 +3,12 @@ const path = require('path');
 const mongoose = require('mongoose');
 
 // Modellerimizi import ediyoruz (verinin nasıl görüneceğini bilmeli)
+const Driver = require('./models/Driver');
 const Legend = require('./models/Legend');
 const Team = require('./models/Team');
 const Engineer = require('./models/Engineer'); // YENİ
 const Technology = require('./models/Technology'); // YENİ
-const CriticalSituation = require('./models/CriticalSituation'); // YENİ
+const CriticalSituation = require('./models/CriticalSituations'); // YENİ
 
 // 1. ADIM: server.js ile AYNI veritabanına bağlan
 const MONGO_URI = "mongodb://localhost:27017/f1_db"; 
@@ -19,6 +20,7 @@ const importData = async () => {
 
         // 2. ADIM: Her çalıştırmada eski verileri sil (duplicate olmasın)
         await Legend.deleteMany();
+        await Driver.deleteMany();
         await Team.deleteMany();
         await Engineer.deleteMany(); // YENİ
         await Technology.deleteMany(); // YENİ
@@ -32,11 +34,15 @@ const importData = async () => {
         const teamsData = JSON.parse(
             fs.readFileSync(path.join(__dirname, 'data/teams.json'), 'utf-8')
         );
+        const driversData = JSON.parse(
+            fs.readFileSync(path.join(__dirname, 'data/drivers.json'), 'utf-8')
+        );
         const engineersData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/engineers.json'), 'utf-8')); // YENİ OKUMA
         const technologiesData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/technologies.json'), 'utf-8')); // YENİ OKUMA
-        const situationsData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/critical_situations.json'), 'utf-8')); // YENİ OKUMA
+        const situationsData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/critical-situations.json'), 'utf-8')); // YENİ OKUMA
         // 4. ADIM: Okunan verileri veritabanına topluca ekle
         await Legend.insertMany(legendsData);
+        await Driver.insertMany(driversData);
         await Team.insertMany(teamsData);
         await Engineer.insertMany(engineersData); // YENİ EKLEME
         await Technology.insertMany(technologiesData); // YENİ EKLEME
