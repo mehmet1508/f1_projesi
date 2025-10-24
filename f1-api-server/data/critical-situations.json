@@ -1,0 +1,23 @@
+[
+  {
+    "title": "1994 San Marino GP: Ayrton Senna'nın Kazası",
+    "year": 1994,
+    "summary": "Formula 1 tarihinin en trajik hafta sonu. Cumartesi günü Roland Ratzenberger'in ve Pazar günü şampiyon Ayrton Senna'nın Tamburello virajında hayatını kaybetmesi, sporun güvenlik standartlarını kökten değiştirdi.",
+    "category": "Tragedy",
+    "video_url": "PLACEHOLDER_SENNA_VIDEO_URL"
+  },
+  {
+    "title": "2007 McLaren Casusluk Skandalı ('Spygate')",
+    "year": 2007,
+    "summary": "McLaren takımının eski Ferrari çalışanından önemli teknik dökümanlar almasıyla ortaya çıkan büyük casusluk skandalı. McLaren, takımlar şampiyonasından men edildi ve rekor düzeyde para cezası aldı.",
+    "category": "Controversy",
+    "video_url": "PLACEHOLDER_SPYGATE_VIDEO_URL"
+  },
+  {
+    "title": "2021 Abu Dhabi GP Son Tur Kararı",
+    "year": 2021,
+    "summary": "Michael Masi'nin tartışmalı güvenlik aracı (Safety Car) kararları sonucu, son turda Max Verstappen'in Lewis Hamilton'ı geçerek şampiyonluğu kazanması. Kural yorumlamaları nedeniyle F1 tarihinin en çok tartışılan anı oldu.",
+    "category": "FinalLapDecider",
+    "video_url": "PLACEHOLDER_2021_ABUDHABI_VIDEO_URL"
+  }
+]

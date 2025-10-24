@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Adrian Newey",
+    "title": "Chief Technical Officer (CTO)",
+    "team_history": ["Red Bull Racing", "McLaren", "Williams"],
+    "contributions": "F1 tarihinin en başarılı tasarımcısı. Zemin etkisi (Ground Effect) çağında ve modern aerodinamikte devrim yaratan şasi tasarımlarıyla bilinir. McLaren'a, Williams'a ve Red Bull'a birden fazla şampiyonluk kazandırdı. Özellikle 'coke bottle' (kola şişesi) gövde tasarımının öncüsüdür.",
+    "photo_url": "PLACEHOLDER_NEWEY_URL"
+  },
+  {
+    "name": "Ross Brawn",
+    "title": "Eski Takım Patronu / Teknik Direktör",
+    "team_history": ["Ferrari", "Benetton", "Brawn GP (Kendi Takımı)"],
+    "contributions": "Michael Schumacher'in 7 şampiyonluğunun mimarı olan strateji dehasıdır. Ferrari'deki teknik direktörlüğü ve 2009'da Brawn GP ile yarattığı peri masalıyla ünlüdür. Sporun Sportif Direktörü olarak F1'in kurallarının yeniden yazılmasına liderlik etmiştir.",
+    "photo_url": "PLACEHOLDER_BRAWN_URL"
+  },
+  {
+    "name": "Colin Chapman",
+    "title": "Kurucu / Baş Tasarımcı",
+    "team_history": ["Lotus"],
+    "contributions": "'Ağırlık yerine hafiflik' felsefesiyle devrim yarattı. Zemin etkisini (Ground Effect) F1'e getiren ilk isimlerden olup, 'Add lightness' mottosuyla ün salmıştır. Yenilikçi ve riskli tasarımlarıyla F1'in altın çağını şekillendirdi.",
+    "photo_url": "PLACEHOLDER_CHAPMAN_URL"
+  }
+]
