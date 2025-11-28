@@ -1,0 +1,352 @@
+[
+    {
+        "round": 0,
+        "name": "Pre-Season Testing",
+        "location": "Sakhir",
+        "country": "Bahrain",
+        "date": "2024-02-23",
+        "sessions": {
+            "FP1": "2024-02-21 10:00",
+            "FP2": "2024-02-22 10:00",
+            "FP3": "2024-02-23 10:00",
+            "Qualifying": null,
+            "Race": null
+        }
+    },
+    {
+        "round": 1,
+        "name": "Bahrain Grand Prix",
+        "location": "Sakhir",
+        "country": "Bahrain",
+        "date": "2024-03-02",
+        "sessions": {
+            "FP1": "2024-02-29 14:30",
+            "FP2": "2024-02-29 18:00",
+            "FP3": "2024-03-01 15:30",
+            "Qualifying": "2024-03-01 19:00",
+            "Race": "2024-03-02 18:00"
+        }
+    },
+    {
+        "round": 2,
+        "name": "Saudi Arabian Grand Prix",
+        "location": "Jeddah",
+        "country": "Saudi Arabia",
+        "date": "2024-03-09",
+        "sessions": {
+            "FP1": "2024-03-07 16:30",
+            "FP2": "2024-03-07 20:10",
+            "FP3": "2024-03-08 16:30",
+            "Qualifying": "2024-03-08 20:00",
+            "Race": "2024-03-09 20:00"
+        }
+    },
+    {
+        "round": 3,
+        "name": "Australian Grand Prix",
+        "location": "Melbourne",
+        "country": "Australia",
+        "date": "2024-03-24",
+        "sessions": {
+            "FP1": "2024-03-22 12:30",
+            "FP2": "2024-03-22 16:00",
+            "FP3": "2024-03-23 12:30",
+            "Qualifying": "2024-03-23 16:00",
+            "Race": "2024-03-24 15:00"
+        }
+    },
+    {
+        "round": 4,
+        "name": "Japanese Grand Prix",
+        "location": "Suzuka",
+        "country": "Japan",
+        "date": "2024-04-07",
+        "sessions": {
+            "FP1": "2024-04-05 11:30",
+            "FP2": "2024-04-05 15:00",
+            "FP3": "2024-04-06 11:30",
+            "Qualifying": "2024-04-06 15:00",
+            "Race": "2024-04-07 14:00"
+        }
+    },
+    {
+        "round": 5,
+        "name": "Chinese Grand Prix",
+        "location": "Shanghai",
+        "country": "China",
+        "date": "2024-04-21",
+        "sessions": {
+            "FP1": "2024-04-19 11:30",
+            "FP2": "2024-04-19 15:30",
+            "FP3": "2024-04-20 11:00",
+            "Qualifying": "2024-04-20 15:00",
+            "Race": "2024-04-21 15:00"
+        }
+    },
+    {
+        "round": 6,
+        "name": "Miami Grand Prix",
+        "location": "Miami",
+        "country": "United States",
+        "date": "2024-05-05",
+        "sessions": {
+            "FP1": "2024-05-03 12:30",
+            "FP2": "2024-05-03 16:30",
+            "FP3": "2024-05-04 12:00",
+            "Qualifying": "2024-05-04 16:00",
+            "Race": "2024-05-05 16:00"
+        }
+    },
+    {
+        "round": 7,
+        "name": "Emilia Romagna Grand Prix",
+        "location": "Imola",
+        "country": "Italy",
+        "date": "2024-05-19",
+        "sessions": {
+            "FP1": "2024-05-17 13:30",
+            "FP2": "2024-05-17 17:00",
+            "FP3": "2024-05-18 12:30",
+            "Qualifying": "2024-05-18 16:00",
+            "Race": "2024-05-19 15:00"
+        }
+    },
+    {
+        "round": 8,
+        "name": "Monaco Grand Prix",
+        "location": "Monaco",
+        "country": "Monaco",
+        "date": "2024-05-26",
+        "sessions": {
+            "FP1": "2024-05-24 13:30",
+            "FP2": "2024-05-24 17:00",
+            "FP3": "2024-05-25 12:30",
+            "Qualifying": "2024-05-25 16:00",
+            "Race": "2024-05-26 15:00"
+        }
+    },
+    {
+        "round": 9,
+        "name": "Canadian Grand Prix",
+        "location": "Montr\u00e9al",
+        "country": "Canada",
+        "date": "2024-06-09",
+        "sessions": {
+            "FP1": "2024-06-07 13:30",
+            "FP2": "2024-06-07 17:00",
+            "FP3": "2024-06-08 12:30",
+            "Qualifying": "2024-06-08 16:00",
+            "Race": "2024-06-09 14:00"
+        }
+    },
+    {
+        "round": 10,
+        "name": "Spanish Grand Prix",
+        "location": "Barcelona",
+        "country": "Spain",
+        "date": "2024-06-23",
+        "sessions": {
+            "FP1": "2024-06-21 13:30",
+            "FP2": "2024-06-21 17:00",
+            "FP3": "2024-06-22 12:30",
+            "Qualifying": "2024-06-22 16:00",
+            "Race": "2024-06-23 15:00"
+        }
+    },
+    {
+        "round": 11,
+        "name": "Austrian Grand Prix",
+        "location": "Spielberg",
+        "country": "Austria",
+        "date": "2024-06-30",
+        "sessions": {
+            "FP1": "2024-06-28 12:30",
+            "FP2": "2024-06-28 16:30",
+            "FP3": "2024-06-29 12:00",
+            "Qualifying": "2024-06-29 16:00",
+            "Race": "2024-06-30 15:00"
+        }
+    },
+    {
+        "round": 12,
+        "name": "British Grand Prix",
+        "location": "Silverstone",
+        "country": "United Kingdom",
+        "date": "2024-07-07",
+        "sessions": {
+            "FP1": "2024-07-05 12:30",
+            "FP2": "2024-07-05 16:00",
+            "FP3": "2024-07-06 11:30",
+            "Qualifying": "2024-07-06 15:00",
+            "Race": "2024-07-07 15:00"
+        }
+    },
+    {
+        "round": 13,
+        "name": "Hungarian Grand Prix",
+        "location": "Budapest",
+        "country": "Hungary",
+        "date": "2024-07-21",
+        "sessions": {
+            "FP1": "2024-07-19 13:30",
+            "FP2": "2024-07-19 17:00",
+            "FP3": "2024-07-20 12:30",
+            "Qualifying": "2024-07-20 16:00",
+            "Race": "2024-07-21 15:00"
+        }
+    },
+    {
+        "round": 14,
+        "name": "Belgian Grand Prix",
+        "location": "Spa-Francorchamps",
+        "country": "Belgium",
+        "date": "2024-07-28",
+        "sessions": {
+            "FP1": "2024-07-26 13:30",
+            "FP2": "2024-07-26 17:00",
+            "FP3": "2024-07-27 12:30",
+            "Qualifying": "2024-07-27 16:00",
+            "Race": "2024-07-28 15:00"
+        }
+    },
+    {
+        "round": 15,
+        "name": "Dutch Grand Prix",
+        "location": "Zandvoort",
+        "country": "Netherlands",
+        "date": "2024-08-25",
+        "sessions": {
+            "FP1": "2024-08-23 12:30",
+            "FP2": "2024-08-23 16:00",
+            "FP3": "2024-08-24 11:30",
+            "Qualifying": "2024-08-24 15:00",
+            "Race": "2024-08-25 15:00"
+        }
+    },
+    {
+        "round": 16,
+        "name": "Italian Grand Prix",
+        "location": "Monza",
+        "country": "Italy",
+        "date": "2024-09-01",
+        "sessions": {
+            "FP1": "2024-08-30 13:30",
+            "FP2": "2024-08-30 17:00",
+            "FP3": "2024-08-31 12:30",
+            "Qualifying": "2024-08-31 16:00",
+            "Race": "2024-09-01 15:00"
+        }
+    },
+    {
+        "round": 17,
+        "name": "Azerbaijan Grand Prix",
+        "location": "Baku",
+        "country": "Azerbaijan",
+        "date": "2024-09-15",
+        "sessions": {
+            "FP1": "2024-09-13 13:30",
+            "FP2": "2024-09-13 17:00",
+            "FP3": "2024-09-14 12:30",
+            "Qualifying": "2024-09-14 16:00",
+            "Race": "2024-09-15 15:00"
+        }
+    },
+    {
+        "round": 18,
+        "name": "Singapore Grand Prix",
+        "location": "Marina Bay",
+        "country": "Singapore",
+        "date": "2024-09-22",
+        "sessions": {
+            "FP1": "2024-09-20 17:30",
+            "FP2": "2024-09-20 21:00",
+            "FP3": "2024-09-21 17:30",
+            "Qualifying": "2024-09-21 21:00",
+            "Race": "2024-09-22 20:00"
+        }
+    },
+    {
+        "round": 19,
+        "name": "United States Grand Prix",
+        "location": "Austin",
+        "country": "United States",
+        "date": "2024-10-20",
+        "sessions": {
+            "FP1": "2024-10-18 12:30",
+            "FP2": "2024-10-18 16:30",
+            "FP3": "2024-10-19 13:00",
+            "Qualifying": "2024-10-19 17:00",
+            "Race": "2024-10-20 14:00"
+        }
+    },
+    {
+        "round": 20,
+        "name": "Mexico City Grand Prix",
+        "location": "Mexico City",
+        "country": "Mexico",
+        "date": "2024-10-27",
+        "sessions": {
+            "FP1": "2024-10-25 12:30",
+            "FP2": "2024-10-25 16:00",
+            "FP3": "2024-10-26 11:30",
+            "Qualifying": "2024-10-26 15:00",
+            "Race": "2024-10-27 14:00"
+        }
+    },
+    {
+        "round": 21,
+        "name": "S\u00e3o Paulo Grand Prix",
+        "location": "S\u00e3o Paulo",
+        "country": "Brazil",
+        "date": "2024-11-03",
+        "sessions": {
+            "FP1": "2024-11-01 11:30",
+            "FP2": "2024-11-01 15:30",
+            "FP3": "2024-11-02 11:00",
+            "Qualifying": "2024-11-03 07:30",
+            "Race": "2024-11-03 12:30"
+        }
+    },
+    {
+        "round": 22,
+        "name": "Las Vegas Grand Prix",
+        "location": "Las Vegas",
+        "country": "United States",
+        "date": "2024-11-23",
+        "sessions": {
+            "FP1": "2024-11-21 18:30",
+            "FP2": "2024-11-21 22:00",
+            "FP3": "2024-11-22 18:30",
+            "Qualifying": "2024-11-22 22:00",
+            "Race": "2024-11-23 22:00"
+        }
+    },
+    {
+        "round": 23,
+        "name": "Qatar Grand Prix",
+        "location": "Lusail",
+        "country": "Qatar",
+        "date": "2024-12-01",
+        "sessions": {
+            "FP1": "2024-11-29 16:30",
+            "FP2": "2024-11-29 20:30",
+            "FP3": "2024-11-30 17:00",
+            "Qualifying": "2024-11-30 21:00",
+            "Race": "2024-12-01 19:00"
+        }
+    },
+    {
+        "round": 24,
+        "name": "Abu Dhabi Grand Prix",
+        "location": "Yas Island",
+        "country": "United Arab Emirates",
+        "date": "2024-12-08",
+        "sessions": {
+            "FP1": "2024-12-06 13:30",
+            "FP2": "2024-12-06 17:00",
+            "FP3": "2024-12-07 14:30",
+            "Qualifying": "2024-12-07 18:00",
+            "Race": "2024-12-08 17:00"
+        }
+    }
+]
