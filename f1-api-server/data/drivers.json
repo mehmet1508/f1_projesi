@@ -1,23 +1,142 @@
 [
   {
-    "_id": "LEC",
-    "name": "Charles Leclerc",
-    "number": 16,
-    "nationality": "Monegasque",
-    "team_id": "ferrari" 
+    "_id": "VER",
+    "name": "Max Verstappen",
+    "number": 1,
+    "nationality": "NED",
+    "team_id": "redbull"
+  },
+  {
+    "_id": "PER",
+    "name": "Sergio Perez",
+    "number": 11,
+    "nationality": "MEX",
+    "team_id": "redbull"
   },
   {
     "_id": "SAI",
     "name": "Carlos Sainz",
     "number": 55,
-    "nationality": "Spanish",
+    "nationality": "ESP",
     "team_id": "ferrari"
+  },
+  {
+    "_id": "LEC",
+    "name": "Charles Leclerc",
+    "number": 16,
+    "nationality": "MON",
+    "team_id": "ferrari"
+  },
+  {
+    "_id": "RUS",
+    "name": "George Russell",
+    "number": 63,
+    "nationality": "GBR",
+    "team_id": "mercedes"
+  },
+  {
+    "_id": "NOR",
+    "name": "Lando Norris",
+    "number": 4,
+    "nationality": "GBR",
+    "team_id": "mclaren"
   },
   {
     "_id": "HAM",
     "name": "Lewis Hamilton",
     "number": 44,
-    "nationality": "British",
+    "nationality": "GBR",
     "team_id": "mercedes"
+  },
+  {
+    "_id": "PIA",
+    "name": "Oscar Piastri",
+    "number": 81,
+    "nationality": "AUS",
+    "team_id": "mclaren"
+  },
+  {
+    "_id": "ALO",
+    "name": "Fernando Alonso",
+    "number": 14,
+    "nationality": "ESP",
+    "team_id": "astonmartin"
+  },
+  {
+    "_id": "STR",
+    "name": "Lance Stroll",
+    "number": 18,
+    "nationality": "CAN",
+    "team_id": "astonmartin"
+  },
+  {
+    "_id": "ZHO",
+    "name": "Guanyu Zhou",
+    "number": 24,
+    "nationality": "CHN",
+    "team_id": "sauber"
+  },
+  {
+    "_id": "MAG",
+    "name": "Kevin Magnussen",
+    "number": 20,
+    "nationality": "DEN",
+    "team_id": "haas"
+  },
+  {
+    "_id": "RIC",
+    "name": "Daniel Ricciardo",
+    "number": 3,
+    "nationality": "AUS",
+    "team_id": "rb"
+  },
+  {
+    "_id": "TSU",
+    "name": "Yuki Tsunoda",
+    "number": 22,
+    "nationality": "JPN",
+    "team_id": "rb"
+  },
+  {
+    "_id": "ALB",
+    "name": "Alexander Albon",
+    "number": 23,
+    "nationality": "THA",
+    "team_id": "williams"
+  },
+  {
+    "_id": "HUL",
+    "name": "Nico Hulkenberg",
+    "number": 27,
+    "nationality": "GER",
+    "team_id": "haas"
+  },
+  {
+    "_id": "OCO",
+    "name": "Esteban Ocon",
+    "number": 31,
+    "nationality": "FRA",
+    "team_id": "alpine"
+  },
+  {
+    "_id": "GAS",
+    "name": "Pierre Gasly",
+    "number": 10,
+    "nationality": "FRA",
+    "team_id": "alpine"
+  },
+  {
+    "_id": "BOT",
+    "name": "Valtteri Bottas",
+    "number": 77,
+    "nationality": "FIN",
+    "team_id": "sauber"
+  },
+  {
+    "_id": "SAR",
+    "name": "Logan Sargeant",
+    "number": 2,
+    "nationality": "USA",
+    "team_id": "williams"
   }
 ]
