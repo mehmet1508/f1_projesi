@@ -1,7 +1,14 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ModelViewerCanvas from './components/ModelViewerCanvas.jsx';
 import { useModelConfigs } from './hooks/useModelConfigs.js';
+import TeamsPage from './teams.jsx';
+import TracksPage from './tracks.jsx';
+import RecordsBookPage from './recordsBook.jsx';
+import HowItWorksPage from './howItWorks.jsx';
+import HistoryPage from './history.jsx';
+import BreakingNewsPage from './news.jsx';
 
 const navItems = [
     { text: 'F1-Fever', slug: 'main' },
@@ -13,23 +20,45 @@ const navItems = [
     { text: 'Breaking News', slug: 'breaking-news' }
 ];
 
+const slugToPath = (slug) => (slug === 'main' ? '/' : `/${slug}`);
+
+const normalizePath = (path) => {
+    if (!path) return '/';
+    if (path === '/') return '/';
+    return path.replace(/\/+$/, '');
+};
+
 function App() {
     const { models, loading, error } = useModelConfigs();
     const [sidebarOpen, setSidebarOpen] = useState(false);
-    const [activeNavIndex, setActiveNavIndex] = useState(0);
     const [activeModelIndex, setActiveModelIndex] = useState(0);
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const normalizedPath = useMemo(() => normalizePath(location.pathname), [location.pathname]);
+
+    const activeNavIndex = useMemo(() => {
+        const foundIndex = navItems.findIndex((item) => slugToPath(item.slug) === normalizedPath);
+        return foundIndex >= 0 ? foundIndex : 0;
+    }, [normalizedPath]);
+
+    useEffect(() => {
+        const slug = navItems[activeNavIndex]?.slug;
+        if (!slug || !models.length) {
+            return;
+        }
+        const modelIndex = models.findIndex((model) => model.slug === slug);
+        if (modelIndex >= 0) {
+            setActiveModelIndex(modelIndex);
+        }
+    }, [activeNavIndex, models]);
 
     const handleNavClick = useCallback(
-        (index) => {
-            setActiveNavIndex(index);
-            const slug = navItems[index]?.slug;
-            const modelIndex = models.findIndex((model) => model.slug === slug);
-            if (modelIndex >= 0) {
-                setActiveModelIndex(modelIndex);
-            }
+        (slug) => {
+            navigate(slugToPath(slug));
             setSidebarOpen(false);
         },
-        [models]
+        [navigate]
     );
 
     const viewerContent = useMemo(() => {
@@ -58,7 +87,7 @@ function App() {
                             type="button"
                             className={`menu-item nav-link ${activeNavIndex === index ? 'active' : ''}`}
                             whileHover={{ scale: 1.02 }}
-                            onClick={() => handleNavClick(index)}
+                            onClick={() => handleNavClick(item.slug)}
                         >
                             {item.text}
                         </motion.button>
@@ -67,7 +96,16 @@ function App() {
             </motion.aside>
 
             <main className="viewer" id="viewer">
-                {viewerContent}
+                <Routes>
+                    <Route path="/" element={viewerContent} />
+                    <Route path="/teams" element={<TeamsPage />} />
+                    <Route path="/tracks" element={<TracksPage />} />
+                    <Route path="/records" element={<RecordsBookPage />} />
+                    <Route path="/how-it-works" element={<HowItWorksPage />} />
+                    <Route path="/history" element={<HistoryPage />} />
+                    <Route path="/breaking-news" element={<BreakingNewsPage />} />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
             </main>
 
             <motion.button
@@ -88,3 +126,12 @@ function App() {
 }
 
 export default App;
+
+function NotFound() {
+    return (
+        <div className="page not-found">
+            <h1>Sayfa bulunamadı</h1>
+            <p>Sol menüden mevcut bölümlerden birini seçebilirsiniz.</p>
+        </div>
+    );
+}
