@@ -1,0 +1,12 @@
+[
+  {
+    "name": "F1-Fever",
+    "slug": "main",
+    "path": "/assets/model.glb",
+    "description": "Formula 1 yarış aracının yüksek detaylı GLTF modeli",
+    "rotationY": 90,
+    "spacing": 0,
+    "scale": 2.4,
+    "length": 22
+  }
+]
