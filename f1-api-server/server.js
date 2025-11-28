@@ -9,7 +9,14 @@ const {Pool} = require('pg');
 const Team = require('./models/Team');
 const Driver = require('./models/Driver');
 
+
+const calendarRoutes = require('./routes/calendar');
+const standingsRoutes = require('./routes/standings');
+
+
+
 const Legend = require('./models/Legend');
+const Calendar = require('./models/Calendar');
 const Engineer = require('./models/Engineer'); // YENİ
 const Technology = require('./models/Technology'); // YENİ
 const CriticalSituation = require('./models/CriticalSituations'); // YENİ
@@ -18,10 +25,18 @@ const CriticalSituation = require('./models/CriticalSituations'); // YENİ
 const app = express();
 const PORT = 5000;
 
+
+
+
+
 // Middleware'ler
 app.use(cors()); // Farklı adreslerden gelen isteklere izin ver (Frontend için gerekli)
 app.use(express.json()); // Gelen isteklerdeki JSON body'leri parse etmek için
 
+app.use('/api/calendar', calendarRoutes);
+
+// localhost:5000/api/standings adresine gelen istekleri standingsRoutes'a yönlendir
+app.use('/api/standings', standingsRoutes);
 // --- VERİTABANI BAĞLANTISI ---
 const MONGO_URI = "mongodb://localhost:27017/f1_db";
 mongoose.connect(MONGO_URI)
@@ -156,6 +171,19 @@ app.get('/api/drivers', async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 });
+
+
+
+
+app.get('/api/calendar/:season', async (req, res) => {
+    try {
+        const data = await Calendar.find();
+        res.status(200).json(data);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
 
 
 // --- SUNUCUYU BAŞLATMA ---
