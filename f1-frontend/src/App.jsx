@@ -15,9 +15,9 @@ const navItems = [
     { text: 'Teams', slug: 'teams' },
     { text: 'Tracks', slug: 'tracks' },
     { text: 'Records Book', slug: 'records' },
-    { text: 'How ıt works', slug: 'how-ıt-works' },
-    { text: 'Hıstory', slug: 'hıstory' },
-    { text: 'Breakıng News', slug: 'breakıng-news' }
+    { text: 'How ıt works', slug: 'how-it-works' },
+    { text: 'Hıstory', slug: 'history' },
+    { text: 'Breakıng News', slug: 'breaking-news' }
 ];
 
 const slugToPath = (slug) => (slug === 'main' ? '/' : `/${slug}`);

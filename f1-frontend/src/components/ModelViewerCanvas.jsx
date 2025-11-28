@@ -1,6 +1,6 @@
 import { Suspense, useMemo, useRef, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { ContactShadows, Environment, Html, OrbitControls, useGLTF } from '@react-three/drei';
+import { ContactShadows, Environment, Html, OrbitControls, useGLTF, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 import gsap from 'gsap';
 import TWEEN from '@tweenjs/tween.js';
@@ -8,53 +8,29 @@ import TWEEN from '@tweenjs/tween.js';
 const spacing = 8;
 
 function AsphaltGround() {
-    const colorTexture = useMemo(() => {
-        const width = 2048;
-        const height = 1024;
-        const canvas = document.createElement('canvas');
-        canvas.width = width;
-        canvas.height = height;
-        const ctx = canvas.getContext('2d');
+    const texture = useTexture('/assets/asfalt.png');
 
-        const baseGradient = ctx.createLinearGradient(0, 0, 0, height);
-        baseGradient.addColorStop(0, '#c2b8c5');
-        baseGradient.addColorStop(1, '#aea2b0');
-        ctx.fillStyle = baseGradient;
-        ctx.fillRect(0, 0, width, height);
-
-        ctx.save();
-        ctx.shadowColor = 'rgba(0,0,0,0.25)';
-        ctx.shadowBlur = 90;
-        ctx.shadowOffsetY = 8;
-        ctx.fillStyle = '#d5cbd7';
-        ctx.fillRect(0, 0, width, height);
-        ctx.restore();
-
-        for (let i = 0; i < 3500; i += 1) {
-            const x = Math.random() * width;
-            const y = Math.random() * height;
-            const alpha = 0.1 + Math.random() * 0.1;
-            ctx.fillStyle = `rgba(110,99,120,${alpha})`;
-            ctx.fillRect(x, y, 1, 1 + Math.random() * 2);
-        }
-
-        const texture = new THREE.CanvasTexture(canvas);
-        texture.wrapS = texture.wrapT = THREE.ClampToEdgeWrapping;
+    useMemo(() => {
+        // Daha yüksek kalite için asfalt dokusunu döşeyerek (tiling) kullan
+        texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+        // Buradaki  değerleri (4, 4) artırıp azaltarak tekrar sıklığını ayarlayabilirsin
+        texture.repeat.set(4, 4);
         texture.anisotropy = 8;
-        texture.needsUpdate = true;
+        // Gerekirse yön için merkez ve rotasyonla yine oynayabiliriz
+        texture.center.set(0.5, 0.5);
         return texture;
-    }, []);
+    }, [texture]);
 
-    useEffect(() => () => colorTexture.dispose(), [colorTexture]);
+    useEffect(() => () => texture.dispose(), [texture]);
 
     return (
-        <mesh rotation-x={-Math.PI / 2} position={[0, -0.02, -10]} receiveShadow>
-            <planeGeometry args={[80, 40]} />
+        <mesh rotation-x={-Math.PI / 2} position={[0, -0.02, 0]} receiveShadow>
+            {/* args = [en (X), boy (Z)] */}
+            <planeGeometry args={[100, 30]} />
             <meshStandardMaterial
-                color="#cfc5d0"
+                map={texture}
                 roughness={0.9}
-                metalness={0.08}
-                map={colorTexture}
+                metalness={0.05}
             />
         </mesh>
     );
@@ -165,7 +141,7 @@ function LoadedModel({ config, index, total, activeIndex }) {
     return <group ref={group} />;
 }
 
-const SHOW_GROUND = false;
+const SHOW_GROUND = true;
 
 function ModelScene({ models, activeIndex }) {
     if (!models.length) {
