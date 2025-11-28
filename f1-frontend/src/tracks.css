@@ -1,0 +1,51 @@
+.tracks-page {
+    height: 100%;
+    overflow-y: auto;
+    color: #f4f4f4;
+    padding: 32px clamp(24px, 5vw, 64px);
+}
+
+.tracks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.track-card {
+    border-radius: 16px;
+    padding: 20px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(135deg, rgba(255, 66, 66, 0.08), rgba(9, 9, 12, 0.95));
+}
+
+.track-card header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.track-card h2 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.track-card span {
+    font-size: 0.85rem;
+    color: #ffae55;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.track-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-weight: 500;
+    color: #d7d7d7;
+}
+
+.track-card li + li {
+    margin-top: 6px;
+}

@@ -1,0 +1,55 @@
+.history-page {
+    height: 100%;
+    overflow-y: auto;
+    color: #f4f4f4;
+    padding: 32px clamp(24px, 5vw, 64px);
+}
+
+.timeline {
+    display: grid;
+    gap: 24px;
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.timeline-item {
+    padding-left: 36px;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 4px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ff4242;
+    box-shadow: 0 0 10px rgba(255, 66, 66, 0.7);
+}
+
+.timeline-year {
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    color: #ffae55;
+}
+
+.timeline-item h2 {
+    margin: 6px 0;
+    font-size: 1.15rem;
+}
+
+.timeline-item p {
+    margin: 0;
+    color: #c6c6c6;
+}

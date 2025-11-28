@@ -1,31 +1,25 @@
-import { useEffect, useState } from 'react';
-import './App.css';
-// Bileşenleri (Component) sonra oluşturacağız, şimdilik yer tutucu koyalım
-import CalendarPanel from './components/CalendarPanel';
-import StandingsPanel from './components/StandingsPanel';
-import NewsPanel from './components/NewsPanel';
+import CalendarPanel from './components/CalendarPanel.jsx';
+import StandingsPanel from './components/StandingsPanel.jsx';
+import NewsPanel from './components/NewsPanel.jsx';
+import './news.css';
 
-function App() {
+export default function BreakingNewsPage() {
     return (
-        <div className="dashboard-container">
-
-            {/* SOL ÜST: TAKVİM VE PİST BİLGİSİ */}
-            <div className="panel calendar-section">
-                <CalendarPanel />
+        <section className="page news-page">
+            <header className="page-header">
+                <p>Tüm hafta sonu tek ekranda: takvim, puan durumu ve bülten.</p>
+            </header>
+            <div className="dashboard-grid">
+                <div className="panel calendar-section">
+                    <CalendarPanel />
+                </div>
+                <div className="panel standings-section">
+                    <StandingsPanel />
+                </div>
+                <div className="panel news-section">
+                    <NewsPanel />
+                </div>
             </div>
-
-            {/* SAĞ TARAF (BOYDAN BOYA): PUAN DURUMU */}
-            <div className="panel standings-section">
-                <StandingsPanel />
-            </div>
-
-            {/* SOL ALT: HABERLER */}
-            <div className="panel news-section">
-                <NewsPanel />
-            </div>
-
-        </div>
+        </section>
     );
 }
-
-export default App;
