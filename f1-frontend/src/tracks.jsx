@@ -1,33 +1,97 @@
+import React, { useEffect, useRef, useState } from 'react';
+import Globe from 'react-globe.gl';
+import { Link } from 'react-router-dom';
+import { circuits } from '../../f1-api-server/circuitData';
 import './tracks.css';
 
-const circuits = [
-    { name: 'Bahrain International Circuit', country: 'Bahreyn', length: '5.412 km', laps: 57, highlight: 'Gece yarışı, yüksek fren yükü' },
-    { name: 'Jeddah Corniche Circuit', country: 'Suudi Arabistan', length: '6.174 km', laps: 50, highlight: 'Takvimin en hızlı sokak pisti' },
-    { name: 'Silverstone Circuit', country: 'Birleşik Krallık', length: '5.891 km', laps: 52, highlight: 'Yüksek hızlı virajlar, Aero testi' },
-    { name: 'Monza', country: 'İtalya', length: '5.793 km', laps: 53, highlight: 'Hız tapınağı, düşük sürükleme paketleri' }
-];
+const TrackPage = () => {
+  const globeEl = useRef();
+  
+  // Track window size for the globe
+  const [dimensions, setDimensions] = useState({ 
+    width: window.innerWidth, 
+    height: window.innerHeight 
+  });
 
-export default function TracksPage() {
-    return (
-        <section className="page tracks-page">
-            <header className="page-header">
-                <p>Dünya üzerindeki en ikonik pistler ve mühendislik açısından öne çıkan özellikleri.</p>
-            </header>
-            <div className="tracks-list">
-                {circuits.map((circuit) => (
-                    <article key={circuit.name} className="track-card">
-                        <header>
-                            <h2>{circuit.name}</h2>
-                            <span>{circuit.country}</span>
-                        </header>
-                        <ul>
-                            <li>Tur uzunluğu: {circuit.length}</li>
-                            <li>Yarış mesafesi: {circuit.laps} tur</li>
-                            <li>{circuit.highlight}</li>
-                        </ul>
-                    </article>
-                ))}
-            </div>
-        </section>
-    );
-}
+  // Update globe size when resizing window
+  useEffect(() => {
+    const handleResize = () => {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Auto-rotate logic
+  useEffect(() => {
+    if (globeEl.current) {
+      globeEl.current.pointOfView({ lat: 20, lng: 0, altitude: 2.5 });
+      globeEl.current.controls().autoRotate = true;
+      globeEl.current.controls().autoRotateSpeed = 0.5;
+    }
+  }, []);
+
+  const handleHover = (circuit) => {
+    if (globeEl.current) {
+      globeEl.current.controls().autoRotate = false;
+      globeEl.current.pointOfView({ 
+        lat: circuit.lat, 
+        lng: circuit.lng, 
+        altitude: 1.5 
+      }, 1000);
+    }
+  };
+
+  return (
+    <div className="home-page-container">
+      <div className="globe-container">
+        <Globe
+          ref={globeEl}
+          width={dimensions.width}
+          height={dimensions.height}
+          globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
+          backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
+          htmlElementsData={circuits}
+          htmlElement={d => {
+            const el = document.createElement('div');
+            el.className = 'map-marker';
+            el.innerHTML = `
+              <div class="marker-arrow"></div>
+              <div class="track-tooltip">
+                <div style="font-weight:bold; margin-bottom:5px;">${d.name}</div>
+                ${d.imgUrl ? `<div class="track-img-container"><img src="${d.imgUrl}" class="track-img" /></div>` : ''}
+              </div>
+            `;
+            el.onclick = () => handleHover(d);
+            return el;
+          }}
+        />
+      </div>
+
+      <div className="main-sidebar">
+        <h1>🏎️ F1 Explorer</h1>
+        <p>Select a track to preview:</p>
+        
+        <div className="circuit-nav">
+          {circuits.map(circuit => (
+            <Link 
+              key={circuit.id} 
+              to={`/map/${circuit.id}`}
+              className="circuit-link"
+              onMouseEnter={() => handleHover(circuit)}
+            >
+              {circuit.name} <span>🏁</span>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  );
+};
+
+export default TrackPage;
