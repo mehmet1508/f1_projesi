@@ -1,51 +1,135 @@
-.tracks-page {
-    height: 100%;
-    overflow-y: auto;
-    color: #f4f4f4;
-    padding: 32px clamp(24px, 5vw, 64px);
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;700&display=swap');
+
+* { box-sizing: border-box; }
+
+.home-page-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #1a1a1a;
+  color: white;
+  overflow: hidden;
+  font-family: 'Titillium Web', sans-serif;
 }
 
-.tracks-list {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+/* --- THE SLIDING SIDEBAR --- */
+.main-sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 320px;
+  
+  /* Hiding Logic */
+  transform: translateX(-305px); 
+  
+  background: rgba(21, 21, 30, 0.95);
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  border-right: 4px solid #e10600;
+  z-index: 100;
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 5px 0 25px rgba(0,0,0,0.5);
+
+  /* FIX: Allow label to show outside the box */
+  overflow: visible; 
 }
 
-.track-card {
-    border-radius: 16px;
-    padding: 20px 24px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background: linear-gradient(135deg, rgba(255, 66, 66, 0.08), rgba(9, 9, 12, 0.95));
+/* Slide out when mouse hovers */
+.main-sidebar:hover {
+  transform: translateX(0);
 }
 
-.track-card header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 12px;
+/* Sidebar Label ("MENU ▶") */
+.main-sidebar::after {
+  content: "MENU ▶";
+  position: absolute;
+  right: -35px;
+  top: 50%;
+  transform: rotate(90deg) translateY(50%);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: #e10600;
+  opacity: 0.8;
+  pointer-events: none;
 }
 
-.track-card h2 {
-    margin: 0;
-    font-size: 1.1rem;
+.main-sidebar:hover::after {
+  opacity: 0;
 }
 
-.track-card span {
-    font-size: 0.85rem;
-    color: #ffae55;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+/* Content Styles */
+.main-sidebar h1 { font-size: 1.5rem; margin: 0 0 10px 0; color: #fff; text-transform: uppercase; }
+.main-sidebar p { color: #aaa; font-size: 0.9rem; margin-bottom: 30px; }
+
+/* --- SCROLLABLE LIST AREA --- */
+.circuit-nav { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 15px; 
+  
+  /* FIX: Scroll ONLY the list, not the whole sidebar */
+  flex: 1; 
+  overflow-y: auto; 
+  overflow-x: hidden; /* Removes horizontal scrollbar */
+  padding-right: 5px; /* Prevent text from touching scrollbar */
+
+  /* Firefox Scrollbar Style */
+  scrollbar-width: thin;
+  scrollbar-color: #e10600 #15151e;
 }
 
-.track-card ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-weight: 500;
-    color: #d7d7d7;
+/* Custom Scrollbar for Chrome/Safari/Edge (Applied to the list now) */
+.circuit-nav::-webkit-scrollbar {
+  width: 8px; 
 }
 
-.track-card li + li {
-    margin-top: 6px;
+.circuit-nav::-webkit-scrollbar-track {
+  background: #15151e; 
 }
+
+.circuit-nav::-webkit-scrollbar-thumb {
+  background-color: #e10600; 
+  border-radius: 10px; 
+  border: 2px solid #15151e; 
+}
+
+.circuit-link {
+  padding: 15px 20px;
+  background: #e10600;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 2px solid transparent;
+  transition: all 0.2s ease-in-out;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-shrink: 0; /* Prevents buttons from squishing if list is long */
+}
+
+.circuit-link:hover {
+  background: #ff1801;
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(225, 6, 0, 0.4);
+}
+
+/* --- GLOBE --- */
+.globe-container {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0; left: 0;
+  background: black;
+  cursor: move;
+}
+
+/* Markers & Tooltips */
+.map-marker { width: 40px; height: 40px; position: relative; display: flex; justify-content: center; align-items: flex-end; transform: translate(-50%, -100%); cursor: pointer; pointer-events: auto; z-index: 10; }
+.marker-arrow { width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-top: 18px solid #e10600; filter: drop-shadow(0 0 5px black); }
+.track-tooltip { visibility: hidden; width: 220px; background: rgba(15, 15, 20, 0.95); color: #fff; border: 1px solid #444; border-radius: 6px; padding: 10px; position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); text-align: center; opacity: 0; transition: opacity 0.2s; pointer-events: none; box-shadow: 0 5px 15px rgba(0,0,0,0.8); }
+.track-tooltip::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -6px; border-width: 6px; border-style: solid; border-color: rgba(15, 15, 20, 0.95) transparent transparent transparent; }
+.map-marker:hover .track-tooltip { visibility: visible; opacity: 1; }
+.track-img-container { background: white; padding: 5px; margin-top: 5px; border-radius: 4px; }
+.track-img { width: 100%; display: block; }
