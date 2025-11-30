@@ -104,18 +104,32 @@ app.get('/api/fastestlaps', async (req, res) => {
 
 // 1. Efsaneleri Getir
 // Kullanım: GET /api/legends veya /api/legends?category=pilot
-app.get('/api/legends', async (req, res) => {
+//burada json dosyası şimdilik apiden dönüyor. mongodb databas'i oluşturmadım
+//mongodb database'i oluştur kendi bilgisayarında. //ceylin
+const fs = require("fs");
+const path = require("path");
+
+// 1. Efsaneleri Getir (JSON dosyasından okur)
+app.get('/api/legends', (req, res) => {
     try {
-        const query = {};
+        const filePath = path.join(__dirname, "data", "legends.json");
+        const data = fs.readFileSync(filePath, "utf-8");
+        let legends = JSON.parse(data);
+
+        // Kategori filtreleme varsa işle
         if (req.query.category) {
-            query.category = req.query.category;
+            legends = legends.filter(
+                (l) => l.category === req.query.category
+            );
         }
-        const legends = await Legend.find(query);
+
         res.json(legends);
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        console.error("Legends JSON error:", err);
+        res.status(500).json({ message: "Legends API error", error: err.message });
     }
 });
+
 
 // 2. Tüm (Mevcut) Takımları Getir
 // Kullanım: GET /api/teams
