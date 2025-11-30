@@ -1,37 +1,17 @@
 import { Suspense, useMemo, useRef, useEffect } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { ContactShadows, Environment, Html, OrbitControls, useGLTF, useTexture } from '@react-three/drei';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { ContactShadows, Environment, Html, OrbitControls, useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 import gsap from 'gsap';
 import TWEEN from '@tweenjs/tween.js';
 
 const spacing = 8;
 
-function AsphaltGround() {
-    const texture = useTexture('/assets/asfalt.png');
-
-    useMemo(() => {
-        // Daha yüksek kalite için asfalt dokusunu döşeyerek (tiling) kullan
-        texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-        // Buradaki  değerleri (4, 4) artırıp azaltarak tekrar sıklığını ayarlayabilirsin
-        texture.repeat.set(4, 4);
-        texture.anisotropy = 8;
-        // Gerekirse yön için merkez ve rotasyonla yine oynayabiliriz
-        texture.center.set(0.5, 0.5);
-        return texture;
-    }, [texture]);
-
-    useEffect(() => () => texture.dispose(), [texture]);
-
+function ShadowCatcher() {
     return (
-        <mesh rotation-x={-Math.PI / 2} position={[0, -0.02, 0]} receiveShadow>
-            {/* args = [en (X), boy (Z)] */}
-            <planeGeometry args={[100, 30]} />
-            <meshStandardMaterial
-                map={texture}
-                roughness={0.9}
-                metalness={0.05}
-            />
+        <mesh rotation-x={-Math.PI / 2} position={[0, -0.01, 0]} receiveShadow>
+            <planeGeometry args={[300, 200]} />
+            <shadowMaterial transparent opacity={0.4} />
         </mesh>
     );
 }
@@ -41,6 +21,32 @@ function TweenUpdater() {
         TWEEN.update();
     });
     return null;
+}
+
+function CameraInitializer() {
+    const controlsRef = useRef();
+    const { camera } = useThree();
+    
+    useEffect(() => {
+        // Kamerayı arka üstten bakacak şekilde ayarla
+        camera.position.set(4, 5, 8);
+        camera.lookAt(0, 0, 0);
+        
+        if (controlsRef.current) {
+            controlsRef.current.update();
+        }
+    }, [camera]);
+
+    return (
+        <OrbitControls 
+            ref={controlsRef}
+            enablePan={false} 
+            minPolarAngle={Math.PI * 0.25} 
+            maxPolarAngle={Math.PI * 0.36} 
+            enableZoom={false}
+            target={[0, 0, 0]}
+        />
+    );
 }
 
 function LoadingFallback() {
@@ -54,10 +60,13 @@ function LoadingFallback() {
 function LoadedModel({ config, index, total, activeIndex }) {
     const group = useRef();
     const wheelsRef = useRef([]);
+    const raycaster = useRef(new THREE.Raycaster());
+    const shadowCatcherRef = useRef();
     const isActive = index === activeIndex;
     const gltf = useGLTF(config.path);
     const clonedScene = useMemo(() => gltf.scene.clone(true), [gltf.scene]);
     const baseX = (index - (total - 1) / 2) * spacing;
+    const { scene } = useThree();
 
     useEffect(() => {
         if (!group.current) return;
@@ -83,29 +92,71 @@ function LoadedModel({ config, index, total, activeIndex }) {
         const autoScale = targetLength / maxDim;
         const scale = config.scale ?? autoScale;
         group.current.scale.setScalar(scale);
-        group.current.position.set(baseX, -box.min.y * scale, isActive ? 0 : -2);
+        // Aktif araç merkezde (0,0,0), diğerleri geride
+        group.current.position.set(0, -box.min.y * scale, isActive ? 0 : -2);
         group.current.rotation.y = THREE.MathUtils.degToRad(config.rotationY ?? 90);
+    }, [clonedScene, config.length, config.rotationY, config.scale, isActive]);
 
-        const floatTween = new TWEEN.Tween(group.current.position)
-            .to({ y: group.current.position.y + 0.05 }, 2200)
-            .yoyo(true)
-            .repeat(Infinity)
-            .start();
+    // Shadow catcher'ı bir kez bul
+    useEffect(() => {
+        if (!shadowCatcherRef.current) {
+            scene.traverse((obj) => {
+                if (obj.isMesh && obj.material && obj.material.type === 'ShadowMaterial') {
+                    shadowCatcherRef.current = obj;
+                }
+            });
+        }
+    }, [scene]);
 
-        return () => {
-            floatTween.stop();
-        };
-    }, [clonedScene, config.length, config.rotationY, config.scale, baseX, isActive]);
+    // Raycast ile yüksekliği ayarla
+    const lastPositionRef = useRef(new THREE.Vector3());
+    useFrame(() => {
+        if (!group.current || !isActive || !shadowCatcherRef.current) return;
+
+        // Arabanın pozisyonu değiştiyse raycast yapma (hareket sırasında zıplamayı önle)
+        const currentPos = group.current.position;
+        const lastPos = lastPositionRef.current;
+        const isMoving = Math.abs(currentPos.x - lastPos.x) > 0.001 || Math.abs(currentPos.z - lastPos.z) > 0.001;
+        
+        if (isMoving) {
+            lastPositionRef.current.copy(currentPos);
+            return; // Hareket sırasında raycast yapma
+        }
+
+        // Arabanın altından aşağı doğru raycast yap
+        const carPosition = group.current.position.clone();
+        const rayOrigin = new THREE.Vector3(carPosition.x, carPosition.y + 2, carPosition.z);
+        const rayDirection = new THREE.Vector3(0, -1, 0);
+        
+        raycaster.current.set(rayOrigin, rayDirection);
+        raycaster.current.layers.set(0);
+        
+        const intersects = raycaster.current.intersectObject(shadowCatcherRef.current, false);
+        
+        if (intersects.length > 0) {
+            const hitPoint = intersects[0].point;
+            const box = new THREE.Box3().setFromObject(group.current);
+            const carBottom = box.min.y;
+            const groundY = hitPoint.y;
+            const offset = 0.01; // Küçük bir offset
+            const targetY = groundY - carBottom + offset;
+            
+            // Çok yumuşak geçiş ile güncelle (zıplamayı önlemek için)
+            group.current.position.y = THREE.MathUtils.lerp(group.current.position.y, targetY, 0.05);
+        }
+        
+        lastPositionRef.current.copy(currentPos);
+    });
 
     useEffect(() => {
         if (!group.current) return;
+        // Sadece Z pozisyonunu güncelle (aktif/aktif değil)
         gsap.to(group.current.position, {
             duration: 0.8,
-            x: baseX,
             z: isActive ? 0 : -2,
             ease: 'power3.out'
         });
-    }, [baseX, isActive]);
+    }, [isActive]);
 
     useEffect(() => {
         if (!group.current) return;
@@ -129,7 +180,7 @@ function LoadedModel({ config, index, total, activeIndex }) {
             wheelsRef.current.forEach((wheel) => {
                 gsap.to(wheel.rotation, {
                     duration: 0.5,
-                    x: wheel.rotation.x + direction * Math.PI * 0.5,
+                    x: wheel.rotation.x - direction * Math.PI * 0.5,
                     ease: 'power2.out'
                 });
             });
@@ -141,7 +192,38 @@ function LoadedModel({ config, index, total, activeIndex }) {
     return <group ref={group} />;
 }
 
-const SHOW_GROUND = true;
+function ShadowLight() {
+    const lightRef = useRef();
+    
+    useEffect(() => {
+        if (lightRef.current) {
+            const light = lightRef.current;
+            light.shadow.camera.left = -300;
+            light.shadow.camera.right = 300;
+            light.shadow.camera.top = 300;
+            light.shadow.camera.bottom = -300;
+            light.shadow.camera.near = 0.1;
+            light.shadow.camera.far = 500;
+            light.shadow.bias = -0.0005; // Titremeyi önlemek için artırıldı
+            light.shadow.normalBias = 0.02; // Normal bias eklendi
+            light.shadow.radius = 2; // Blur azaltıldı (daha keskin gölge)
+            light.shadow.mapSize.width = 4096; // Shadow map resolution artırıldı
+            light.shadow.mapSize.height = 4096;
+            light.shadow.camera.updateProjectionMatrix();
+        }
+    }, []);
+
+    return (
+        <directionalLight 
+            ref={lightRef}
+            position={[5, 10, 5]} 
+            intensity={1.2} 
+            castShadow 
+            shadow-mapSize-height={4096} 
+            shadow-mapSize-width={4096}
+        />
+    );
+}
 
 function ModelScene({ models, activeIndex }) {
     if (!models.length) {
@@ -162,7 +244,7 @@ function ModelScene({ models, activeIndex }) {
         >
             <color attach="background" args={['#0b0b0e']} />
             <ambientLight intensity={0.7} />
-            <directionalLight position={[5, 10, 5]} intensity={1.2} castShadow shadow-mapSize-height={2048} shadow-mapSize-width={2048} />
+            <ShadowLight />
             <directionalLight position={[-10, 5, 5]} intensity={0.6} />
             <Suspense fallback={<LoadingFallback />}>
                 {models.map((config, index) => (
@@ -175,10 +257,10 @@ function ModelScene({ models, activeIndex }) {
                     />
                 ))}
                 <Environment files="/assets/map.hdr" background />
-                {SHOW_GROUND && <AsphaltGround />}
+                <ShadowCatcher />
                 <ContactShadows position={[0, -0.001, 0]} blur={3} opacity={0.45} width={80} height={80} />
             </Suspense>
-            <OrbitControls enablePan={false} minPolarAngle={Math.PI * 0.15} maxPolarAngle={Math.PI * 0.42} enableZoom={false} />
+            <CameraInitializer />
             <TweenUpdater />
         </Canvas>
     );
