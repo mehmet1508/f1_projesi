@@ -95,7 +95,10 @@ function App() {
                 </div>
             </motion.aside>
 
-            <main className="viewer" id="viewer">
+            <main
+                className={`viewer ${normalizedPath === '/' ? 'viewer--no-scroll' : 'viewer--scroll'}`}
+                id="viewer"
+            >
                 <Routes>
                     <Route path="/" element={viewerContent} />
                     <Route path="/teams" element={<TeamsPage />} />

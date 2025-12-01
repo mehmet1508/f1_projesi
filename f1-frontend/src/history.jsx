@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import './history.css';
 
 // 1950'den 2024'e kadar 10'ar yıllık dönemler
@@ -19,10 +19,69 @@ const getCarIcon = (startYear) => {
     return `/assets/images/history/carsIcon/car${year}.png`;
 };
 
+// Dönemlere göre arka plan görseli
+const getEraBackground = (startYear) => {
+    switch (startYear) {
+        case 1950:
+            return '/assets/images/history/years/f11950.jpg';
+        case 1960:
+            return '/assets/images/history/years/f11960.jpg';
+        case 1970:
+            return '/assets/images/history/years/f11970.jpg';
+        case 1980:
+            return '/assets/images/history/years/f11980.jpg';
+        case 1990:
+            return '/assets/images/history/years/f11990.jpg';
+        case 2000:
+            return '/assets/images/history/years/f12000.jpg';
+        case 2010:
+            return '/assets/images/history/years/f12010.jpg';
+        case 2020:
+            return '/assets/images/history/years/f12020.webp';
+        default:
+            return null;
+    }
+};
+
 export default function HistoryPage() {
     const [selectedEraIndex, setSelectedEraIndex] = useState(0);
     const selectedEra = eras[selectedEraIndex];
     const [carIconOpacity, setCarIconOpacity] = useState(1);
+    const eraBackground = getEraBackground(selectedEra.startYear);
+    const [parallax, setParallax] = useState({
+        x: 0,
+        y: 0,
+        rotX: 0,
+        rotY: 0
+    });
+
+    const handleParallaxMove = useCallback(
+        (event) => {
+            const rect = event.currentTarget.getBoundingClientRect();
+            const x = (event.clientX - rect.left) / rect.width - 0.5; // -0.5 .. 0.5
+            const y = (event.clientY - rect.top) / rect.height - 0.5;
+
+            const moveIntensity = 15;
+            const rotateMax = 10; // maksimum 6 derece eğim
+
+            setParallax({
+                x: -x * moveIntensity,
+                y: -y * moveIntensity,
+                rotY: x * rotateMax,
+                rotX: -y * rotateMax
+            });
+        },
+        [selectedEra.startYear]
+    );
+
+    const resetParallax = useCallback(() => {
+        setParallax({
+            x: 0,
+            y: 0,
+            rotX: 0,
+            rotY: 0
+        });
+    }, []);
 
     // Arabanın timeline üzerindeki pozisyonunu hesapla
     const carPosition = (selectedEraIndex / (eras.length - 1)) * 100;
@@ -79,11 +138,24 @@ export default function HistoryPage() {
         <section className="page history-page">
             <div className="history-content">
                 {/* Ana içerik alanı */}
-                <div className="year-display">
+                <div
+                    className="year-display"
+                    onMouseMove={handleParallaxMove}
+                    onMouseLeave={resetParallax}
+                >
                     <div className="year-background">
-                        {/* Resim buraya gelecek - şimdilik placeholder */}
-                        <div className="year-image-placeholder">
-                            <span>{selectedEra.startYear}-{selectedEra.endYear}</span>
+                        <div
+                            className="year-image-placeholder"
+                            style={{
+                                transform: `translate3d(${parallax.x}px, ${parallax.y}px, 0) rotateX(${parallax.rotX}deg) rotateY(${parallax.rotY}deg)`
+                            }}
+                        >
+                            {eraBackground && (
+                                <img
+                                    src={eraBackground}
+                                    alt={`${selectedEra.startYear} dönemi arka planı`}
+                                />
+                            )}
                         </div>
                     </div>
                     <div className="year-info">
