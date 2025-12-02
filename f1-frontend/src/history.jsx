@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import './history.css';
 
 // 1950'den 2024'e kadar 10'ar yıllık dönemler
@@ -45,9 +45,15 @@ const getEraBackground = (startYear) => {
 
 export default function HistoryPage() {
     const [selectedEraIndex, setSelectedEraIndex] = useState(0);
+    const [prevEraIndex, setPrevEraIndex] = useState(0);
+    const [transitionDirection, setTransitionDirection] = useState('none');
+    const selectedEraIndexRef = useRef(0);
     const selectedEra = eras[selectedEraIndex];
     const [carIconOpacity, setCarIconOpacity] = useState(1);
     const eraBackground = getEraBackground(selectedEra.startYear);
+    const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+    const [cursorVisible, setCursorVisible] = useState(false);
+    const [cursorMode, setCursorMode] = useState('default');
     const [parallax, setParallax] = useState({
         x: 0,
         y: 0,
@@ -83,6 +89,21 @@ export default function HistoryPage() {
         });
     }, []);
 
+    // Özel history cursor hareketi
+
+    const handleMouseMove = useCallback((event) => {
+        setCursorVisible(true);
+        setCursorPos({
+            x: event.clientX,
+            y: event.clientY
+        });
+    }, []);
+
+    const handleMouseLeave = useCallback(() => {
+        setCursorVisible(false);
+        setCursorMode('default');
+    }, []);
+
     // Arabanın timeline üzerindeki pozisyonunu hesapla
     const carPosition = (selectedEraIndex / (eras.length - 1)) * 100;
     
@@ -98,6 +119,33 @@ export default function HistoryPage() {
         return () => clearTimeout(timer);
     }, [carIcon]);
 
+    // Seçili index değiştiğinde referansı güncelle
+    useEffect(() => {
+        selectedEraIndexRef.current = selectedEraIndex;
+    }, [selectedEraIndex]);
+
+    // Dönem değişimini yön bilgisi ile yönet
+    const changeEra = useCallback((newIndex) => {
+        setPrevEraIndex((prev) => {
+            const direction = newIndex > prev ? 'forward' : 'backward';
+            setTransitionDirection(direction);
+            return newIndex;
+        });
+        setSelectedEraIndex(newIndex);
+    }, []);
+
+    // Timeline çizgisine tıklayınca en yakın dönemi seç
+    const handleTimelineClick = useCallback(
+        (event) => {
+            const rect = event.currentTarget.getBoundingClientRect();
+            const relativeX = (event.clientX - rect.left) / rect.width; // 0..1
+            const clamped = Math.min(Math.max(relativeX, 0), 1);
+            const index = Math.round(clamped * (eras.length - 1));
+            changeEra(index);
+        },
+        [changeEra]
+    );
+
     // Scroll ile yıllar arası geçiş
     useEffect(() => {
         let scrollTimeout;
@@ -109,13 +157,14 @@ export default function HistoryPage() {
             if (isThrottled) return;
             
             const direction = event.deltaY > 0 ? -1 : 1;
-            
-            setSelectedEraIndex((prevIndex) => {
-                const newIndex = prevIndex + direction;
-                if (newIndex < 0) return 0;
-                if (newIndex >= eras.length) return eras.length - 1;
-                return newIndex;
-            });
+            const prevIndex = selectedEraIndexRef.current;
+            let newIndex = prevIndex + direction;
+            if (newIndex < 0) newIndex = 0;
+            if (newIndex >= eras.length) newIndex = eras.length - 1;
+
+            if (newIndex !== prevIndex) {
+                changeEra(newIndex);
+            }
             
             isThrottled = true;
             clearTimeout(scrollTimeout);
@@ -132,10 +181,14 @@ export default function HistoryPage() {
                 clearTimeout(scrollTimeout);
             };
         }
-    }, []);
+    }, [changeEra]);
 
     return (
-        <section className="page history-page">
+        <section
+            className="page history-page"
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+        >
             <div className="history-content">
                 {/* Ana içerik alanı */}
                 <div
@@ -143,49 +196,66 @@ export default function HistoryPage() {
                     onMouseMove={handleParallaxMove}
                     onMouseLeave={resetParallax}
                 >
-                    <div className="year-background">
-                        <div
-                            className="year-image-placeholder"
-                            style={{
-                                transform: `translate3d(${parallax.x}px, ${parallax.y}px, 0) rotateX(${parallax.rotX}deg) rotateY(${parallax.rotY}deg)`
-                            }}
-                        >
-                            {eraBackground && (
-                                <img
-                                    src={eraBackground}
-                                    alt={`${selectedEra.startYear} dönemi arka planı`}
-                                />
-                            )}
+                    <div
+                        key={selectedEra.startYear}
+                        className={`year-transition-wrapper ${
+                            transitionDirection === 'forward'
+                                ? 'slide-from-right'
+                                : transitionDirection === 'backward'
+                                ? 'slide-from-left'
+                                : ''
+                        }`}
+                    >
+                        <div className="year-background">
+                            <div
+                                className="year-image-placeholder"
+                                style={{
+                                    transform: `translate3d(${parallax.x}px, ${parallax.y}px, 0) rotateX(${parallax.rotX}deg) rotateY(${parallax.rotY}deg)`
+                                }}
+                            >
+                                {eraBackground && (
+                                    <img
+                                        src={eraBackground}
+                                        alt={`${selectedEra.startYear} dönemi arka planı`}
+                                    />
+                                )}
+                            </div>
                         </div>
-                    </div>
-                    <div className="year-info">
-                        <h1 className="year-range">{selectedEra.startYear}-{selectedEra.endYear}</h1>
-                        <h2 className="era-title">{selectedEra.title}</h2>
-                        <p className="era-description">{selectedEra.description}</p>
+                        <div className="year-info">
+                            <h1 className="year-range">
+                                {selectedEra.startYear}-{selectedEra.endYear}
+                            </h1>
+                            <h2 className="era-title">{selectedEra.title}</h2>
+                            <p className="era-description">{selectedEra.description}</p>
+                        </div>
                     </div>
                 </div>
 
                 {/* Timeline */}
-                <div className="history-timeline">
-                    <div className="timeline-line">
+                <div
+                    className="history-timeline"
+                    onMouseEnter={() => setCursorMode('timeline')}
+                    onMouseLeave={() => setCursorMode('default')}
+                >
+                    <div className="timeline-line" onClick={handleTimelineClick}>
                         {/* Timeline noktaları */}
                         {eras.map((era, index) => (
                             <button
                                 key={`${era.startYear}-${era.endYear}`}
                                 className={`timeline-dot ${index === selectedEraIndex ? 'active' : ''}`}
                                 style={{ left: `${(index / (eras.length - 1)) * 100}%` }}
-                                onClick={() => setSelectedEraIndex(index)}
+                                onClick={() => changeEra(index)}
                                 aria-label={`${era.startYear}-${era.endYear}`}
                             />
                         ))}
                         
                         {/* Minik araba ikonu */}
-                        <div 
+                        <div
                             className="timeline-car"
                             style={{ left: `${carPosition}%` }}
                         >
-                            <img 
-                                src={carIcon} 
+                            <img
+                                src={carIcon}
                                 alt={`Car ${selectedEra.startYear}`}
                                 className="car-icon-image"
                                 style={{ opacity: carIconOpacity }}
@@ -194,6 +264,19 @@ export default function HistoryPage() {
                     </div>
                 </div>
             </div>
+
+            {/* Özel cursor */}
+            {cursorVisible && (
+            <div
+                className={`history-cursor ${cursorVisible ? 'visible' : ''} ${
+                    cursorMode === 'timeline' ? 'timeline-mode' : ''
+                }`}
+                style={{
+                    left: `${cursorPos.x}px`,
+                    top: `${cursorPos.y}px`
+                }}
+            />
+            )}
         </section>
     );
 }
