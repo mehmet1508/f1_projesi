@@ -1,11 +1,29 @@
+/* news.css (DÜZENLENMİŞ) */
+
 .news-page {
-    height: 100%;
-    overflow: hidden;
+    /* **ÖNEMLİ DEĞİŞİKLİK:** Kaydırmayı engelleyen kural kaldırıldı. */
+    /* overflow: hidden; ARTIK YOK */
+    /* height: 100%; ARTIK YOK (Sayfanın uzamasına izin veriyoruz) */
+
     color: #f4f4f4;
+
+    /* Gerekirse, GPHeroSection'ın padding'i ile çakışmaması için burada padding'i ayarlayabilirsiniz. */
+    /* Eğer HeroSection tam ekransa, buradaki padding'i kaldırmak daha iyi olabilir. */
     padding: 32px clamp(24px, 5vw, 64px);
+
+    /* İçeriğin birbiri ardına sıralanması için bu yapı kalmalı */
     display: flex;
     flex-direction: column;
 }
+
+/* Sayfanın tamamının kaydırılabilir olduğundan emin olmak için body/html kontrolü */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Sayfanın en az 100% yüksekliğinde başlamasını sağlar */
+}
+
+/* --- Mevcut Dashboard Stilleri (Değişiklik yapılmadı) --- */
 
 .dashboard-grid {
     flex: 1;
@@ -21,7 +39,7 @@
     border: 1px solid rgba(255, 255, 255, 0.08);
     background: rgba(5, 5, 8, 0.9);
     padding: 20px;
-    overflow: hidden;
+    overflow: hidden; /* Panel içeriği kayabilir */
 }
 
 .calendar-section {
@@ -51,4 +69,3 @@
         grid-row: auto;
     }
 }
-
