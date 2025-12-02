@@ -9,6 +9,7 @@ import RecordsBookPage from './recordsBook.jsx';
 import HowItWorksPage from './howItWorks.jsx';
 import HistoryPage from './history.jsx';
 import BreakingNewsPage from './news.jsx';
+import MapPage from './MapPage.jsx';
 
 const navItems = [
     { text: 'F1-Fever', slug: 'main' },
@@ -99,6 +100,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={viewerContent} />
                     <Route path="/teams" element={<TeamsPage />} />
+                    <Route path="/map/:id" element={<MapPage />} />
                     <Route path="/tracks" element={<TracksPage />} />
                     <Route path="/records" element={<RecordsBookPage />} />
                     <Route path="/how-it-works" element={<HowItWorksPage />} />
