@@ -1,0 +1,7 @@
+/* Dashboard başlangıçta Hero Section'ın hemen altında, ekranın dışında kalmalı */
+.dashboard-content-wrapper {
+    /* Kaydırma ile gelecek kısım için en az 100vh alan tanımalıyız */
+    min-height: 100vh;
+
+    /* Gerekli diğer stiller (arka plan, padding vb.) */
+}
