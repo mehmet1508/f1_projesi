@@ -1,9 +1,18 @@
 // src/BreakingNewsPage.jsx
 
-import React from 'react';
-import GPHeroSection from '../../../3.sınıf/F1-Projesi-Yeni/f1-frontend/src/components/GPHeroSection.jsx';
-import DashboardContent from '../../../3.sınıf/F1-Projesi-Yeni/f1-frontend/src/components/DashboardContent.jsx';
-import './news.css'; // Global stilleriniz
+// src/news.jsx
+
+import React from "react";
+
+// Hatalı olan uzun yol yerine bunu kullan:
+import GPHeroSection from "./components/GPHeroSection.jsx";
+
+// DashboardContent için de aynısını yap:
+import DashboardContent from "./components/DashboardContent.jsx";
+
+import "./news.css";
+
+// ... kodun geri kalanı
 
 // Örnek veri (Gerçek uygulamada API'den çekilir)
 const mockGPData = {
