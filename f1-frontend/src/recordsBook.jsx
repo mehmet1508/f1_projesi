@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import HTMLFlipBook from "react-pageflip";
 import "./recordsBook.css";
 
 export default function RecordsBookPage() {
-  const [legends, setLegends] = useState(null);  // başlangıç: null
+  const [legends, setLegends] = useState(null);
+  const bookRef = useRef(null);
 
   useEffect(() => {
     fetch("http://localhost:5000/api/legends")
@@ -12,7 +13,6 @@ export default function RecordsBookPage() {
       .catch((err) => console.error("Legends API Error:", err));
   }, []);
 
-  // Flipbook'u legends gelmeden render etme!
   if (!legends) {
     return (
       <section className="records-book-wrapper page">
@@ -22,72 +22,152 @@ export default function RecordsBookPage() {
     );
   }
 
+  // --- KATEGORİLERE AYIRALIM ---
+  const pilots = legends.filter((l) => l.category === "pilot");
+  const others = legends.filter((l) => l.category === "others");
+  const media = legends.filter((l) => l.category === "media");
+
+  // --- SAYFA NUMARALARI ---
+  const pilotsPageStart = 2; // PILOTS başlık sayfası
+  const othersPageStart = pilotsPageStart + 1 + pilots.length;
+  const mediaPageStart = othersPageStart + 1 + others.length;
+
+  const goToPage = (page) => {
+    if (bookRef.current) {
+      bookRef.current.pageFlip().flip(page);
+    }
+  };
+
+  const goToContents=()=>goToPage(1);
+
   return (
     <section className="records-book-wrapper page">
       <h1 className="book-title">F1 Legendary Drivers & Icons</h1>
 
       <HTMLFlipBook
+        ref={bookRef}
         width={800}
         height={1000}
-        size="stretch"
-        minWidth={350}
-        maxWidth={750}
-        minHeight={500}
-        maxHeight={950}
         showCover={true}
-        useMouseEvents={true}
-        mobileScrollSupport={true}
+        size="stretch"
         className="f1-book"
       >
-
-        {/* COVER PAGE */}
+        {/* 0. PAGE — COVER */}
         <div className="book-page cover">
-          <img
-            src="/assets/images/f1logo.png"
-            alt="F1 Logo"
-            className="cover-f1-logo"
-          />
-          <h2 className="cover-title">F1 Records Book</h2>
+          <img src="/assets/images/f1logo.png" className="cover-f1-logo" />
+          <h2 className="cover-title">F1 Legends Book</h2>
           <p className="cover-subtitle">
             The legends, the battles, the moments that shaped Formula 1.
           </p>
         </div>
 
-        {/* LEGEND DYNAMIC PAGES */}
-        {legends.map((legend, index) => (
-          <div key={index} className="book-page">
-            <h2 className="driver-title">{legend.name}</h2>
+        {/* 1. PAGE — CONTENTS */}
+        <div className="book-page">
+        
+          <h2 style={{ color: "white", textAlign: "center" }}>Contents</h2>
 
-            <h4 className="driver-team">
-              Category: {legend.category.toUpperCase()}
-            </h4>
+          <ul style={{ listStyle: "none", marginTop: 40 }}>
+            <li
+              style={{ cursor: "pointer", color: "#ffd890", marginBottom: 20, fontSize: "1.4rem" }}
+              onClick={() => goToPage(pilotsPageStart)}
+            >
+              1. Pilots
+            </li>
 
-            <div className="album-grid">
-              <img
-                src={legend.image_url}
-                alt={legend.name}
-                style={{ width: "100%", borderRadius: "10px" }}
-              />
-            </div>
+            <li
+              style={{ cursor: "pointer", color: "#ffd890", marginBottom: 20, fontSize: "1.4rem" }}
+              onClick={() => goToPage(othersPageStart)}
+            >
+              2. Principals, Directors, Engineers, Innovators, Captains
+            </li>
 
-            <p className="driver-desc">{legend.bio}</p>
+            <li
+              style={{ cursor: "pointer", color: "#ffd890", fontSize: "1.4rem" }}
+              onClick={() => goToPage(mediaPageStart)}
+            >
+              3. Media
+            </li>
+          </ul>
+        </div>
 
-            {legend.stats && (
-              <ul style={{ color: "#ccc", marginTop: "15px" }}>
-                {Object.entries(legend.stats).map(([key, value], idx) => (
-                  <li key={idx}>
-                    <strong>{key}:</strong> {value}
-                  </li>
-                ))}
-              </ul>
-            )}
+        {/* 2. PAGE — PILOTS TITLE PAGE */}
+        <div className="book-page">
+        
+          <h1 style={{ color: "#ff9999", textAlign: "center", marginTop: 200 }}>
+            PILOTS
+          </h1>
+          <p style={{ color: "#ccc", textAlign: "center", marginTop: 20 }}>
+            The greatest drivers in Formula 1 history.
+          </p>
+        </div>
+
+        {/* PILOT PAGES */}
+        {pilots.map((p, i) => (
+          <div className="book-page" key={i}>
+            <div className="back-to-contents" onClick={goToContents}>
+            ← Back to Contents
+          </div>
+            <h2 className="driver-title">{p.name}</h2>
+            <h4 className="driver-team">Category: Pilot</h4>
+
+            <img src={p.image_url} style={{ width: "60%", margin: "0 auto", borderRadius: 10 }} />
+
+            <p className="driver-desc">{p.bio}</p>
           </div>
         ))}
 
-        {/* LAST PAGE */}
-        <div className="book-page empty-page">
-          <h2>More Legends Coming Soon…</h2>
+        {/* OTHERS TITLE PAGE */}
+        <div className="book-page">
+          <div className="back-to-contents" onClick={goToContents}>
+            ← Back to Contents
+          </div>
+          <h1 style={{ color: "#ffd890", textAlign: "center", marginTop: 200 }}>
+            PRINCIPALS • DIRECTORS • ENGINEERS • INNOVATORS • CAPTAINS
+          </h1>
         </div>
+
+        {/* OTHERS PAGES */}
+        {others.map((p, i) => (
+          <div className="book-page" key={i}>
+            <div className="back-to-contents" onClick={goToContents}>
+            ← Back to Contents
+            </div>
+            <h2 className="driver-title">{p.name}</h2>
+            <h4 className="driver-team">Category: Team / Technical</h4>
+
+            <img src={p.image_url} style={{ width: "60%", margin: "0 auto", borderRadius: 10 }} />
+
+            <p className="driver-desc">{p.bio}</p>
+          </div>
+        ))}
+
+        {/* MEDIA TITLE PAGE */}
+        <div className="book-page">
+          <div className="back-to-contents" onClick={goToContents}>
+            ← Back to Contents
+          </div>
+          <h1 style={{ color: "#a8d7ff", textAlign: "center", marginTop: 200 }}>
+            MEDIA
+          </h1>
+          <p style={{ color: "#ccc", textAlign: "center" }}>
+            Broadcasters, journalists & iconic storytellers.
+          </p>
+        </div>
+
+        {/* MEDIA PAGES */}
+        {media.map((p, i) => (
+          <div className="book-page" key={i}>
+            <div className="back-to-contents" onClick={goToContents}>
+            ← Back to Contents
+            </div>
+            <h2 className="driver-title">{p.name}</h2>
+            <h4 className="driver-team">Category: Media</h4>
+
+            <img src={p.image_url} style={{ width: "60%", margin: "0 auto", borderRadius: 10 }} />
+
+            <p className="driver-desc">{p.bio}</p>
+          </div>
+        ))}
 
       </HTMLFlipBook>
     </section>

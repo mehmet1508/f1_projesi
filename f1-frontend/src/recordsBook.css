@@ -1,4 +1,32 @@
 /* =========================================
+   BACK TO CONTENTS BUTTON — SAĞ ALT
+========================================= */
+.back-to-contents {
+    position: absolute;
+    bottom: 14px;
+    right: 18px;
+
+    font-size: 0.95rem;
+    color: #ffdd99;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.45);
+
+    padding: 6px 12px;
+    border-radius: 6px;
+
+    transition: 0.25s ease;
+    z-index: 999;
+}
+
+.back-to-contents:hover {
+    color: white;
+    background: rgba(255, 200, 100, 0.5);
+    text-shadow: 0 0 6px #ffdd99;
+    transform: translateY(-3px);
+}
+
+
+/* =========================================
    ✓ KAPAK LOGOSU
 ========================================= */
 .cover-f1-logo {
@@ -179,4 +207,24 @@
 
     color: #ccc;
     font-size: 1.2rem;
+}
+
+.contents-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    font-size: 1.3rem;
+}
+
+.contents-list li {
+    margin: 15px 0;
+    cursor: pointer;
+    color: #ffd27b;
+    transition: 0.2s;
+}
+
+.contents-list li:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px #ffcf62;
+    transform: translateX(5px);
 }
