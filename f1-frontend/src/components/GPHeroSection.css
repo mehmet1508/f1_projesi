@@ -1,0 +1,56 @@
+/* src/components/GPHeroSection.css */
+
+.gp-hero-section {
+    /* **ÖNEMLİ:** Ekranın dikey yüksekliğini kaplar */
+    min-height: 100vh;
+    height: auto;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    background-color: #000;
+    color: white;
+    overflow: hidden;
+    text-align: center;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Pist görselinin yerleşimi */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.2; /* Metnin okunması için karartma */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    padding-bottom: 50px; /* Aşağı kaydırma ipucu için alan */
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin: 10px 0;
+}
+
+.hero-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.scroll-down-text {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    /* Zarif bir aşağı ok veya metin animasyonu eklenebilir */
+}

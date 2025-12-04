@@ -4,69 +4,79 @@
     "name": "Red Bull Racing",
     "principal": "Christian Horner",
     "base": "Milton Keynes, UK",
-    "logo_url": "/images/logos/redbull.png"
-  },
-  {
-    "_id": "ferrari",
-    "name": "Ferrari",
-    "principal": "Frédéric Vasseur",
-    "base": "Maranello, Italy",
-    "logo_url": "/images/logos/ferrari.png"
-  },
-  {
-    "_id": "mercedes",
-    "name": "Mercedes",
-    "principal": "Toto Wolff",
-    "base": "Brackley, UK",
-    "logo_url": "/images/logos/mercedes.png"
+    "logo_url": "/images/logos/redbull.png",
+    "points": 426
   },
   {
     "_id": "mclaren",
     "name": "McLaren",
     "principal": "Andrea Stella",
     "base": "Woking, UK",
-    "logo_url": "/images/logos/mclaren.png"
-  },
-  {
-    "_id": "astonmartin",
-    "name": "Aston Martin",
-    "principal": "Mike Krack",
-    "base": "Silverstone, UK",
-    "logo_url": "/images/logos/astonmartin.png"
-  },
-  {
-    "_id": "sauber",
-    "name": "Kick Sauber",
-    "principal": "Alessandro Alunni Bravi",
-    "base": "Hinwil, Switzerland",
-    "logo_url": "/images/logos/sauber.png"
-  },
-  {
-    "_id": "haas",
-    "name": "Haas F1 Team",
-    "principal": "Ayao Komatsu",
-    "base": "Kannapolis, USA",
-    "logo_url": "/images/logos/haas.png"
-  },
-  {
-    "_id": "rb",
-    "name": "RB",
-    "principal": "Laurent Mekies",
-    "base": "Faenza, Italy",
-    "logo_url": "/images/logos/rb.png"
+    "logo_url": "/images/logos/mclaren.png",
+    "points": 800
   },
   {
     "_id": "williams",
     "name": "Williams",
     "principal": "James Vowles",
     "base": "Grove, UK",
-    "logo_url": "/images/logos/williams.png"
+    "logo_url": "/images/logos/williams.png",
+    "points": 137
+  },
+  {
+    "_id": "mercedes",
+    "name": "Mercedes",
+    "principal": "Toto Wolff",
+    "base": "Brackley, UK",
+    "logo_url": "/images/logos/mercedes.png",
+    "points": 459
+  },
+  {
+    "_id": "astonmartin",
+    "name": "Aston Martin",
+    "principal": "Mike Krack",
+    "base": "Silverstone, UK",
+    "logo_url": "/images/logos/astonmartin.png",
+    "points": 80
+  },
+  {
+    "_id": "ferrari",
+    "name": "Ferrari",
+    "principal": "Frédéric Vasseur",
+    "base": "Maranello, Italy",
+    "logo_url": "/images/logos/ferrari.png",
+    "points": 382
+  },
+  {
+    "_id": "rb",
+    "name": "Racing Bulls",
+    "principal": "Laurent Mekies",
+    "base": "Faenza, Italy",
+    "logo_url": "/images/logos/rb.png",
+    "points": 92
+  },
+  {
+    "_id": "sauber",
+    "name": "Kick Sauber",
+    "principal": "Alessandro Alunni Bravi",
+    "base": "Hinwil, Switzerland",
+    "logo_url": "/images/logos/sauber.png",
+    "points": 68
   },
   {
     "_id": "alpine",
     "name": "Alpine",
     "principal": "Bruno Famin",
     "base": "Enstone, UK",
-    "logo_url": "/images/logos/alpine.png"
+    "logo_url": "/images/logos/alpine.png",
+    "points": 22
+  },
+  {
+    "_id": "haas",
+    "name": "Haas F1 Team",
+    "principal": "Ayao Komatsu",
+    "base": "Kannapolis, USA",
+    "logo_url": "/images/logos/haas.png",
+    "points": 73
   }
 ]

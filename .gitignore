@@ -1,0 +1,11 @@
+# Python Cache Klasörü (BÜYÜK DOSYA BURADA)
+f1-data-ingestor/cache_folder/
+*.sqlite
+
+# Python gereksiz dosyalar
+__pycache__/
+*.pyc
+
+# Node Modules (Her ihtimale karşı ana dizinde de olsun)
+node_modules/
+.env
