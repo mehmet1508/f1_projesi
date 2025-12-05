@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams, Link } from 'react-router'; // Ensure 'react-router-dom' is used
 import { useGoogleMapsLoader } from './hooks/useGoogleMapsLoader';
-import { circuits } from '../../f1-api-server/circuitData';
 
 const MapPage = () => {
     const { id } = useParams();
     const { isLoaded, libraries, mapId } = useGoogleMapsLoader();
-    const circuit = circuits.find(c => c.id === id);
+
+    const [circuit, setCircuit] = useState(null);
+    const [isLoadingData, setIsLoadingData] = useState(true);
 
     // Refs for DOM elements
     const mapContainerRef = useRef(null);
@@ -17,6 +18,38 @@ const MapPage = () => {
     const svInstanceRef = useRef(null);  
 
     const [viewMode, setViewMode] = useState('3D'); 
+
+
+    useEffect(() => {
+        const fetchCircuit = async () => {
+            try {
+                setIsLoadingData(true);
+                // Adjust port if your server is not on 5000
+                const response = await fetch('http://localhost:5000/api/circuitData'); 
+                
+                if (!response.ok) {
+                    throw new Error('Data could not be fetched');
+                }
+
+                const data = await response.json();
+                
+                // Find the specific circuit that matches the ID from the URL
+                // Note: Ensure your MongoDB data has an 'id' field (like "monaco") 
+                // distinct from the MongoDB '_id'.
+                const foundCircuit = data.find(c => c.id === id);
+                
+                setCircuit(foundCircuit);
+            } catch (error) {
+                console.error("Error fetching circuit:", error);
+            } finally {
+                setIsLoadingData(false);
+            }
+        };
+
+        if (id) {
+            fetchCircuit();
+        }
+    }, [id]);
 
     // --- 1. 3D MAP INITIALIZER ---
     useEffect(() => {
