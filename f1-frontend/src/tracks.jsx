@@ -1,17 +1,35 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Globe from 'react-globe.gl';
 import { Link } from 'react-router-dom';
-import { circuits } from '../../f1-api-server/circuitData';
 import './tracks.css';
 
 const TrackPage = () => {
   const globeEl = useRef();
+
+  const [circuits, setCircuits] = useState([]);
+  const [loading, setLoading] = useState(true);
   
   // Track window size for the globe
   const [dimensions, setDimensions] = useState({ 
     width: window.innerWidth, 
     height: window.innerHeight 
   });
+
+  useEffect(() => {
+    const fetchCircuits = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/circuitData');
+        const data = await response.json();
+        setCircuits(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching circuits:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchCircuits();
+  }, []);
 
   // Update globe size when resizing window
   useEffect(() => {
