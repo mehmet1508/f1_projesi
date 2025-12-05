@@ -10,6 +10,7 @@ const Team = require('./models/Team');
 const Engineer = require('./models/Engineer');
 const Technology = require('./models/Technology');
 const CriticalSituation = require('./models/CriticalSituations');
+const Circuit = require('./models/Circuit');
 
 const MONGO_URI = "mongodb://localhost:27017/f1_db";
 
@@ -20,6 +21,7 @@ const importData = async () => {
 
         // TAKVİM VERİSİNİ SİL
         await Calendar.deleteMany();
+        await Circuit.deleteMany();
 
         // ESKİ VERİLERİ SİL
         await Legend.deleteMany();
@@ -36,6 +38,7 @@ const importData = async () => {
         const engineersData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/engineers.json'), 'utf-8'));
         const technologiesData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/technologies.json'), 'utf-8'));
         const situationsData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/critical-situations.json'), 'utf-8'));
+        const circuitsData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/circuits.json'), 'utf-8'));
 
         // YENİ: TAKVİM DOSYASI OKU (FastF1 script ile ürettik)
         const calendarData = JSON.parse(
@@ -50,6 +53,7 @@ const importData = async () => {
         await Engineer.insertMany(engineersData);
         await Technology.insertMany(technologiesData);
         await CriticalSituation.insertMany(situationsData);
+        await Circuit.insertMany(circuitsData);
 
         console.log('TÜM VERİLER BAŞARILI ŞEKİLDE MONGODB\'YE AKTARILDI!');
 

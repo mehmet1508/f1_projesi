@@ -20,6 +20,7 @@ const Calendar = require('./models/Calendar');
 const Engineer = require('./models/Engineer'); // YENİ
 const Technology = require('./models/Technology'); // YENİ
 const CriticalSituation = require('./models/CriticalSituations'); // YENİ
+const Circuit = require('./models/Circuit'); // YENİ
 
 
 const app = express();
@@ -142,6 +143,18 @@ app.get('/api/teams', async (req, res) => {
     }
 });
 
+app.get('/api/circuitData', async (req, res) => {
+    try {
+        console.log("Fetching circuits..."); // Add this log to debug!
+        const circuits = await Circuit.find();
+        console.log(`Found ${circuits.length} circuits`); // Add this log!
+        res.json(circuits);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: err.message });
+    }
+});
+
 // --- YENİ API ENDPOINTLERİ ---
 
 // 3. Efsanevi Mühendisleri Getir
@@ -186,6 +199,15 @@ app.get('/api/drivers', async (req, res) => {
     }
 });
 
+
+app.get('/api/legends', async (req, res) => {
+    try {
+        const legends = await Legend.find();
+        res.json(legends);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
 
 
 
