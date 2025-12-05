@@ -1,0 +1,227 @@
+[
+  {
+    "id": "monaco",
+    "name": "Circuit de Monaco",
+    "center": { "lat": 43.7347, "lng": 7.4205, "altitude": 100 },
+    "range": 800,
+    "heading": 160,
+    "tilt": 65,
+    "lat": 43.7347,
+    "lng": 7.4205,
+    "streetView": {
+    "lat": 43.734075,
+      "lng":  7.422393,
+
+      "heading": 220,
+      "pitch": 0
+    }
+  },
+
+  {
+    "id": "albertpark",
+    "name": "Albert Park Circuit",
+    "center": { "lat": -37.8497, "lng": 144.9686, "altitude": 0 },
+    "range": 1200,
+    "heading": 180,
+    "tilt": 45,
+    "lat": -37.8497,
+    "lng": 144.9686,
+    "streetView": {
+      "lat": -37.850768,
+      "lng":  144.969927,
+      "heading": 100,
+      "pitch": 0
+    }
+  },
+  {
+    "id": "suzuka",
+    "name": "Suzuka International Racing Course",
+    "center": { "lat": 34.843, "lng": 136.5414, "altitude": 0 },
+    "range": 1200,
+    "heading": 240,
+    "tilt": 55,
+    "lat": 34.843,
+    "lng": 136.5414,
+    "streetView": {
+      "lat": 34.8437,
+      "lng": 136.5398,
+      "heading": 270,
+      "pitch": 0
+    }
+  },
+  {
+    "id": "miami",
+    "name": "Miami International Autodrome",
+    "center": { "lat": 25.9582, "lng": -80.2392, "altitude": 0 },
+    "range": 1000,
+    "heading": 135,
+    "tilt": 65,
+    "lat": 25.9582,
+    "lng": -80.2392,
+    "streetView": {
+      "lat": 25.959446,
+      "lng": -80.237918,
+      "heading": 200,
+      "pitch": 0
+    }
+  },
+  {
+    "id": "imola",
+    "name": "Autodromo Enzo e Dino Ferrari",
+    "center": { "lat": 44.3435, "lng": 11.7161, "altitude": 20 },
+    "range": 900,
+    "heading": 270,
+    "tilt": 65,
+    "lat": 44.3435,
+    "lng": 11.7161,
+    "streetView": {
+      "lat": 44.344083,
+      "lng": 11.717722,
+      "heading": 270,
+      "pitch": 0
+    }
+  },
+  {
+    "id": "montreal",
+    "name": "Circuit Gilles Villeneuve",
+    "center": { "lat": 45.5, "lng": -73.5228, "altitude": 0 },
+    "range": 1300,
+    "heading": 180,
+    "tilt": 65,
+    "lat": 45.5,
+    "lng": -73.5228,
+    "streetView": {
+      "lat": 45.500534,
+      "lng":  -73.522808,
+      "heading": 180,
+      "pitch": 0
+    }
+  },
+  {
+    "id": "spielberg",
+    "name": "Red Bull Ring",
+    "center": { "lat": 47.2197, "lng": 14.7647, "altitude": 50 },
+    "range": 900,
+    "heading": 120,
+    "tilt": 65,
+    "lat": 47.2197,
+    "lng": 14.7647,
+    "streetView": {
+      "lat": 47.2201,
+      "lng": 14.7651,
+      "heading": 120,
+      "pitch": 0
+    }
+  },
+  {
+    "id": "silverstone",
+    "name": "Silverstone Circuit",
+    "center": { "lat": 52.0783, "lng": -1.0163, "altitude": 0 },
+    "range": 1100,
+    "heading": 270,
+    "tilt": 60,
+    "lat": 52.0783,
+    "lng": -1.0163,
+    "streetView": {
+      "lat": 52.0722,
+      "lng": -1.0142,
+      "heading": 270,
+      "pitch": 0
+    }
+  },
+  {
+    "id": "zandvoort",
+    "name": "Circuit Zandvoort",
+    "center": { "lat": 52.3888, "lng": 4.5422, "altitude": 0 },
+    "range": 800,
+    "heading": 330,
+    "tilt": 70,
+    "lat": 52.3888,
+    "lng": 4.5422,
+    "streetView": {
+      "lat": 52.3888,
+      "lng": 4.5422,
+      "heading": 330,
+      "pitch": 0
+    }
+  },
+  {
+    "id": "cota",
+    "name": "Circuit of the Americas (COTA)",
+    "center": { "lat": 30.1325, "lng": -97.6415, "altitude": 0 },
+    "range": 1200,
+    "heading": 180,
+    "tilt": 60,
+    "lat": 30.1325,
+    "lng": -97.6415,
+    "streetView": {
+      "lat": 30.1332,
+      "lng": -97.6416,
+      "heading": 180,
+      "pitch": 0
+    }
+  },
+  {
+    "id": "mexicocity",
+    "name": "Autódromo Hermanos Rodríguez",
+    "center": { "lat": 19.4042, "lng": -99.0917, "altitude": 0 },
+    "range": 1000,
+    "heading": 270,
+    "tilt": 65,
+    "lat": 19.4042,
+    "lng": -99.0917,
+    "streetView": {
+      "lat": 19.406144,
+      "lng": -99.093504,
+      "heading": 270,
+      "pitch": 0
+    }
+  },
+  {
+    "id": "saopaulo",
+    "name": "Autódromo José Carlos Pace (Interlagos)",
+    "center": { "lat":-23.702303, "lng": -46.691529, "altitude": 250 },
+    "range": 1500,
+    "heading": 120,
+    "tilt": 50,
+ "lat":-23.702303, "lng": -46.691529,
+    "streetView": {
+      "lat": -23.704371,
+      "lng": -46.699774,
+      "heading": 120,
+      "pitch": 0
+    }
+  },
+  {
+    "id": "lasvegas",
+    "name": "Las Vegas Street Circuit",
+    "center": { "lat": 36.114246, "lng": -115.163993, "altitude": 0 },
+    "range": 1500,
+    "heading": 270,
+    "tilt": 50,
+    "lat": 36.114246,
+    "lng": -115.163993,
+    "streetView": {
+      "lat": 36.111139,
+      "lng": -115.163937,
+      "heading": 90,
+      "pitch": 0
+    }
+  },
+  {
+    "id": "yasmarina",
+    "name": "Yas Marina Circuit (Abu Dhabi)",
+    "center": { "lat": 24.4672, "lng": 54.6031, "altitude": 0 },
+    "range": 1400,
+    "heading": 180,
+    "tilt": 65,
+    "lat": 24.4672,
+    "lng": 54.6031,
+    "streetView": {
+      "lat": 24.4649,
+      "lng": 54.6074,
+      "heading": 180,
+      "pitch": 0
+    }
+  }
+]
