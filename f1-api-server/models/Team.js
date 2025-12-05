@@ -6,7 +6,11 @@ const TeamSchema = new mongoose.Schema({
     principal: String,
     base: String,
     logo_url: String,
-    points: { type: Number, default: 0 } // Puan durumu için
+    points: { type: Number, default: 0 }, // Puan durumu için
+    founded: String,
+    engine: String,
+    championships: String,
+    color: String
 });
 
 module.exports = mongoose.model('Team', TeamSchema);

@@ -1,23 +1,397 @@
 [
   {
+    "name": "Nino Farina",
+    "category": "pilot",
+    "bio": "The first ever Formula 1 World Champion came from a privileged background and had a stylish driving technique that was adopted by many drivers. Farina retired from Grand Prix racing as one of the most successful drivers of his time. He retired with five World Championship wins, 20 podiums, five Pole Positions and four Fastest Laps and will forever be remembered as the first-ever World Champion.",
+    "image_url":"/images/legends/pilots/farina.avif",
+    "stats": {"championship": 5}
+  },
+
+  {
+    "name": "Juan Manuel Fangio",
+    "category":"pilot",
+    "bio":"Many consider him to be the greatest driver of all time. In seven full Formula 1 seasons (he missed one recovering from a nearly fatal injury) he was World Champion five times (with four different teams) and runner-up twice. In his 51 championship Grands Prix he started from the front row 48 times (including 29 pole positions) and set 23 fastest race laps en route to 35 podium finishes, 24 of them victories. His superlative track record was achieved by some of the greatest displays of skill and daring ever seen. Fangio did it all with style, grace, nobility and a sense of honour never seen before or since.",
+    "image_url":"/images/legends/pilots/fangio.webp",
+    "stats":{"championship":5}
+  },
+
+
+
+  {
+    "name":"Alberto Ascari",
+    "category":"pilot",
+    "bio":"The son of one of Italy's great pre-war drivers, Alberto Ascari went on to become one of Formula 1 racing's most dominant and best-loved champions. Noted for the careful precision and finely-judged accuracy that made him one of the safest drivers in a most dangerous era, he was also notoriously superstitious and took great pains to avoid tempting fate. But his unexplained fatal accident - at exactly the same age as his father’s, on the same day of the month and in eerily similar circumstances - remains one of Formula 1 racing’s great unsolved mysteries.",
+    "image_url":"/images/legends/pilots/ascari.avif",
+    "stats":{"championship":1}
+  },
+
+  {
+    "name": "Mike Hawthorn",
+    "category": "pilot",
+    "bio":"Mike Hawthorn loved life, drove fast and died young. Big, blond and boisterous, he often raced wearing a broad grin and a bow tie. He regarded motorsport as a quick way to further the fun he constantly pursued. When his pastime became a profession he partied as hard as he drove, though his career was also tinged by tragedy, scandal and personal misfortune. Near the end he found Formula 1 racing no fun at all, but he went out a winner. Other champions were greater drivers but none was a more colourful personality.",
+    "image_url":"/images/legends/pilots/hawthorn.webp",
+    "stats":{"championship": 0}
+  },
+  {
+    "name":"Jack Brabham",
+    "category":"pilot",
+    "bio":"Jack Brabham's three world championships were the product of both his engineering expertise and driving skill. His first two titles, in rear-engined Coopers he helped develop, confirmed the obsolescence of front-engined Formula 1 cars. His third title, in a Brabham, made him the only driver to become champion in a car of his own make. For his lifetime achievements, which also included nurturing the talents of other notable drivers and pioneering the business side of the sport, he became the first Formula 1 driver to receive a knighthood.",
+    "image_url":"/images/legends/pilots/brabham.avif",
+    "stats":{"championship":0}
+  },
+
+  {
+    "name":"Phil Hill",
+    "category":"pilot",
+    "bio":"The first American to become World Champion had a love/hate relationship with the sport. Profoundly intelligent and deeply sensitive, he was also remarkably candid about personal demons that caused inner turmoil and made his racing life a bittersweet experience. He was always fearful and throughout his career he struggled to find a balance between the perils and pleasures of his profession. Yet driving became a way of expressing himself and racing took him on a journey to places he never expected to go.",
+    "image_url":"/images/legends/pilots/philhill.jpg",
+    "stats":{"championship":0}
+  },
+  {
+    "name":"Graham Hill",
+    "category":"pilot",
+    "bio":"Graham Hill's iron-willed determination, fierce pride and great courage enabled him to overcome the odds against more naturally gifted drivers. None of them was more popular with the public than the moustachioed extrovert with the quick wit, who loved the limelight, was a natural entertainer and became one of the first Formula 1 media stars. His fans remained loyal, even when he damaged his reputation by racing too long past his prime. Millions were shocked when he was killed, not in a racing car, but at the controls of his plane.",
+    "image_url":"/images/legends/pilots/grahamhill.avif",
+    "stats":{"championship":0}
+  },
+
+
+  {
+    "name":"Jim Clark",
+    "category":"pilot",
+    "bio":"He never intended to make racing a way of life, let alone become the best in the world in a sport that for him began as farm boy's hobby. And when the sport took Jim Clark's life the racing world mourned the loss of one of its best-loved champions, the unassuming Scottish driving genius whose personal integrity and admirable human qualities endeared him to fans and rivals alike. Nearly invincible in the car, he seemed vulnerable out of it and was always a reluctant hero. Few champions were as dominant. Fewer still are remembered so fondly.",
+    "image_url":"/images/legends/pilots/clark.avif",
+    "stats":{"championship":0}
+  },
+
+  {
+    "name":"John Surtees",
+    "category":"pilot",
+    "bio":"Famed as the only World Champion on both two and four wheels, John Surtees rode motorcycles and drove Formula 1 cars with equal skill and bravery. He made the leap from bikes to cars with surprising ease, though his quick climb to the pinnacle of motorsport was also the result of a great deal of hard effort by a serious-minded driver whose fierce independence ultimately proved to be a handicap. Having won the driving title at Ferrari, he left after a violent argument and was thereafter ill-equipped to win consistently.",
+    "image_url":"/images/legends/pilots/surtees.jpeg",
+    "stats":{"championship":0}
+  },
+  {
+    "name":"Denny Hulme",
+    "category":"pilot",
+    "bio":"Denny Hulme's dislike of celebrity and preference for anonymity made him the most low key of champions. He hated fame, had no trace of vanity and found social functions an agony. His nickname 'The Bear' was a reference to both his rugged features and a gruff nature that would erupt when he was provoked. Yet he was also a sensitive man unable to express his feelings, except in a racing car, in which he was an accomplished if unspectacular driver. He eventually died behind the wheel, a quarter of a century after he became champion.",
+    "image_url":"/images/legends/pilots/hulme.avif",
+    "stats":{"championship":0}
+  },
+  {
+    "name":"Jackie Stewart",
+    "category":"pilot",
+    "bio":"His outstanding track record still ranks him among the most successful champions, yet in terms of personally influencing the way Formula 1 racing developed Jackie Stewart stands alone. His one-man safety crusade made the sport much safer. His excellent communication skills helped make it more popular. He set new standards of professionalism for drivers and was also a pioneer in exploiting Formula 1 racing's commercial potential. His keen intelligence and tireless energy helped, but he would never have been able to exert such influence had he not been a truly great driver.",
+    "image_url":"/images/legends/pilots/stewart.avif",
+    "stats":{"championship":0}
+  },
+  {
+    "name":"Jochen Rindt",
+    "category":"pilot",
+    "bio":"In the record books he is notable for being the only posthumous World Champion. But before he was killed Jochen Rindt had carved himself a memorable niche in the small but select category of heroes whose voracious appetite for raw racing was demonstrably apparent in a daredevil driving style that was both thrilling and worrying to watch. Few threw themselves into the fray with such vigour, nor did many measure up to Rindt's status as a colourful character. Fiercely determined and resolutely independent, he had a rough and tumble allure seldom seen before or since.",
+    "image_url":"/images/legends/pilots/rindt.avif",
+    "stats":{"championship":0}
+  },
+  {
+    "name": "Emerson Fitipaldi",
+    "category": "pilot",
+    "bio": "The youngest World Champion at the time achieved that distinction through circumstances that threw him in at the deep end while he was still relatively wet behind the ears. But 'Emmo' rose superbly to the challenge, winning his first driving title at 25 and his second two years later. Thereafter, dragged under by a disastrous career move, he sank to the bottom leaving hardly a trace of past glory. Yet his status as a popular champion and spokesman for the sport remains intact and he is also credited with serving as the inspiration for the influx of Brazilian drivers that followed him into Formula 1 racing.",
+    "image_url": "/images/legends/pilots/fittipaldi.avif",
+    "stats": { "championships": 0 }
+  },
+  {
+    "name": "Niki Lauda",
+    "category": "pilot",
+    "bio": "He bought his way into Formula 1 racing and very nearly paid for it with his life. Given up for dead after an appalling accident he recovered by what the medical profession called sheer force of will. His astonishingly quick return to the cockpit was called the most courageous comeback in sporting history. After winning two championships he got bored and left the sport, only to return again and win another. During his remarkable career he was called both a hero and a villain. The battle-scarred champion who defied both the odds and convention remains a sporting legend.",
+    "image_url": "/images/legends/pilots/lauda.avif",
+    "stats": { "championship":0 }
+  },
+  {
+    "name": "James Hunt",
+    "category": "pilot",
+    "bio": "James Hunt's was a turbulent life lived to the limit - in and out of racing cars. As a driver he overcame constant fear and enormous odds to become the best in the world - triumphing in one of the most dramatic championship battles in Formula 1 history. As a colourful personality and unconventional character he had no peers - alternately entertaining admirers and offending critics with his often outrageous behaviour. After he retired he continued to make a strong impact, as a TV commentator, but died suddenly in the prime of his life.",
+    "image_url": "/images/legends/pilots/hunt.avif",
+    "stats": {"championship":0}
+  },
+
+  {
+    "name": "Mario Andretti",
+    "category": "pilot",
+    "bio": "Mario Andretti personified the American Dream, an immigrant who came to the land of the free and the home of the brave and achieved considerable fame and fortune. He did so in a job he would have done in anonymity and for nothing. Few drivers loved their racing more, and few suited stardom as much as the congenial man whose unforced charm was as natural as the talent that brought him so much success in so many types of racing. His insistence on racing in his adopted homeland meant he came late to realising his boyhood ambition of becoming Formula 1 World Champion.",
+    "image_url":"/images/legends/pilots/andretti.avif",
+    "stats": {"championship": 5}
+  },
+
+  {
+    "name": "Jody Schekter",
+    "category":"pilot",
+    "bio":"He exploded on the scene as an erratic, crash-prone wild man whose desperate deeds of derring-do put himself and his peers in great danger. Jody Scheckter became infamous for causing one of the biggest accidents in Formula 1 history, after which there were demands that he should be banned from the sport. Instead, he straightened himself out and concentrated his considerable talent and ambition on becoming World Champion. Having achieved his goal (with Ferrari, whose next champion would be 21 years in the future), he quickly retired.",
+    "image_url":"/images/legends/pilots/scheckter.avif",
+    "stats":{"championship":5}
+  },
+
+
+
+  {
+    "name":"Alan Jones",
+    "category":"pilot",
+    "bio":"A straight-talking, iron-willed, hard-driving tough guy, Alan Jones fought his way to the forefront, where he defended his territory with ruthless determination and large doses of intimidation. His belligerence was partly a by-product of a long and hard struggle to make it to Formula 1 racing in the first place. Once there, he was considered little more than a journeyman driver, until he teamed up with the then equally undistinguished Williams team. Together, they took on the world and beat it, with AJ becoming the prototypical Williams driver.",
+    "image_url":"/images/legends/pilots/jones.avif",
+    "stats":{"championship":1}
+  },
+
+  {
+    "name": "Nelson Piquet",
+    "category": "pilot",
+    "bio":"He was never a dominant driver but a crafty expert in winning by stealth, according to his detractors. He admitted he was lazy, yet willingly worked hard to improve his car. He could be cold and cruel but could also be warm and funny. He hated being a celebrity yet lived the life of a playboy to the hilt. He was never hugely popular but couldn't care less. All Nelson Piquet really cared about was driving a racing car, which he loved with a passion, especially when he won, which he did often enough to become a triple World Champion.",
+    "image_url":"/images/legends/pilots/piquet.avif",
+    "stats":{"championship": 0}
+  },
+  {
+    "name":"Keke Rosberg",
+    "category":"pilot",
+    "bio":"The original Flying Finn was a swaggering swashbuckler whose dashing, daring, darting style of driving enlivened every race he was in. He was a late arrival in Formula 1 racing, having wheeled and dealed and raced his way around the world in other categories for a dozen years, but tried harder than ever to make up for lost time. In the record books his name is not near the top in terms of Grand Prix victories, yet in that select category of those who actually looked as fast as they drove the wonderfully aggressive Keke Rosberg ranks among the very highest.",
+    "image_url":"/images/legends/pilots/kekerosberg.avif",
+    "stats":{"championship":0}
+  },
+
+  {
+    "name":"Alain Prost",
+    "category":"pilot",
+    "bio":"His place in Formula 1 history as one of the sport's greatest drivers is secure, though a career full of conflict and controversy detracted somewhat from his considerable achievements. He won four championships but also left teams acrimoniously on four occasions. He made winning races - 51 times - look easy but was less successful at the politics in which he was invariably embroiled. His bitter feud with Ayrton Senna brought out the best and worst in them both. And yet among the champions only Lewis Hamilton, Michael Schumacher and Juan Manuel Fangio won more crowns than Alain Prost.",
+    "image_url":"/images/legends/pilots/prost.avif",
+    "stats":{"championship":0}
+  },
+  {
     "name": "Ayrton Senna",
     "category": "pilot",
-    "bio": "Tüm zamanların en yetenekli pilotlarından biri olarak kabul edilen Brezilyalı efsane...",
-    "image_url": "/images/legends/senna.jpg",
+    "bio": "He streaked through the sport like a comet, an other-worldly superstar whose brilliance as a driver was matched by a dazzling intellect and coruscating charisma that illuminated Formula 1 racing as never before. No one tried harder or pushed himself further, nor did anyone shed so much light on the extremes to which only the greatest drivers go. Intensely introspective and passionate in the extreme, Ayrton Senna endlessly sought to extend his limits, to go faster than himself, a quest that ultimately made him a martyr but did not diminish his mystique..",
+    "image_url": "/images/legends/pilots/senna.jpg",
     "stats": { "championships": 3, "wins": 41 }
+  },
+  {
+    "name":"Nigel Mansell",
+    "category":"pilot",
+    "bio":"No driver fought harder to get into Formula 1 racing and few fought harder when they got there. Hugely determined, immensely aggressive and spectacularly daring, he was one of the most exciting drivers ever. With his win or bust approach - 31 wins and 32 crashes - he became the most successful British driver and joined the ranks of the all-time greats in terms of fastest laps, wins and poles. With the Union Jack on his helmet and a chip on his shoulder, he was both quick and controversial. His spiky personality made him some enemies, his heroic performances made him millions of fans. Nigel Mansell was a driven man and it showed.",
+    "image_url":"/images/legends/pilots/mansell.avif",
+    "stats":{"championship":0}
+  },
+
+
+  {
+    "name":"Michael Schumacher",
+    "category":"pilot",
+    "bio":"Since the Formula 1 World Drivers' Championship began in 1950 the title has been won by 34 different drivers, 16 of who won more than one championship. Of the multiple champions the most prolific was Juan Manuel Fangio, whose record of five titles stood for five decades until it was eclipsed by the most successful driver in the sport's history. Seven times a champion, Michael Schumacher also holds nearly every scoring record in the book by a considerable margin. Though his ethics were sometimes questioned, as was his decision to make a comeback after retiring, his sheer dominance when in his prime is beyond doubt...",
+    "image_url":"/images/legends/pilots/schumacher.avif",
+    "stats":{"championship":0}
+  },
+
+  {
+    "name":"Damon Hill",
+    "category":"pilot",
+    "bio":"When Williams made Damon Hill a Formula 1 driver, despite his undistinguished racing record, Frank Williams said it was because he was a tough bastard and Patrick Head said he admired his fierce inner determination. Like his World Champion father Graham Hill, he needed these qualities to achieve ultimate success in the sport to which - also like his father - he came late after a long struggle. His heritage helped, as did luck, but in the end it was his own ability that enabled Damon Hill to add lustre to the family name.",
+    "image_url":"/images/legends/pilots/damonhill.avif",
+    "stats":{"championship":0}
+  },
+  {
+    "name":"Jacques Villeneuve",
+    "category":"pilot",
+    "bio":"",
+    "image_url":"/images/legends/pilots/villeneuve.avif",
+    "stats":{"championship":0}
+  },
+  {
+    "name":"Mika Hakkinen",
+    "category":"pilot",
+    "bio":"He never said much, preferring to let his driving speak for itself. And it spoke volumes for the laid-back Flying Finn who always drove flat out. Everybody liked the silent star and nobody begrudged the success of the brave man who was nearly killed before he achieved it. Consistent as well as quick, he scored points in over half his races, taking his lop-sided grin to the top of the podium on 20 occasions. In their 11 years as rivals the only driver who achieved more was Michael Schumacher, who said the opponent he most respected was Mika Hakkinen.",
+    "image_url":"/images/legends/pilots/hakkinen.avif",
+    "stats":{"championship":0}
+  },
+
+  {
+    "name": "Fernando Alonso",
+    "category": "pilot",
+    "bio": "The 28th Formula 1 World Drivers' Champion was at the time the youngest ever. Just 24 years old, Fernando Alonso also led the Renault team to the 2005 Constructors' Championship, thus ending the reign of the Michael Schumacher-Ferrari combination that had dominated for so long. The precocious and personable youngster who made so much history so soon comfortably wore the crown - a bright, polished, perfectly poised new star. Confirmation of his brilliance came in 2006 when he successfully defended his title against strong opposition from Schumacher, whose subsequent retirement left Alonso well-placed to succeed him as Formula 1's resident superstar...",
+    "image_url": "/images/legends/pilots/alonso.avif",
+    "stats": { "championships": 0 }
+  },
+  {
+    "name": "Kimi Raikkonen",
+    "category": "pilot",
+    "bio": "Fast-tracked into the sport with the shortest CV on four wheels, the unknown newcomer who came from nowhere and said next to nothing immediately proved he knew exactly what he was doing: driving a Formula 1 car as fast as it could possibly go. The car couldn't always keep up with his talent and it took seven seasons for Kimi 'Iceman' Raikkonen to become World Champion. Notoriously inanimate and uncommunicative, the silent speedster's frozen expression in fact masked the hidden depths in one of the most original - and popular - characters in the sport's history...",
+    "image_url": "/images/legends/pilots/raikkonen.avif",
+    "stats": { "championship":0 }
+  },
+  {
+    "name": "Lewis Hamilton",
+    "category": "pilot",
+    "bio": "The 30th Formula 1 World Champion was the youngest ever, taking his first title in the most dramatic fashion - on the last corner of the last lap of the last race of one of the most scintillating seasons. The sensational triumph of the sport's first black driver, in only his second year at the pinnacle of motorsport, was a welcome human interest story that focused unprecedented international attention on Formula 1 racing. His prodigious talent and pleasing personality made Lewis Hamilton an inspirational role model and ideal ambassador for his profession...",
+    "image_url": "/images/legends/pilots/hamilton.avif",
+    "stats": {"championship":0 }
+  },
+
+  {
+    "name": "Jenson Button",
+    "category": "pilot",
+    "bio": "The 2009 World Champion grew up in the sport, maturing from a carefree youngster distracted by having too much too soon into a seasoned survivor who toiled in obscurity for a decade before his perseverance suddenly paid off in a fairy tale finish with a team that came from nowhere. His unexpected title triumph was partly the product of circumstances that prevented other contenders from overcoming his sensational head start, but ultimately it was Jenson Button's talent and tenacity that took him to the top...",
+    "image_url":"/images/legends/pilots/button.avif",
+    "stats": {"championship": 5}
+  },
+
+  {
+    "name": "Sebastian Vettel",
+    "category":"pilot",
+    "bio":"The youngest ever world champion's accumulation of age-related records that began in 2010 continued for four consecutive seasons, culminating in a one-sided 2013 title triumph that confirmed his status as one of the sport’s all-time greats. Sebastian Vettel’s first championship, at the age of 23, provided a surprise ending to an intensely competitive 2010 campaign. There was surely more to come from this fast rising racer, and it came quickly when he completely dominated in 2011 to become the youngest double world champion. In 2012, with a series of comebacks from setbacks against the strongest opposition in the longest ever season, his third driving title in a row was hard-earned and well-deserved. In 2013, and still just 26 years old, he made short work of becoming the youngest ever quadruple world champion. In truth the precocious youngster who came so far so fast was in a hurry from the time he was a toddler...",
+    "image_url":"/images/legends/pilots/vettel.avif",
+    "stats":{"championship":0}
+  },
+
+
+
+  {
+    "name":"Nico Rosberg",
+    "category":"pilot",
+    "bio":"When he was just six years old Nico Rosberg decided he was going to emulate his famous father and become a Formula 1 World Champion. It seemed a far-fetched fantasy, even for a boy benefitting from a privileged upbringing in Monaco. Indeed it took 25 years of hard effort for Nico to make his childhood dream come true. His championship quest took a heavy toll, prompting a final twist in the tale of triumph. Five days after taking the title, in a dramatic last-race showdown with his team mate Lewis Hamilton, the 2016 World Champion announced his immediate retirement from the pinnacle of motorsport.",
+    "image_url":"/images/legends/pilots/nicorosberg.avif",
+    "stats":{"championship":1}
+  },
+  {
+    "name":"Max Verstappen",
+    "category":"pilot",
+    "bio":"In 2021 24-year-old Max Verstappen became the 34th Formula 1 World Champion, taking the title from seven-time champion Lewis Hamilton amid controversy on the last lap of the last race. Driving on the limit – sometimes over it – their intense rivalry became a personal feud that pushed them far beyond the rest of the field. The enthralling battle between the ultra-confident Dutch youngster and the most successful driver in the sport’s history captured the imagination of a worldwide audience as never before.",
+    "image_url":"/images/legends/pilots/verstappen.avif",
+    "stats":{"championship":1}
   },
   {
     "name": "Adrian Newey",
     "category": "engineer",
-    "bio": "Aerodinami dehası olarak bilinen Newey, birçok takımla şampiyonluklar yaşamıştır...",
-    "image_url": "/images/legends/newey.jpg",
+    "bio": "Widely regarded as one of the greatest engineers in Formula One history, Newey's designs have won 14 Drivers' and 12 Constructors' titles and 223 Grands Prix between 1991 and 2024. From 2026, Newey will assume the additional role of Team Principal of Aston Martin.",
+    "image_url": "/images/legends/prin-tech-en-inno-cap/newey.webp",
     "stats": { "designed_championship_cars": 12 }
   },
   {
     "name": "Jean Todt",
     "category": "principal",
-    "bio": "Ferrari'nin efsanevi takım patronu, Michael Schumacher ile 5 yıl üst üste şampiyonluk yaşadı...",
-    "image_url": "/images/legends/todt.jpg",
+    "bio": "Among F1 fans, Jean Todt is perhaps most famous for leading Ferrari out of their early 90s slump and into a period of unprecedented domination in the 2000s. As mighty as that period was - and don’t forget that Michael Schumacher’s drivers’ title in 2000 was Ferrari’s first since 1979 - that success was to some extent only the tip of the iceberg for a man with one of the most impressive CVs in world motorsport...",
+    "image_url": "/images/legends/prin-tech-en-inno-cap/todt.jpeg",
     "stats": { "team_championships": 8 }
+  },
+
+  {
+    "name": "James Allison",
+    "category": "engineer",
+    "bio": "Mercedes have been the standard setters in F1 since 2014, and this year they've started the season at a relentless pace. This week on F1's official podcast - Beyond The Grid, supported by Bose - we speak to one of the key figures in the Silver Arrows' incredible winning machine: Technical Director James Allison.",
+    "image_url":"/images/legends/prin-tech-en-inno-cap/allison.jpeg",
+    "stats": {"championship": 5}
+  },
+
+  {
+    "name": "Ross Brawn",
+    "category":"engineer",
+    "bio":"Teams with Brawn in an essential role have won eight constructors' championships and eight drivers' championships in total. Serving as the technical director of the championship-winning Benetton and Ferrari teams, he earned fame as the mastermind behind Michael Schumacher's seven world championship titles.",
+    "image_url":"/images/legends/prin-tech-en-inno-cap/brawn.jpeg",
+    "stats":{"championship":5}
+  },
+
+
+
+  {
+    "name":"Colin Chapman",
+    "category":"engineer",
+    "bio":"Team Lotus won seven Formula One Constructors' titles, six Drivers' Championships, and the Indianapolis 500 in the United States, between 1962 and 1978 under his direction. The production side of Lotus Cars has built tens of thousands of relatively affordable, cutting edge sports cars.",
+    "image_url":"/images/legends/prin-tech-en-inno-cap/chapman.jpeg",
+    "stats":{"championship":1}
+  },
+
+  {
+    "name": "Ron Dennis",
+    "category": "engineer",
+    "bio":"The most successful team chief in the history of Formula One racing, Ron Dennis led the McLaren Racing team to victory in 17 world championships and 158 Grand Prix competitions, from the time he first assumed leadership of McLaren in 1980 until his retirement in 2017.",
+    "image_url":"/images/legends/prin-tech-en-inno-cap/dennis.jpeg",
+    "stats":{"championship": 0}
+  },
+  {
+    "name":"Enzo Ferrari",
+    "category":"engineer",
+    "bio":"....",
+    "image_url":"/images/legends/pilots/brabham.avif",
+    "stats":{"championship":0}
+  },
+
+  {
+    "name":"Soichiro Honda",
+    "category":"engineer",
+    "bio":"....",
+    "image_url":"/images/legends/pilots/philhill.jpg",
+    "stats":{"championship":0}
+  },
+  {
+    "name":"Christian Horner",
+    "category":"engineer",
+    "bio":"...",
+    "image_url":"/images/legends/pilots/grahamhill.avif",
+    "stats":{"championship":0}
+  },
+
+
+  {
+    "name":"Mario Illien",
+    "category":"engineer",
+    "bio":"...",
+    "image_url":"/images/legends/pilots/clark.avif",
+    "stats":{"championship":0}
+  },
+
+  {
+    "name":"Max Mosley",
+    "category":"engineer",
+    "bio":"...",
+    "image_url":"/images/legends/pilots/surtees.jpeg",
+    "stats":{"championship":0}
+  },
+  {
+    "name":"Murray Walker",
+    "category":"engineer",
+    "bio":"...",
+    "image_url":"/images/legends/pilots/hulme.avif",
+    "stats":{"championship":0}
+  },
+  {
+    "name":"Frank Williams",
+    "category":"engineer",
+    "bio":"...",
+    "image_url":"/images/legends/pilots/stewart.avif",
+    "stats":{"championship":0}
+  },
+  {
+    "name":"Toto Wolff",
+    "category":"engineer",
+    "bio":"...",
+    "image_url":"/images/legends/pilots/rindt.avif",
+    "stats":{"championship":0}
+  },
+  {
+    "name":"Murray Walker",
+    "category":"engineer",
+    "bio":"...",
+    "image_url":"/images/legends/media/walker.jpeg",
+    "stats":{"championship":0}
+  },
+  {
+    "name":"Peter Windsor",
+    "category":"engineer",
+    "bio":"...",
+    "image_url":"/images/legends/media/windsor.jpeg",
+    "stats":{"championship":0}
+  },
+  {
+    "name":"Karun Chandhok",
+    "category":"engineer",
+    "bio":"...",
+    "image_url":"/images/legends/media/chandhok.webp",
+    "stats":{"championship":0}
   }
+
+
+
 ]

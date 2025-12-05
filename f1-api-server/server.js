@@ -34,6 +34,7 @@ app.use(cors()); // Farklı adreslerden gelen isteklere izin ver (Frontend için
 app.use(express.json()); // Gelen isteklerdeki JSON body'leri parse etmek için
 
 app.use('/api/calendar', calendarRoutes);
+app.use('/api/teams', require('./routes/teams'))
 
 // localhost:5000/api/standings adresine gelen istekleri standingsRoutes'a yönlendir
 app.use('/api/standings', standingsRoutes);

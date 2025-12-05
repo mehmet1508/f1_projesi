@@ -1,65 +1,263 @@
-.teams-page {
-    color: #f4f4f4;
-    padding: 32px clamp(24px, 5vw, 64px);
-    height: 100%;
-    overflow-y: auto;
-}
+/* teams.css */
 
-.page-header {
-    margin-bottom: 32px;
-    font-size: 1.15rem;
-    color: #c0c0c0;
-}
-
-.teams-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 20px;
-}
-
-.team-card {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    border-radius: 18px;
-    padding: 24px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
-    backdrop-filter: blur(8px);
-}
-
-.team-card__header {
+/* Sayfa Konteyneri */
+#teams-page-container {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden; /* Scroll'u JS ile yöneteceğiz */
+    background: linear-gradient(to bottom, #1a1a1a, #000000);
+    color: #f0f0f0;
+    padding: 40px 0;
+    position: relative;
+    z-index: 2;
+    /* Flex düzeni ile içeriği ortalayalım */
     display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 18px;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
-.team-card__header h2 {
-    font-size: 1.25rem;
+
+#teams-page-container h2 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255,255,255,0.2);
+    position: relative;
+    z-index: 2;
+}
+
+/* Carousel Şeridi (Grid) */
+.teams-grid {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    /* Geçiş animasyonu */
+    transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: -1;
+    padding-left: 0;
+}
+
+/* 3D Kart Konteyneri */
+.team-card-container {
+    width: 450px;
+    height: 550px;
+    perspective: 1500px;
+    flex-shrink: 0;
+    margin: 0 25px; /* Kartlar arası boşluk */
+    cursor: pointer;
+    transition: transform 0.7s ease, opacity 0.7s ease;
+}
+
+/* Pasif (Merkezde Olmayan) Kart Stili */
+.team-card-container.inactive {
+    transform: scale(0.85);
+    opacity: 0.6;
+    pointer-events: auto;
+}
+.team-card-container.inactive:hover {
+    transform: scale(0.9);
+    opacity: 0.8;
+}
+
+/* Kartın Kendisi (Dönen Parça) */
+.team-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.7s cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+.team-card.is-flipped {
+    transform: rotateY(180deg);
+}
+
+/* --- RÜZGAR EFEKTİ EKLEMESİ --- */
+.team-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Rüzgar çizgileri: Tekrar eden dikey çizgili gradyan */
+    background: repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 45%,
+            rgba(255, 255, 255, 0.15) 48%, /* Rüzgar çizgisinin rengi */
+            rgba(255, 255, 255, 0.3) 50%,  /* Parlak merkez */
+            rgba(255, 255, 255, 0.15) 52%,
+            transparent 55%
+    );
+    background-size: 200% 100%; /* Hareket alanı */
+    background-position: 200% 0; /* Başlangıç pozisyonu (sağ dış) */
+    opacity: 0; /* Başlangıçta görünmez */
+    z-index: 20; /* Kartın üstünde */
+    pointer-events: none; /* Tıklamayı engelleme */
+    border-radius: 15px;
+    mix-blend-mode: overlay; /* Renklerin alttaki logolarla güzel karışması için */
+
+    /* Dönüş süresiyle senkronize hareket (0.7s) */
+    transition: background-position 0.7s cubic-bezier(0.65, 0.05, 0.36, 1), opacity 0.5s ease;
+}
+
+/* Kart Döndüğünde (Flipped State) Rüzgar Hareketi */
+.team-card.is-flipped::after {
+    background-position: -100% 0; /* Soldan dışarı çıkar (Swoosh hareketi) */
+    opacity: 1; /* Hareket sırasında görünür olur */
+}
+/* --- RÜZGAR EFEKTİ SONU --- */
+
+
+/* Kartın Yan Yüzü (Kalınlık Efekti) */
+.card-face-side {
+    position: absolute;
+    width: 20px;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) rotateY(90deg);
+    backface-visibility: hidden;
+}
+
+/* Kart Yüzleri (Ön ve Arka) */
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background-color: #2c2c2c;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid #444;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.card-front {
+    transform: translateZ(10px); /* Kalınlık için öne it */
+}
+
+.card-back {
+    transform: rotateY(180deg) translateZ(10px); /* Arkaya çevir ve öne it */
+}
+
+/* İçerik Stilleri */
+.card-header {
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.team-logo {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.1));
+}
+
+.card-header h3 {
     margin: 0;
-}
-
-.team-card__header span {
-    font-size: 0.85rem;
-    color: #ff5252;
-}
-
-dl {
-    margin: 0;
-}
-
-dl div + div {
-    margin-top: 12px;
-}
-
-dt {
+    font-size: 1.8rem;
+    color: #fff;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-size: 0.75rem;
-    color: #a0a0a0;
+    font-weight: 700;
 }
 
-dd {
-    margin: 4px 0 0;
-    font-weight: 600;
+.card-body {
+    padding: 25px;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    flex-grow: 1;
+    color: #e0e0e0;
+}
+
+.card-body p {
+    margin: 10px 0;
+}
+
+.card-body strong {
+    color: #bbb;
+    margin-right: 5px;
+}
+
+.card-body ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 15px;
+}
+
+.card-body li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(255,255,255,0.05);
+}
+
+.card-body li::before {
+    content: '🏎';
+    font-size: 0.9em;
+}
+
+.scroll-hint {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+    margin-top: auto;
+    border-top: 1px dashed rgba(255,255,255,0.05);
+    padding-top: 15px;
+    font-size: 0.9rem;
+}
+
+/* Sürücü Profilleri (Arka Yüz) */
+.driver-profiles-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 20px 0;
+}
+
+.driver-profile {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 25px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.driver-profile:last-child {
+    border-bottom: none;
+}
+
+.driver-profile img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid rgba(255,255,255,0.2);
+}
+
+.driver-profile h4 {
+    margin: 0 0 8px 0;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.driver-profile p {
+    margin: 4px 0;
+    font-size: 1rem;
+    color: #ccc;
 }
