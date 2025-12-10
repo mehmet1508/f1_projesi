@@ -222,6 +222,18 @@ app.get('/api/calendar/:season', async (req, res) => {
 });
 
 
+app.get('/api/howitworks', (req, res) => {
+    const dataPath = path.join(__dirname, 'data', 'howItWorks.json');
+
+    // JSON dosyasını oku ve gönder
+    fs.readFile(dataPath, 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ message: 'Veri okunamadı' });
+        }
+        res.json(JSON.parse(data));
+    });
+});
 
 // --- SUNUCUYU BAŞLATMA ---
 app.listen(PORT, () => {
