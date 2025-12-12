@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import HeroSection from './HeroSection';
 import './howItWorks.css';
 
@@ -36,6 +37,7 @@ const Typewriter = ({ text, isActive, speed = 30, delay = 0, tag = 'p', classNam
 };
 
 const HowItWorks = () => {
+    const [searchParams] = useSearchParams();
     const [sections, setSections] = useState([]);
     const [activeIndex, setActiveIndex] = useState(0);
 
@@ -51,6 +53,58 @@ const HowItWorks = () => {
             .then(data => setSections(data))
             .catch(err => console.error(err));
     }, []);
+
+    // URL parametresinden section index'ini oku ve ilgili bölüme scroll et
+    useEffect(() => {
+        const sectionParam = searchParams.get('section');
+        if (sectionParam === null || sections.length === 0 || !containerRef.current) return;
+
+        const targetIndex = parseInt(sectionParam, 10);
+        if (isNaN(targetIndex) || targetIndex < 0 || targetIndex >= sections.length) return;
+
+        // Scroll pozisyonunu hesapla
+        const scrollToSection = () => {
+            if (!containerRef.current) return;
+            
+            const rect = containerRef.current.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            const scrollableDistance = rect.height - windowHeight;
+            
+            // Container'ın sayfa içindeki gerçek pozisyonu
+            const containerTop = rect.top + window.scrollY;
+            
+            const TEXT_START = 0.20;
+            const GAP = 0.5;
+            const totalSlides = sections.length;
+            const totalUnits = (totalSlides - 1) * (1 + GAP);
+            
+            let slideGlobalProgress;
+            if (targetIndex === 0) {
+                // İlk bölüm için TEXT_START'tan hemen sonra başla
+                slideGlobalProgress = 0;
+            } else {
+                // Diğer bölümler için bitiş noktasını hesapla
+                const finishPoint = (targetIndex - 1) * (1 + GAP) + 1;
+                slideGlobalProgress = finishPoint / totalUnits;
+            }
+            
+            // globalProgress'e çevir (TEXT_START'tan sonra başlıyor)
+            const globalProgress = slideGlobalProgress * (1 - TEXT_START) + TEXT_START;
+            
+            // Scroll pozisyonunu hesapla
+            const targetScroll = containerTop + (globalProgress * scrollableDistance);
+            
+            // Smooth scroll ile ilgili pozisyona git
+            window.scrollTo({
+                top: Math.max(0, targetScroll),
+                behavior: 'smooth'
+            });
+        };
+
+        // Sayfa yüklenmesi ve layout hesaplaması için gecikme
+        const timeoutId = setTimeout(scrollToSection, 300);
+        return () => clearTimeout(timeoutId);
+    }, [searchParams, sections]);
 
     const updateAnimation = useCallback(() => {
         if (!containerRef.current || sections.length === 0) return;
