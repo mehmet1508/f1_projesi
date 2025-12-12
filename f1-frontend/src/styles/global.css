@@ -30,7 +30,7 @@ body {
     position: sticky;
     top: 0;
     height: 100vh;
-    z-index: 100; /* Hero'nun üstünde kalsın */
+    z-index: 200; /* Panel'in üstünde kalsın */
 }
 
 .sidebar.collapsed {
