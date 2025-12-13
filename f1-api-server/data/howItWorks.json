@@ -1,0 +1,150 @@
+[
+  {
+    "id": 1,
+    "title": "AERODYNAMICS",
+    "description": "Leveraging Computational Fluid Dynamics (CFD), the aerodynamic package manipulates airflow to generate immense downforce while minimizing drag coefficient (Cd). The underfloor Venturi tunnels exploit the ground effect, creating a low-pressure area that suctions the car to the track, while the vortex structures seal the floor edges for maximum efficiency.",
+    "image": "/images/howitworks/aero.png",
+    "subSystems": [
+      "Front Wing",
+      "Rear Wing (DRS)",
+      "Beam Wing",
+      "Floor & Venturi Tunnels",
+      "Diffuser",
+      "Bargeboards / Vanes"
+    ],
+    "specs": [
+      { "label": "Downforce", "value": 98 },
+      { "label": "L/D Ratio", "value": 95 },
+      { "label": "Drag Eff.", "value": 88 }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "POWER UNIT",
+    "description": "The most efficient prime mover in history, achieving over 50% thermal efficiency. This complex hybrid system integrates a 1.6L V6 turbocharged internal combustion engine with MGU-K and MGU-H units, harvesting waste heat and kinetic energy to deploy 4MJ of electrical boost per lap without turbo lag.",
+    "image": "/images/howitworks/engine.png",
+    "subSystems": [
+      "1.6L V6 ICE",
+      "Turbocharger",
+      "MGU-H (Heat)",
+      "MGU-K (Kinetic)",
+      "Battery Pack (ES)",
+      "Control Electronics",
+      "Intercooler"
+    ],
+    "specs": [
+      { "label": "Thermal Eff.", "value": 99 },
+      { "label": "Horsepower", "value": 97 },
+      { "label": "Energy Rec.", "value": 94 }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "CHASSIS & MONOCOQUE",
+    "description": "Constructed from carbon-fibre reinforced polymer (CFRP) with an aluminium honeycomb core, the monocoque serves as the driver's survival cell. It is engineered for extreme torsional rigidity, exceeding 60,000 Nm/degree, ensuring suspension geometry fidelity under high G-loads while dissipating massive impact energy.",
+    "image": "/images/howitworks/chasis.png",
+    "subSystems": [
+      "Carbon Monocoque",
+      "Safety Cell",
+      "Crash Structures",
+      "Halo Device",
+      "Seat & Pedal Box"
+    ],
+    "specs": [
+      { "label": "Rigidity", "value": 96 },
+      { "label": "Impact Abs.", "value": 99 },
+      { "label": "Weight", "value": 85 }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "SUSPENSION & STEERING",
+    "description": "The double-wishbone architecture, utilizing push-rod or pull-rod mechanisms, is critical for mechanical grip and aerodynamic stability. The geometry incorporates anti-dive and anti-squat characteristics to maintain a consistent ride height, maximizing the tire contact patch and ensuring the floor remains in its optimal operating window.",
+    "image": "/images/howitworks/suspension.png",
+    "subSystems": [
+      "Double Wishbone",
+      "Push/Pull Rods",
+      "Dampers & Torsion Bars",
+      "Steering Rack",
+      "Anti-Roll Bars",
+      "Uprights"
+    ],
+    "specs": [
+      { "label": "Mech. Grip", "value": 92 },
+      { "label": "Handling", "value": 95 },
+      { "label": "Feedback", "value": 90 }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "BRAKING SYSTEM",
+    "description": "Capable of generating 6G deceleration, the system utilizes advanced carbon-carbon discs and calipers operating at temperatures exceeding 1,000°C. The rear 'Brake-by-Wire' system electronically modulates hydraulic pressure and MGU-K regenerative braking, optimizing energy harvesting while preventing rear lock-ups.",
+    "image": "/images/howitworks/brakes.png",
+    "subSystems": [
+      "Carbon Discs",
+      "Brake Calipers",
+      "Brake-by-Wire",
+      "Cooling Ducts",
+      "Master Cylinder"
+    ],
+    "specs": [
+      { "label": "Stopping Power", "value": 100 },
+      { "label": "Heat Mgmt.", "value": 85 },
+      { "label": "Brake Bias", "value": 93 }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "TRANSMISSION",
+    "description": "The semi-automatic, 8-speed seamless-shift gearbox permits instantaneous gear changes in under 50ms with zero drive torque interruption. Housed in a carbon-titanium casing, it acts as a fully stressed structural member, supporting the rear suspension pickup points and the rear crash structure.",
+    "image": "/images/howitworks/transmission.png",
+    "subSystems": [
+      "8-Speed Gearbox",
+      "Differential",
+      "Driveshafts",
+      "Clutch System",
+      "Shift Electronics"
+    ],
+    "specs": [
+      { "label": "Shift Speed", "value": 99 },
+      { "label": "Reliability", "value": 90 },
+      { "label": "Torque Trans.", "value": 96 }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "ELECTRONICS & TELEMETRY",
+    "description": "Serving as the car's nervous system, the FIA Standard ECU processes data from over 300 sensors, transmitting gigabytes of live telemetry via the ATLAS system. It orchestrates critical operations including differential locking maps, brake bias migration, and power unit strategy in real-time with millisecond latency.",
+    "image": "/images/howitworks/electronics.png",
+    "subSystems": [
+      "ECU (FIA Std)",
+      "Sensors (Temp/Flow)",
+      "Telemetry System",
+      "Wiring Loom",
+      "Steering Wheel",
+      "Engine Maps"
+    ],
+    "specs": [
+      { "label": "Data Rate", "value": 98 },
+      { "label": "Processing", "value": 95 },
+      { "label": "Latency", "value": 99 }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "TYRES & WHEELS",
+    "description": "The only contact point with the track, Pirelli's 18-inch low-profile tires mounted on forged magnesium rims are crucial for performance. Thermal management of the compound's 'working window' and control of thermal degradation are vital, while the wheel covers assist in managing the turbulent aerodynamic wake generated by tire rotation.",
+    "image": "/images/howitworks/wheel.png",
+    "subSystems": [
+      "Tyre Compounds",
+      "Tyre Blankets",
+      "Magnesium Rims",
+      "Pressure Regulation"
+    ],
+    "specs": [
+      { "label": "Grip Level", "value": 94 },
+      { "label": "Thermal Mgmt.", "value": 80 },
+      { "label": "Degradation", "value": 75 }
+    ]
+  }
+]

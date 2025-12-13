@@ -29,6 +29,10 @@
     perspective: 1000px;
 }
 
+.year-display.clickable-area {
+    cursor: none;
+}
+
 .year-transition-wrapper {
     position: relative;
     width: 100%;
@@ -157,6 +161,7 @@
         0 0 8px rgba(0, 0, 0, 0.85),
         0 0 16px rgba(0, 0, 0, 0.9);
 }
+
 
 /* Timeline */
 .history-timeline {
@@ -326,11 +331,375 @@
     content: '';
 }
 
+.history-cursor.explore-mode {
+    opacity: 1;
+    transform: translate3d(-50%, -50%, 0) scale(1.2);
+    border-color: rgba(255, 66, 66, 1);
+    background: radial-gradient(circle at center, rgba(255, 66, 66, 0.85) 0%, rgba(255, 66, 66, 0.45) 45%, transparent 72%);
+}
+
+.history-cursor.explore-mode::after {
+    content: 'EXPLORE';
+    font-size: 10px;
+}
+
 .timeline-dot:hover ~ .history-cursor {
     background-color: rgba(255, 66, 66, 0.25);
     box-shadow:
         0 0 16px rgba(255, 66, 66, 0.9),
         0 0 28px rgba(0, 0, 0, 0.9);
+}
+
+/* Era Details Panel */
+.era-details-panel {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0.95) 100%);
+    backdrop-filter: blur(20px);
+    border-top: 2px solid rgba(255, 66, 66, 0.5);
+    z-index: 100;
+    overflow: hidden;
+    transition: height 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.era-details-panel.open {
+    height: 100vh;
+    overflow: visible;
+}
+
+.era-details-content {
+    height: 100%;
+    padding: 50px 80px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    color: #f4f4f4;
+    max-width: 1600px;
+    margin: 0 auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+}
+
+.close-details-button {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background: rgba(255, 66, 66, 0.2);
+    border: 2px solid rgba(255, 66, 66, 0.5);
+    color: #ffffff;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 101;
+}
+
+.close-details-button:hover {
+    background: rgba(255, 66, 66, 0.4);
+    border-color: #ff4242;
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 66, 66, 0.6);
+}
+
+.era-details-header {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 66, 66, 0.3);
+}
+
+.era-details-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    color: #ffffff;
+    text-shadow: 0 0 15px rgba(255, 66, 66, 0.5);
+}
+
+.era-years {
+    font-size: 1.3rem;
+    color: rgba(255, 66, 66, 0.9);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+}
+
+.era-details-sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.details-section.full-width {
+    grid-column: 1 / -1;
+}
+
+.details-section {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 66, 66, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.details-section h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0 0 15px 0;
+    color: rgba(255, 66, 66, 0.95);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.champions-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.champion-tag {
+    display: inline-block;
+    padding: 8px 16px;
+    background: rgba(255, 66, 66, 0.15);
+    border: 1px solid rgba(255, 66, 66, 0.4);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.champion-tag:hover {
+    background: rgba(255, 66, 66, 0.3);
+    border-color: #ff4242;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 66, 66, 0.4);
+}
+
+.highlights-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.highlights-list li {
+    padding: 12px 0;
+    padding-left: 25px;
+    position: relative;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.highlights-list li:last-child {
+    border-bottom: none;
+}
+
+.highlights-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: rgba(255, 66, 66, 0.8);
+    font-weight: bold;
+}
+
+.technology-text,
+.iconic-moment {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+}
+
+.iconic-moments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.iconic-moment-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 20px;
+    background: rgba(255, 66, 66, 0.1);
+    border-left: 3px solid rgba(255, 66, 66, 0.6);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.iconic-moment-item:hover {
+    background: rgba(255, 66, 66, 0.15);
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(255, 66, 66, 0.2);
+}
+
+.moment-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 35px;
+    height: 35px;
+    background: rgba(255, 66, 66, 0.3);
+    border: 2px solid rgba(255, 66, 66, 0.6);
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #ffffff;
+    flex-shrink: 0;
+}
+
+.iconic-moment {
+    font-style: italic;
+    color: rgba(255, 66, 66, 0.9);
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    flex: 1;
+}
+
+.key-drivers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.driver-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 12px;
+    background: rgba(255, 66, 66, 0.05);
+    border-radius: 6px;
+    border-left: 3px solid rgba(255, 66, 66, 0.4);
+}
+
+.driver-name {
+    font-weight: 600;
+    color: rgba(255, 66, 66, 0.95);
+    font-size: 1.05rem;
+}
+
+.driver-achievements {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.5;
+}
+
+.teams-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.team-tag {
+    display: inline-block;
+    padding: 10px 18px;
+    background: rgba(255, 66, 66, 0.2);
+    border: 1px solid rgba(255, 66, 66, 0.5);
+    border-radius: 20px;
+    font-size: 0.95rem;
+    color: #ffffff;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.team-tag:hover {
+    background: rgba(255, 66, 66, 0.35);
+    border-color: #ff4242;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 66, 66, 0.4);
+}
+
+.innovations-list,
+.facts-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.innovations-list li,
+.facts-list li {
+    padding: 10px 0;
+    padding-left: 25px;
+    position: relative;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.innovations-list li:last-child,
+.facts-list li:last-child {
+    border-bottom: none;
+}
+
+.innovations-list li::before {
+    content: '⚙';
+    position: absolute;
+    left: 0;
+    color: rgba(255, 66, 66, 0.8);
+    font-size: 1rem;
+}
+
+.facts-list li::before {
+    content: '💡';
+    position: absolute;
+    left: 0;
+    color: rgba(255, 66, 66, 0.8);
+    font-size: 1rem;
+}
+
+.engine-specs,
+.season-stats {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+    border-left: 3px solid rgba(255, 66, 66, 0.4);
+}
+
+.safety-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+    padding: 15px;
+    background: rgba(255, 66, 66, 0.08);
+    border-radius: 6px;
+    border-left: 3px solid rgba(255, 66, 66, 0.6);
+}
+
+/* Scrollbar styling for details panel */
+.era-details-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.era-details-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+.era-details-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 66, 66, 0.5);
+    border-radius: 4px;
+}
+
+.era-details-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 66, 66, 0.7);
 }
 
 /* Responsive */
@@ -357,5 +726,39 @@
     
     .car-icon-image {
         width: 45px;
+    }
+
+    .era-details-panel.open {
+        height: 100vh;
+    }
+
+    .era-details-content {
+        padding: 40px 25px;
+    }
+
+    .era-details-sections {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .era-details-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .era-details-sections {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .details-section {
+        padding: 20px;
+    }
+
+    .close-details-button {
+        top: 15px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
     }
 }
