@@ -110,13 +110,16 @@ function ensurePulseStyle() {
     style.id = PULSE_STYLE_ID;
     style.innerHTML = `
       @keyframes markerPulse {
-        0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.8; }
-        50% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
-        100% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.8; }
+        0% { transform: scale(0.9); opacity: 0.8; }
+        50% { transform: scale(1.15); opacity: 1; }
+        100% { transform: scale(0.9); opacity: 0.8; }
       }
       @keyframes infoFade {
         0% { opacity: 0; transform: translateY(-50%) translateX(-10px); }
         100% { opacity: 1; transform: translateY(-50%) translateX(0); }
+      }
+      .track-marker:hover .track-marker-tooltip {
+        opacity: 1 !important;
       }
     `;
     document.head.appendChild(style);
@@ -130,6 +133,9 @@ function ShadowCatcher() {
         </mesh>
     );
 }
+
+// Pist marker pozisyonu (shadow catcher'ın üzerinde, arabanın yanında)
+const TRACK_MARKER_POSITION = new THREE.Vector3(-7, 0.05, 3);
 
 function CameraInitializer({ focusPoint, onZoomComplete }) {
     const onZoomCompleteRef = useRef(onZoomComplete);
@@ -272,7 +278,7 @@ function LoadingFallback() {
     );
 }
 
-function LoadedModel({ config, index, total, activeIndex, onPartSelect, onHotspotPositions, onHotspotInfos, onHoverHotspotIndex, onMarkerVisibilityChange }) {
+function LoadedModel({ config, index, total, activeIndex, onPartSelect, onHotspotPositions, onHotspotInfos, onHoverHotspotIndex, onMarkerVisibilityChange, isZoomed }) {
     const group = useRef();
     const wheelsRef = useRef([]);
     const shadowCatcherRef = useRef();
@@ -360,8 +366,8 @@ function LoadedModel({ config, index, total, activeIndex, onPartSelect, onHotspo
                 const box = new THREE.Box3().setFromObject(node);
                 const center = new THREE.Vector3();
                 box.getCenter(center);
-                // Hotspot pozisyonunu biraz aşağıya kaydır
-                center.y -= 0.18;
+                // Hotspot pozisyonunu biraz daha aşağıya kaydır
+                center.y -= 0.25;
                 return center;
             });
             const infos = hotspotNodesRef.current.map((node) => {
@@ -397,8 +403,8 @@ function LoadedModel({ config, index, total, activeIndex, onPartSelect, onHotspo
                 const box = new THREE.Box3().setFromObject(node);
                 const center = new THREE.Vector3();
                 box.getCenter(center);
-                // Hotspot pozisyonunu biraz aşağıya kaydır
-                center.y -= 0.18;
+                // Hotspot pozisyonunu biraz daha aşağıya kaydır
+                center.y -= 0.25;
                 return center;
             });
             const infos = hotspotNodesRef.current.map((node) => {
@@ -461,6 +467,8 @@ function LoadedModel({ config, index, total, activeIndex, onPartSelect, onHotspo
         if (!group.current) return;
         const handleWheel = (event) => {
             if (!isActive) return;
+            // Zoom durumunda arabanın ileri geri gitmesini engelle
+            if (isZoomed) return;
             event.preventDefault();
             const direction = event.deltaY > 0 ? 1 : -1;
             const moveAmount = direction * 0.6;
@@ -486,7 +494,7 @@ function LoadedModel({ config, index, total, activeIndex, onPartSelect, onHotspo
         };
         window.addEventListener('wheel', handleWheel, { passive: false });
         return () => window.removeEventListener('wheel', handleWheel);
-    }, [isActive]);
+    }, [isActive, isZoomed]);
 
     const handleClick = (event) => {
         if (!isActive) return;
@@ -599,6 +607,7 @@ function ModelScene({ models, activeIndex }) {
     const [hoveredHotspotIndex, setHoveredHotspotIndex] = useState(null);
     const [showMarkers, setShowMarkers] = useState(false);
     const [showInfoBox, setShowInfoBox] = useState(false);
+    const [showTrackInfo, setShowTrackInfo] = useState(false);
     const hoverTimeoutsRef = useRef({});
     const isOverMarkerRef = useRef(false);
     const markerVisibilityTimeoutRef = useRef(null);
@@ -610,6 +619,7 @@ function ModelScene({ models, activeIndex }) {
         setSelectedPart(null);
         setHoveredHotspotIndex(null);
         setShowInfoBox(false);
+        setShowTrackInfo(false);
     };
     
     // Cleanup timeouts on unmount
@@ -739,6 +749,7 @@ function ModelScene({ models, activeIndex }) {
                         onHotspotPositions={setHotspotPositions}
                         onHotspotInfos={setHotspotInfos}
                         onHoverHotspotIndex={setHoveredHotspotIndex}
+                        isZoomed={!!selectedPart}
                         onMarkerVisibilityChange={(visible) => {
                             // Marker üzerindeyken görünürlüğü değiştirme
                             if (!visible && isOverMarkerRef.current) {
@@ -831,18 +842,156 @@ function ModelScene({ models, activeIndex }) {
                             >
                                 <div
                                     style={{
-                                        width: 12,
-                                        height: 12,
-                                    borderRadius: '50%',
-                                    border: isHovered ? '2.5px solid rgba(255,70,70,1)' : 'none',
-                                    background: isHovered ? 'rgba(255,70,70,0.8)' : 'rgba(255,70,70,0.6)',
-                                        animation: 'markerPulse 1.1s ease-in-out infinite'
-                                }}
-                            />
+                                        width: 14,
+                                        height: 14,
+                                        borderRadius: '50%',
+                                        border: isHovered ? '1.5px solid rgba(255,70,70,1)' : '1.5px solid rgba(255,70,70,0.8)',
+                                        background: 'transparent',
+                                        position: 'relative',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        animation: 'markerPulse 1.1s ease-in-out infinite',
+                                        boxShadow: isHovered ? '0 0 6px rgba(255,70,70,0.8)' : '0 0 3px rgba(255,70,70,0.6)',
+                                        transform: 'translateY(4px)'
+                                    }}
+                                >
+                                    {/* Yatay çizgi (ortada) */}
+                                    <div
+                                        style={{
+                                            width: '60%',
+                                            height: 1.5,
+                                            background: isHovered ? 'rgba(255,70,70,1)' : 'rgba(255,70,70,0.8)',
+                                            borderRadius: 1,
+                                            position: 'absolute',
+                                            boxShadow: isHovered ? '0 0 3px rgba(255,70,70,0.8)' : '0 0 2px rgba(255,70,70,0.6)'
+                                        }}
+                                    />
+                                    {/* Dikey çizgi (ortada) */}
+                                    <div
+                                        style={{
+                                            width: 1.5,
+                                            height: '60%',
+                                            background: isHovered ? 'rgba(255,70,70,1)' : 'rgba(255,70,70,0.8)',
+                                            borderRadius: 1,
+                                            position: 'absolute',
+                                            boxShadow: isHovered ? '0 0 3px rgba(255,70,70,0.8)' : '0 0 2px rgba(255,70,70,0.6)'
+                                        }}
+                                    />
+                                </div>
                             </div>
                         </Html>
                     );
                 })}
+                {/* Pist marker'ı - sadece zoom yokken göster */}
+                {!selectedPart && (
+                    <Html 
+                        position={TRACK_MARKER_POSITION} 
+                        center 
+                        style={{ 
+                            pointerEvents: 'none',
+                            zIndex: 1000
+                        }}
+                        raycast={() => null}
+                    >
+                        <div
+                            className="marker-container track-marker"
+                            onMouseEnter={(e) => {
+                                e.stopPropagation();
+                                e.preventDefault();
+                                isOverMarkerRef.current = true;
+                            }}
+                            onMouseLeave={(e) => {
+                                e.stopPropagation();
+                                e.preventDefault();
+                                isOverMarkerRef.current = false;
+                            }}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                e.preventDefault();
+                                setShowTrackInfo(true);
+                            }}
+                            style={{
+                                width: 32,
+                                height: 32,
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                cursor: 'pointer !important',
+                                pointerEvents: 'auto',
+                                position: 'relative',
+                                zIndex: 1001,
+                                userSelect: 'none',
+                                WebkitUserSelect: 'none',
+                                touchAction: 'none',
+                                transform: 'translate(-50%, -50%)'
+                            }}
+                        >
+                            <div
+                                style={{
+                                    width: 14,
+                                    height: 14,
+                                    borderRadius: '50%',
+                                    border: '1.5px solid rgba(255,70,70,1)',
+                                    background: 'transparent',
+                                    position: 'relative',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    animation: 'markerPulse 1.1s ease-in-out infinite',
+                                    boxShadow: '0 0 6px rgba(255,70,70,0.8)',
+                                    transform: 'translateY(4px)'
+                                }}
+                            >
+                                {/* Yatay çizgi (ortada) */}
+                                <div
+                                    style={{
+                                        width: '60%',
+                                        height: 1.5,
+                                        background: 'rgba(255,70,70,1)',
+                                        borderRadius: 1,
+                                        position: 'absolute',
+                                        boxShadow: '0 0 3px rgba(255,70,70,0.8)'
+                                    }}
+                                />
+                                {/* Dikey çizgi (ortada) */}
+                                <div
+                                    style={{
+                                        width: 1.5,
+                                        height: '60%',
+                                        background: 'rgba(255,70,70,1)',
+                                        borderRadius: 1,
+                                        position: 'absolute',
+                                        boxShadow: '0 0 3px rgba(255,70,70,0.8)'
+                                    }}
+                                />
+                            </div>
+                            <div
+                                style={{
+                                    position: 'absolute',
+                                    bottom: '100%',
+                                    left: '50%',
+                                    transform: 'translateX(-50%)',
+                                    marginBottom: '8px',
+                                    padding: '6px 12px',
+                                    background: 'rgba(0, 0, 0, 0.9)',
+                                    color: '#fff',
+                                    fontSize: '12px',
+                                    whiteSpace: 'nowrap',
+                                    borderRadius: '4px',
+                                    border: '1px solid rgba(255,70,70,0.5)',
+                                    pointerEvents: 'none',
+                                    opacity: 0,
+                                    transition: 'opacity 0.2s ease',
+                                    zIndex: 1002
+                                }}
+                                className="track-marker-tooltip"
+                            >
+                                F1 Pistleri
+                            </div>
+                        </div>
+                    </Html>
+                )}
                 {selectedPart && showInfoBox && infoBoxPosition && (
                     <Html
                         position={infoBoxPosition}
@@ -920,6 +1069,95 @@ function ModelScene({ models, activeIndex }) {
                             }}
                             onMouseLeave={(e) => {
                                 e.target.style.background = 'rgba(255,70,70,0.15)';
+                                e.target.style.borderColor = 'rgba(255,70,70,0.5)';
+                            }}
+                        >
+                            Daha Fazla Bilgi →
+                        </button>
+                    </Html>
+                )}
+                {/* Pist bilgi kutucuğu */}
+                {showTrackInfo && !selectedPart && (
+                    <Html
+                        position={TRACK_MARKER_POSITION.clone().add(new THREE.Vector3(0, 0.5, 0))}
+                        center={false}
+                        raycast={() => null}
+                        style={{
+                            background: 'rgba(15,15,20,0.9)',
+                            color: '#fff',
+                            padding: '14px 16px',
+                            borderRadius: 10,
+                            width: 280,
+                            maxWidth: 280,
+                            border: '1px solid rgba(255,255,255,0.08)',
+                            borderRight: '4px solid rgba(255,70,70,1)',
+                            boxShadow: '0 10px 25px rgba(0,0,0,0.4), 0 0 30px rgba(255,70,70,0.5), 0 0 60px rgba(255,70,70,0.3)',
+                            animation: 'infoFade 0.5s ease-out',
+                            transform: 'translateY(-50%)',
+                            position: 'relative',
+                            wordWrap: 'break-word',
+                            overflowWrap: 'break-word',
+                            opacity: 0,
+                            animationFillMode: 'forwards'
+                        }}
+                    >
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
+                            <div style={{ fontWeight: 700, fontSize: 16, wordWrap: 'break-word', overflowWrap: 'break-word' }}>F1 Pistleri</div>
+                            <button
+                                type="button"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    e.preventDefault();
+                                    setShowTrackInfo(false);
+                                }}
+                                style={{
+                                    width: 24,
+                                    height: 24,
+                                    borderRadius: 6,
+                                    border: '1px solid rgba(255,255,255,0.1)',
+                                    background: 'rgba(255,255,255,0.08)',
+                                    color: '#fff',
+                                    cursor: 'pointer',
+                                    fontSize: 14,
+                                    lineHeight: '1',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    padding: 0
+                                }}
+                            >
+                                ×
+                            </button>
+                        </div>
+                        <div style={{ fontSize: 13, lineHeight: 1.6, marginTop: 8, wordWrap: 'break-word', overflowWrap: 'break-word' }}>
+                            Formula 1 dünyasının en ünlü pistlerini keşfedin. Her pistin benzersiz özellikleri ve zorlukları hakkında detaylı bilgi edinin.
+                        </div>
+                        <button
+                            type="button"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                e.preventDefault();
+                                navigate('/tracks');
+                            }}
+                            style={{
+                                marginTop: 12,
+                                padding: '8px 16px',
+                                background: 'rgba(255,70,70,0.2)',
+                                border: '1px solid rgba(255,70,70,0.5)',
+                                color: '#fff',
+                                borderRadius: 6,
+                                cursor: 'pointer',
+                                fontSize: 13,
+                                fontWeight: 600,
+                                width: '100%',
+                                transition: 'all 0.2s ease'
+                            }}
+                            onMouseEnter={(e) => {
+                                e.target.style.background = 'rgba(255,70,70,0.3)';
+                                e.target.style.borderColor = 'rgba(255,70,70,0.8)';
+                            }}
+                            onMouseLeave={(e) => {
+                                e.target.style.background = 'rgba(255,70,70,0.2)';
                                 e.target.style.borderColor = 'rgba(255,70,70,0.5)';
                             }}
                         >
