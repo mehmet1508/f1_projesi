@@ -1,55 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useParams, Link } from 'react-router'; // Ensure 'react-router-dom' is used
+import { useParams, Link } from 'react-router-dom'; 
 import { useGoogleMapsLoader } from './hooks/useGoogleMapsLoader';
+import circuitsData from '../../f1-api-server/data/circuits.json';
 
 const MapPage = () => {
     const { id } = useParams();
     const { isLoaded, libraries, mapId } = useGoogleMapsLoader();
+    const circuit = circuitsData.find(c => c.id === id);
 
-    const [circuit, setCircuit] = useState(null);
-    const [isLoadingData, setIsLoadingData] = useState(true);
-
-    // Refs for DOM elements
     const mapContainerRef = useRef(null);
     const streetViewRef = useRef(null);
-    
-    // Refs for Instances (Crucial for preventing re-initialization)
     const mapInstanceRef = useRef(null); 
     const svInstanceRef = useRef(null);  
-
     const [viewMode, setViewMode] = useState('3D'); 
 
-
-    useEffect(() => {
-        const fetchCircuit = async () => {
-            try {
-                setIsLoadingData(true);
-                // Adjust port if your server is not on 5000
-                const response = await fetch('http://localhost:5000/api/circuitData'); 
-                
-                if (!response.ok) {
-                    throw new Error('Data could not be fetched');
-                }
-
-                const data = await response.json();
-                
-                // Find the specific circuit that matches the ID from the URL
-                // Note: Ensure your MongoDB data has an 'id' field (like "monaco") 
-                // distinct from the MongoDB '_id'.
-                const foundCircuit = data.find(c => c.id === id);
-                
-                setCircuit(foundCircuit);
-            } catch (error) {
-                console.error("Error fetching circuit:", error);
-            } finally {
-                setIsLoadingData(false);
-            }
-        };
-
-        if (id) {
-            fetchCircuit();
-        }
-    }, [id]);
 
     // --- 1. 3D MAP INITIALIZER ---
     useEffect(() => {
@@ -58,13 +22,9 @@ const MapPage = () => {
         const init3DMap = () => {
             const { Map3DElement } = libraries.maps3d;
             
-            // Only create if container exists
             if (mapContainerRef.current) {
-                // If map instance already exists, we don't need to recreate it,
-                // but we ensure the container is clear of duplicates just in case.
                 if (!mapInstanceRef.current) {
                     mapContainerRef.current.innerHTML = ''; 
-
                     const map = new Map3DElement({
                         center: circuit.center,
                         range: circuit.range,
@@ -74,7 +34,6 @@ const MapPage = () => {
                         mode: 'HYBRID',
                         gestureHandling: "COOPERATIVE"
                     });
-
                     mapContainerRef.current.appendChild(map);
                     mapInstanceRef.current = map; 
                 }
@@ -82,10 +41,7 @@ const MapPage = () => {
         };
         init3DMap();
 
-        // ** CLEANUP FUNCTION (Crucial for 3D Map stability) **
         return () => {
-            // When component unmounts or dependencies change (like circuit),
-            // remove the map from DOM and memory.
             if (mapContainerRef.current) {
                 mapContainerRef.current.innerHTML = '';
             }
@@ -99,7 +55,6 @@ const MapPage = () => {
     useEffect(() => {
         if (!isLoaded || viewMode !== 'STREET' || !circuit || !libraries) return;
         
-        // If panorama instance already exists, do not re-init
         if (svInstanceRef.current && streetViewRef.current.children.length > 0) return;
 
         const initStreetView = () => {
@@ -107,7 +62,6 @@ const MapPage = () => {
             
             if (streetViewRef.current) {
                 streetViewRef.current.innerHTML = ''; 
-
                 const panorama = new StreetViewPanorama(streetViewRef.current, {
                     position: { lat: circuit.streetView.lat, lng: circuit.streetView.lng },
                     pov: {
@@ -115,17 +69,15 @@ const MapPage = () => {
                         pitch: 0,
                     },
                     zoom: 1,
-                    disableDefaultUI: false, // Must be false to SHOW controls
+                    disableDefaultUI: false, 
                     motionTracking: false,
                     motionTrackingControl: false
                 });
-                
                 svInstanceRef.current = panorama;
             }
         };
         initStreetView();
 
-        // Optional: Cleanup for StreetView (good practice)
         return () => {
              if (streetViewRef.current) {
                  streetViewRef.current.innerHTML = '';
@@ -139,8 +91,15 @@ const MapPage = () => {
         setViewMode(viewMode === '3D' ? 'STREET' : '3D');
     };
 
-
-    if (!circuit) return <div style={{color:'white'}}>Pist bulunamadı!</div>;
+    // 3. HANDLE MISSING CIRCUIT (e.g. invalid ID in URL)
+    if (!circuit) {
+        return (
+            <div style={{ color: 'white', textAlign: 'center', paddingTop: '50px' }}>
+                <h1>Pist bulunamadı! ({id})</h1>
+                <Link to="/tracks" style={{color: '#e10600'}}>Listeye Dön</Link>
+            </div>
+        );
+    }
 
     return (
         <div style={{ position: 'relative', width: '100vw', height: '100vh', background: '#000' }}>
