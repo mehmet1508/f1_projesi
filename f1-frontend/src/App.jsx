@@ -10,15 +10,17 @@ import HowItWorksPage from './howItWorks.jsx';
 import HistoryPage from './history.jsx';
 import BreakingNewsPage from './news.jsx';
 import MapPage from './MapPage.jsx';
+import RaceInfo from './raceinfo';
 
 const navItems = [
     { text: 'F1-Fever', slug: 'main' },
     { text: 'Teams', slug: 'teams' },
     { text: 'Tracks', slug: 'tracks' },
     { text: 'Records Book', slug: 'records' },
-    { text: 'How ıt works', slug: 'how-it-works' },
-    { text: 'Hıstory', slug: 'history' },
-    { text: 'Breakıng News', slug: 'breaking-news' }
+    { text: 'How it works', slug: 'how-it-works' },
+    { text: 'History', slug: 'history' },
+    { text: 'Breaking News', slug: 'breaking-news' },
+    { text: 'Information of Race ', slug: 'raceinfo' }
 ];
 
 const slugToPath = (slug) => (slug === 'main' ? '/' : `/${slug}`);
@@ -75,13 +77,25 @@ function App() {
     return (
         <div className="layout">
             <motion.aside
-                className={`sidebar ${sidebarOpen ? '' : 'collapsed'}`}
+                className={`sidebar ${sidebarOpen ? '' : 'collapsed'} ${normalizedPath === '/' ? 'sidebar--overlay' : ''}`}
                 id="sidebar"
                 initial={false}
                 animate={{ width: sidebarOpen ? 280 : 0 }}
                 transition={{ duration: 0.35, ease: 'easeInOut' }}
             >
-                <div className="sidebar-content">
+                <motion.div 
+                    className="sidebar-content"
+                    initial={{ opacity: 0 }}
+                    animate={{ 
+                        opacity: sidebarOpen ? 1 : 0,
+                        pointerEvents: sidebarOpen ? 'auto' : 'none'
+                    }}
+                    transition={{ 
+                        duration: 0.3, 
+                        delay: sidebarOpen ? 0.4 : 0,
+                        ease: 'easeOut' 
+                    }}
+                >
                     {navItems.map((item, index) => (
                         <motion.button
                             key={item.slug}
@@ -90,10 +104,10 @@ function App() {
                             whileHover={{ scale: 1.02 }}
                             onClick={() => handleNavClick(item.slug)}
                         >
-                            {item.text}
+                            {item.text.toUpperCase()}
                         </motion.button>
                     ))}
-                </div>
+                </motion.div>
             </motion.aside>
 
             <main
@@ -109,6 +123,7 @@ function App() {
                     <Route path="/how-it-works" element={<HowItWorksPage />} />
                     <Route path="/history" element={<HistoryPage />} />
                     <Route path="/breaking-news" element={<BreakingNewsPage />} />
+                    <Route path="/raceinfo" element={<RaceInfo />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </main>
