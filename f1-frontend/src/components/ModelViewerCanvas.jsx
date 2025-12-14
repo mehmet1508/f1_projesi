@@ -10,92 +10,32 @@ const defaultCameraPosition = new THREE.Vector3(4, 5, 8);
 const defaultCameraTarget = new THREE.Vector3(0, 0, 0);
 const ENABLE_ZOOM_ON_SELECT = true;
 
-const PART_INFOS = [
-    {
-        matchers: ['wheel', 'tire', 'tekerlek', 'wheels'],
-        title: 'Tekerlek',
-        description: 'Lastik bileşimi, sıcaklık ve aerodinamiğe etkisi hakkında bilgi.'
-    },
-    {
-        matchers: ['front', 'nose', 'wing', 'front_wings'],
-        title: 'Ön Kanat',
-        description: 'Ön kanat hava akışını yönlendirir, downforce üretir.'
-    },
-    {
-        matchers: ['rear', 'back', 'spoiler', 'back_wings'],
-        title: 'Arka Kanat',
-        description: 'Denge için yüksek hızda downforce sağlar, DRS ile azaltılır.'
-    },
-    {
-        matchers: ['cockpit', 'halo', 'driver', 'hola'],
-        title: 'Kokpit',
-        description: 'Sürücü koruması ve halo yapısı FIA standartlarını karşılar.'
-    },
-    {
-        matchers: ['body', 'chassis', 'monocoque', 'gövde'],
-        title: 'Gövde / Şasi',
-        description: 'Karbon monokok yapı, güvenlik hücresi ve yapısal rijitlik.'
-    },
-    {
-        matchers: ['engine', 'powerunit', 'motor'],
-        title: 'Güç Ünitesi',
-        description: 'İçten yanmalı motor, turbo, MGU-K/H ve batarya paketinin yönetimi.'
-    },
-    {
-        matchers: ['sidepod', 'radiator', 'soğutma'],
-        title: 'Sidepod / Soğutma',
-        description: 'Hava girişleri, radyatör yerleşimi ve termal yönetim.'
-    },
-    {
-        matchers: ['floor', 'venturi', 'taban'],
-        title: 'Taban / Venturi',
-        description: 'Yer etkisi kanalları ile downforce üreten taban yapısı.'
-    }
-];
-
 const HOTSPOT_KEYS = ['wheels', 'hola', 'back_wings', 'front_wings', 'sidepod', 'engine'];
-const HOTSPOT_INFO_BY_KEY = {
-    wheels: {
-        title: 'Tekerlek',
-        description: 'Formula 1 araçlarında kullanılan Pirelli lastikleri, farklı bileşimler ve bileşiklerle üretilir. Lastik sıcaklığı, basıncı ve aşınması performansı doğrudan etkiler. Aerodinamik olarak tekerlekler, hava akışını yönlendiren önemli bir bileşendir. Karbon fiber jantlar hafiflik ve dayanıklılık sağlar.'
-    },
-    hola: {
-        title: 'Kokpit',
-        description: 'Sürücü güvenliği için tasarlanmış kokpit, FIA standartlarına uygun şekilde üretilir. Halo sistemi, 2018\'den beri zorunlu olan kritik bir güvenlik özelliğidir. Kokpit içinde sürücü pozisyonu, görüş açısı ve ergonomi optimize edilmiştir. Monokok yapı ile entegre edilmiş güvenlik hücresi, çarpışmalarda sürücüyü korur.'
-    },
-    back_wings: {
-        title: 'Arka Kanat',
-        description: 'Arka kanat, yüksek hızlarda downforce üretir ve araç dengesini sağlar. DRS (Drag Reduction System) sistemi ile düz bölümlerde açılarak sürükleme kuvvetini azaltır ve geçiş hızını artırır. Kanat açısı ve elemanları, pist koşullarına göre ayarlanabilir. Aerodinamik verimlilik için sürekli geliştirilir.'
-    },
-    front_wings: {
-        title: 'Ön Kanat',
-        description: 'Ön kanat, hava akışını kontrol eden ve downforce üreten kritik bir aerodinamik bileşendir. Farklı elemanlar ve açılar ile hava akışı optimize edilir. Kanat elemanları, pist koşullarına göre ayarlanabilir. Ön kanat tasarımı, araç genelindeki hava akışını ve diğer aerodinamik bileşenlerin performansını doğrudan etkiler.'
-    },
-    sidepod: {
-        title: 'Sidepod / Soğutma',
-        description: 'Sidepod\'lar, motor ve güç ünitesi soğutma sistemlerini barındırır. Hava girişleri, radyatörler ve soğutma kanalları optimize edilmiş şekilde yerleştirilir. Aerodinamik olarak sidepod tasarımı, hava akışını yönlendirir ve downforce üretimine katkıda bulunur. Termal yönetim, motor performansı ve güvenilirliği için kritik öneme sahiptir.'
-    },
-    engine: {
-        title: 'Güç Ünitesi',
-        description: 'Modern Formula 1 güç ünitesi, 1.6L V6 turbo motor, MGU-K (kinetik enerji geri kazanımı), MGU-H (ısı enerjisi geri kazanımı) ve batarya sisteminden oluşur. Toplam güç yaklaşık 1000 beygir gücüne ulaşır. Hibrit teknoloji, yakıt verimliliğini artırırken performansı optimize eder. Motor haritası ve enerji yönetimi, pist koşullarına göre ayarlanır.'
-    }
-};
 const PULSE_STYLE_ID = 'hotspot-marker-pulse-style';
 
-function findPartInfo(name = '') {
+// Default fallback data (will be replaced by API data)
+let PART_INFOS = [];
+let HOTSPOT_INFO_BY_KEY = {};
+let TRACK_INFO = {
+    title: 'F1 Tracks',
+    description: 'Discover the world\'s most famous Formula 1 tracks. Learn detailed information about each track\'s unique features and challenges.',
+    buttonText: 'Explore Tracks'
+};
+
+function findPartInfo(name = '', partInfos = PART_INFOS) {
     const lowered = name.toLowerCase();
-    return PART_INFOS.find((part) => part.matchers.some((m) => lowered.includes(m)));
+    return partInfos.find((part) => part.matchers.some((m) => lowered.includes(m)));
 }
 
-function resolveHotspotInfo(name = '') {
+function resolveHotspotInfo(name = '', hotspotInfoByKey = HOTSPOT_INFO_BY_KEY, partInfos = PART_INFOS) {
     const lowered = name.toLowerCase();
     // HOTSPOT_KEYS'deki her bir key için kontrol et
     for (const key of HOTSPOT_KEYS) {
         if (lowered.includes(key.toLowerCase())) {
-            return HOTSPOT_INFO_BY_KEY[key];
+            return hotspotInfoByKey[key];
         }
     }
-    return findPartInfo(name);
+    return findPartInfo(name, partInfos);
 }
 
 function isHotspotName(name = '') {
@@ -283,6 +223,7 @@ function LoadedModel({ config, index, total, activeIndex, onPartSelect, onHotspo
     const wheelsRef = useRef([]);
     const shadowCatcherRef = useRef();
     const hotspotNodesRef = useRef([]);
+    const hasInitialAnimationRef = useRef(false);
     const isActive = index === activeIndex;
     const gltf = useGLTF(config.path);
     const clonedScene = useMemo(() => gltf.scene.clone(true), [gltf.scene]);
@@ -342,7 +283,16 @@ function LoadedModel({ config, index, total, activeIndex, onPartSelect, onHotspo
         const scale = config.scale ?? autoScale;
         group.current.scale.setScalar(scale);
         // Aktif araç merkezde (0,0,0), diğerleri geride
-        group.current.position.set(0, -box.min.y * scale, isActive ? 0 : -2);
+        const finalY = -box.min.y * scale;
+        const finalZ = isActive ? 0 : -2;
+        
+        // İlk yüklemede animasyon için başlangıç pozisyonunu sola kaydır
+        if (isActive && !hasInitialAnimationRef.current) {
+            group.current.position.set(-25, finalY, finalZ); // Soldan başla (daha geriden)
+        } else {
+            group.current.position.set(0, finalY, finalZ);
+        }
+        
         group.current.rotation.y = THREE.MathUtils.degToRad(config.rotationY ?? 90);
     }, [clonedScene, config.length, config.rotationY, config.scale, isActive]);
 
@@ -453,6 +403,49 @@ function LoadedModel({ config, index, total, activeIndex, onPartSelect, onHotspo
         lastPositionRef.current.copy(currentPos);
     });
 
+    // İlk yükleme animasyonu - model soldan ekrana girer
+    useEffect(() => {
+        if (!group.current || !isActive) return;
+        
+        // Model yüklendikten sonra bir sonraki frame'de kontrol et
+        const rafId = requestAnimationFrame(() => {
+            if (!group.current) return;
+            
+            // İlk yüklemede soldan gelme animasyonu (sadece bir kez)
+            const currentX = group.current.position.x;
+            if (!hasInitialAnimationRef.current && currentX < -15) {
+                hasInitialAnimationRef.current = true;
+                // Kısa bir delay ile animasyonu başlat
+                setTimeout(() => {
+                    if (group.current && group.current.position.x < -15) {
+                        const startX = group.current.position.x;
+                        const distance = Math.abs(startX); // -25'ten 0'a gidiyor, mesafe 25
+                        
+                        // Model animasyonu
+                        gsap.to(group.current.position, {
+                            duration: 1.5,
+                            x: 0,
+                            ease: 'power3.out'
+                        });
+                        
+                        // Tekerlekleri döndür (model sağa gidiyor, tekerlekler pozitif yönde dönmeli)
+                        // Mesafeye göre dönme miktarı: her 0.6 birim için Math.PI * 0.5
+                        const rotationAmount = (distance / 0.6) * Math.PI * 0.5;
+                        wheelsRef.current.forEach((wheel) => {
+                            gsap.to(wheel.rotation, {
+                                duration: 1.5,
+                                x: wheel.rotation.x + rotationAmount,
+                                ease: 'power3.out'
+                            });
+                        });
+                    }
+                }, 300);
+            }
+        });
+        
+        return () => cancelAnimationFrame(rafId);
+    }, [isActive, clonedScene]);
+
     useEffect(() => {
         if (!group.current) return;
         // Sadece Z pozisyonunu güncelle (aktif/aktif değil)
@@ -471,7 +464,7 @@ function LoadedModel({ config, index, total, activeIndex, onPartSelect, onHotspo
             if (isZoomed) return;
             event.preventDefault();
             const direction = event.deltaY > 0 ? 1 : -1;
-            const moveAmount = direction * 0.6;
+            const moveAmount = direction * 3; // Hızı 2 katına çıkardık (0.6 -> 1.2)
             const forward = new THREE.Vector3(0, 0, -1)
                 .applyQuaternion(group.current.quaternion)
                 .setY(0)
@@ -479,15 +472,15 @@ function LoadedModel({ config, index, total, activeIndex, onPartSelect, onHotspo
             const targetX = group.current.position.x + forward.x * moveAmount;
             const targetZ = group.current.position.z + forward.z * moveAmount;
             gsap.to(group.current.position, {
-                duration: 0.5,
+                duration: 0.3, // Animasyon süresini kısalttık (0.5 -> 0.3)
                 x: targetX,
                 z: targetZ,
                 ease: 'power2.out'
             });
             wheelsRef.current.forEach((wheel) => {
                 gsap.to(wheel.rotation, {
-                    duration: 0.5,
-                    x: wheel.rotation.x - direction * Math.PI * 0.5,
+                    duration: 0.3, // Tekerlek animasyon süresini de kısalttık
+                    x: wheel.rotation.x - direction * Math.PI * 1.0, // Tekerlek dönme miktarını artırdık (0.5 -> 1.0)
                     ease: 'power2.out'
                 });
             });
@@ -578,10 +571,10 @@ function ShadowLight() {
             light.shadow.camera.bottom = -300;
             light.shadow.camera.near = 0.1;
             light.shadow.camera.far = 500;
-            light.shadow.bias = -0.0005; // Titremeyi önlemek için artırıldı
-            light.shadow.normalBias = 0.02; // Normal bias eklendi
+            light.shadow.bias = -0.0005; // Titremeyi önlemek için
+            light.shadow.normalBias = 0.02; // Normal bias
             light.shadow.radius = 2; // Blur azaltıldı (daha keskin gölge)
-            light.shadow.mapSize.width = 4096; // Shadow map resolution artırıldı
+            light.shadow.mapSize.width = 4096; // Shadow map resolution
             light.shadow.mapSize.height = 4096;
             light.shadow.camera.updateProjectionMatrix();
         }
@@ -608,9 +601,33 @@ function ModelScene({ models, activeIndex }) {
     const [showMarkers, setShowMarkers] = useState(false);
     const [showInfoBox, setShowInfoBox] = useState(false);
     const [showTrackInfo, setShowTrackInfo] = useState(false);
+    const [modelInfoData, setModelInfoData] = useState(null);
     const hoverTimeoutsRef = useRef({});
     const isOverMarkerRef = useRef(false);
     const markerVisibilityTimeoutRef = useRef(null);
+
+    // API'den model bilgilerini çek
+    useEffect(() => {
+        const fetchModelInfo = async () => {
+            try {
+                const response = await fetch('http://localhost:5000/api/model-info');
+                if (response.ok) {
+                    const data = await response.json();
+                    setModelInfoData(data);
+                    // Global değişkenleri güncelle
+                    PART_INFOS = data.partInfos || [];
+                    HOTSPOT_INFO_BY_KEY = data.hotspotInfoByKey || {};
+                    TRACK_INFO = data.trackInfo || TRACK_INFO;
+                } else {
+                    console.error('Model info API error:', response.status);
+                }
+            } catch (error) {
+                console.error('Model info fetch error:', error);
+            }
+        };
+        
+        fetchModelInfo();
+    }, []);
     const clearSelection = (e) => {
         if (e) {
             e.stopPropagation();
@@ -987,7 +1004,7 @@ function ModelScene({ models, activeIndex }) {
                                 }}
                                 className="track-marker-tooltip"
                             >
-                                F1 Pistleri
+                                {TRACK_INFO.title}
                             </div>
                         </div>
                     </Html>
@@ -1072,7 +1089,7 @@ function ModelScene({ models, activeIndex }) {
                                 e.target.style.borderColor = 'rgba(255,70,70,0.5)';
                             }}
                         >
-                            Daha Fazla Bilgi →
+                            Learn More →
                         </button>
                     </Html>
                 )}
@@ -1102,7 +1119,9 @@ function ModelScene({ models, activeIndex }) {
                         }}
                     >
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
-                            <div style={{ fontWeight: 700, fontSize: 16, wordWrap: 'break-word', overflowWrap: 'break-word' }}>F1 Pistleri</div>
+                            <div style={{ fontWeight: 700, fontSize: 16, wordWrap: 'break-word', overflowWrap: 'break-word' }}>
+                                {modelInfoData?.trackInfo?.title || TRACK_INFO.title}
+                            </div>
                             <button
                                 type="button"
                                 onClick={(e) => {
@@ -1130,7 +1149,7 @@ function ModelScene({ models, activeIndex }) {
                             </button>
                         </div>
                         <div style={{ fontSize: 13, lineHeight: 1.6, marginTop: 8, wordWrap: 'break-word', overflowWrap: 'break-word' }}>
-                            Formula 1 dünyasının en ünlü pistlerini keşfedin. Her pistin benzersiz özellikleri ve zorlukları hakkında detaylı bilgi edinin.
+                            {modelInfoData?.trackInfo?.description || TRACK_INFO.description}
                         </div>
                         <button
                             type="button"
@@ -1161,13 +1180,21 @@ function ModelScene({ models, activeIndex }) {
                                 e.target.style.borderColor = 'rgba(255,70,70,0.5)';
                             }}
                         >
-                            Daha Fazla Bilgi →
+                            {modelInfoData?.trackInfo?.buttonText || TRACK_INFO.buttonText} →
                         </button>
                     </Html>
                 )}
                 <Environment files="/assets/map.hdr" background />
                 <ShadowCatcher />
-                <ContactShadows position={[0, -0.001, 0]} blur={3} opacity={0.45} width={80} height={80} />
+                <ContactShadows 
+                    position={[0, -0.001, 0]} 
+                    blur={2} 
+                    opacity={0.4} 
+                    width={80} 
+                    height={80}
+                    far={10}
+                    near={0.1}
+                />
             </Suspense>
             <CameraInitializer 
                 focusPoint={ENABLE_ZOOM_ON_SELECT ? selectedPart?.position : null} 

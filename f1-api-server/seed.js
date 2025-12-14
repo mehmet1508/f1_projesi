@@ -13,6 +13,7 @@ const CriticalSituation = require('./models/CriticalSituations');
 const Circuit = require('./models/Circuit');
 const DriverPoints=require('./models/DriverPoints');
 const TeamPoitns=require('./models/TeamPoints');
+const ModelInfo = require('./models/ModelInfo');
 
 const MONGO_URI = "mongodb://localhost:27017/f1_db";
 
@@ -34,6 +35,7 @@ const importData = async () => {
         await CriticalSituation.deleteMany();
         await DriverPoints.deleteMany();
         await TeamPoitns.deleteMany();
+        await ModelInfo.deleteMany();
 
         // JSON DOSYALARINI OKU
         const legendsData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/legends.json'), 'utf-8'));
@@ -46,6 +48,7 @@ const importData = async () => {
         const driverPointsData =JSON.parse(fs.readFileSync(path.join(__dirname, 'data/driverPoints.json'),'utf-8'));
         const teamPointsData=JSON.parse(fs.readFileSync(path.join(__dirname,'data/teamPoints.json'),'utf-8'));
 
+        const modelInfoData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/model-info.json'), 'utf-8'));
 
         // YENİ: TAKVİM DOSYASI OKU (FastF1 script ile ürettik)
         const calendarData = JSON.parse(
@@ -64,6 +67,9 @@ const importData = async () => {
         await DriverPoints.insertMany(driverPointsData);
         await TeamPoitns.insertMany(teamPointsData);
 
+        
+        // ModelInfo tek bir doküman olarak saklanır
+        await ModelInfo.create(modelInfoData);
 
         console.log('TÜM VERİLER BAŞARILI ŞEKİLDE MONGODB\'YE AKTARILDI!');
 
