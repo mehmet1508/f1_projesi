@@ -1,0 +1,370 @@
+[
+  {
+    "startYear": 1950,
+    "endYear": 1959,
+    "title": "The Beginning",
+    "description": "The first years of F1 World Championship",
+    "champions": ["Nino Farina", "Juan Manuel Fangio", "Alberto Ascari", "Mike Hawthorn", "Jack Brabham"],
+    "highlights": [
+      "The first F1 World Championship started at Silverstone in 1950",
+      "Juan Manuel Fangio won 5 championships",
+      "Alfa Romeo, Ferrari and Mercedes dominance",
+      "Front-engined, frame chassis cars",
+      "Drivers' courage and skill were at the forefront"
+    ],
+    "technology": "Front-engined, frame chassis cars. Engines in the 1.5-2.5 liter range, naturally aspirated. Tires were narrow and high-profile.",
+    "iconicMoments": [
+      "1950 Silverstone Grand Prix - The first race in F1 history",
+      "1951 German Grand Prix - Fangio's legendary Nürburgring victory",
+      "1955 Le Mans disaster - Mercedes' withdrawal from F1",
+      "1957 German Grand Prix - Fangio's last championship and legendary performance"
+    ],
+    "dominantTeams": ["Alfa Romeo", "Ferrari", "Mercedes-Benz", "Maserati"],
+    "keyDrivers": [
+      { "name": "Juan Manuel Fangio", "achievements": "5 World Championships, won 24 races" },
+      { "name": "Alberto Ascari", "achievements": "2 World Championships, legendary period with Ferrari" },
+      { "name": "Nino Farina", "achievements": "First F1 World Champion (1950)" }
+    ],
+    "technicalInnovations": [
+      "Frame chassis structure",
+      "Front-engined layout",
+      "Drum brakes",
+      "Manual gearbox",
+      "High-profile tires"
+    ],
+    "safety": "Safety measures were minimal. Drivers used helmets and leather suits. There were no safety barriers.",
+    "racesPerSeason": "7-9 races",
+    "engineSpecs": "1.5-2.5 liter, naturally aspirated, 150-300 HP",
+    "interestingFacts": [
+      "Only 21 drivers in the first race",
+      "Fangio won championships with 4 different teams",
+      "Races in the 1950s usually lasted more than 3 hours",
+      "Drivers could also be car owners and mechanics"
+    ]
+  },
+  {
+    "startYear": 1960,
+    "endYear": 1969,
+    "title": "Golden Age",
+    "description": "Classic F1 era",
+    "champions": ["Jack Brabham", "Phil Hill", "Graham Hill", "Jim Clark", "John Surtees", "Denis Hulme", "Jackie Stewart"],
+    "highlights": [
+      "Revolution of rear-engined cars",
+      "Lotus innovations under Colin Chapman's leadership",
+      "Jim Clark's legendary performances",
+      "Safety measures began to increase",
+      "Golden age of classic tracks like Monaco, Monza and Silverstone"
+    ],
+    "technology": "Spread of rear-engined design. Engines 1.5-3.0 liter. Increasing use of fiberglass and aluminum.",
+    "iconicMoments": [
+      "1968 Lotus 49 - First sponsored car (Gold Leaf)",
+      "1963 Belgian Grand Prix - Race won by Jim Clark with a 4.5 minute lead",
+      "1965 Italian Grand Prix - Graham Hill's legendary Monza victory",
+      "1969 Monaco Grand Prix - Graham Hill's 5th Monaco victory"
+    ],
+    "dominantTeams": ["Lotus", "Ferrari", "BRM", "Brabham", "Cooper"],
+    "keyDrivers": [
+      { "name": "Jim Clark", "achievements": "2 World Championships, won 25 races, Lotus legend" },
+      { "name": "Graham Hill", "achievements": "2 World Championships, King of Monaco" },
+      { "name": "Jackie Stewart", "achievements": "3 World Championships, safety advocate" }
+    ],
+    "technicalInnovations": [
+      "Rear-engined layout",
+      "Monocoque chassis",
+      "Aerodynamic wings",
+      "Disc brakes",
+      "Sponsorship deals"
+    ],
+    "safety": "Safety measures began to develop. Jackie Stewart became a pioneer of safety reforms. Safety barriers and helmet standards were improved.",
+    "racesPerSeason": "9-11 races",
+    "engineSpecs": "1.5-3.0 liter, naturally aspirated, 200-450 HP",
+    "interestingFacts": [
+      "First sponsored car in 1968 (Lotus-Gold Leaf)",
+      "Jim Clark won 7 races in 1963",
+      "Graham Hill earned the title \"King of Monaco\"",
+      "Colin Chapman's \"Add lightness\" philosophy changed F1"
+    ]
+  },
+  {
+    "startYear": 1970,
+    "endYear": 1979,
+    "title": "Wings & Ground Effect",
+    "description": "Aerodynamic revolution",
+    "champions": ["Jochen Rindt", "Jackie Stewart", "Emerson Fittipaldi", "Niki Lauda", "James Hunt", "Mario Andretti"],
+    "highlights": [
+      "Birth of Ground Effect technology",
+      "Revolutionary designs of Lotus 78 and 79",
+      "Niki Lauda's Nürburgring crash and return",
+      "James Hunt vs Niki Lauda rivalry",
+      "Spread of aerodynamic wings"
+    ],
+    "technology": "Increased downforce with Ground Effect. Venturi tunnels and side pods. 3.0 liter naturally aspirated V8 engines.",
+    "iconicMoments": [
+      "1976 Japanese Grand Prix - Lauda's withdrawal from rainy race and Hunt's championship",
+      "1976 German Grand Prix - Niki Lauda's terrible crash at Nürburgring",
+      "1978 Italian Grand Prix - Mario Andretti's championship with Lotus",
+      "1979 French Grand Prix - Legendary passing battle between Arnoux and Villeneuve"
+    ],
+    "dominantTeams": ["Lotus", "Ferrari", "McLaren", "Tyrrell", "Brabham"],
+    "keyDrivers": [
+      { "name": "Niki Lauda", "achievements": "3 World Championships, return after Nürburgring crash" },
+      { "name": "James Hunt", "achievements": "1 World Championship, legendary rivalry with Lauda" },
+      { "name": "Mario Andretti", "achievements": "1 World Championship, with Lotus 79" }
+    ],
+    "technicalInnovations": [
+      "Ground Effect aerodynamics",
+      "Venturi tunnels",
+      "Side pods",
+      "6-speed gearbox",
+      "Radial tires"
+    ],
+    "safety": "Safety measures were significantly improved. After the Nürburgring crash, safety standards were reviewed. Driver safety equipment was developed.",
+    "racesPerSeason": "13-15 races",
+    "engineSpecs": "3.0 liter V8, naturally aspirated, 450-500 HP",
+    "interestingFacts": [
+      "Lotus 79 revolutionized with Ground Effect",
+      "Niki Lauda returned to racing 6 weeks after the crash",
+      "1976 season was one of the most dramatic seasons in F1 history",
+      "Ground Effect cars were very fast but dangerous"
+    ]
+  },
+  {
+    "startYear": 1980,
+    "endYear": 1989,
+    "title": "Turbo Era",
+    "description": "Powerful turbo engines",
+    "champions": ["Alan Jones", "Nelson Piquet", "Keke Rosberg", "Alain Prost", "Ayrton Senna", "Nigel Mansell"],
+    "highlights": [
+      "Peak of turbo engines - 1000+ horsepower",
+      "Ayrton Senna vs Alain Prost legendary rivalry",
+      "McLaren dominance",
+      "Beginning of electronic aids",
+      "Increase in safety measures"
+    ],
+    "technology": "1.5 liter turbo V6 engines, 1000+ HP power. Active suspension systems. Carbon fiber chassis becoming widespread.",
+    "iconicMoments": [
+      "1988 McLaren MP4/4 - Won 15 out of 16 races with Senna and Prost",
+      "1989 Japanese Grand Prix - Collision between Senna and Prost and championship",
+      "1986 Australian Grand Prix - Mansell's tire blowout and losing the championship",
+      "1982 Monaco Grand Prix - Riccardo Patrese's first victory and legendary finish"
+    ],
+    "dominantTeams": ["McLaren", "Williams", "Ferrari", "Lotus", "Benetton"],
+    "keyDrivers": [
+      { "name": "Ayrton Senna", "achievements": "3 World Championships, won 41 races, legendary driver" },
+      { "name": "Alain Prost", "achievements": "4 World Championships, nickname \"The Professor\"" },
+      { "name": "Nigel Mansell", "achievements": "1 World Championship, with Williams" }
+    ],
+    "technicalInnovations": [
+      "Turbocharged engines",
+      "Carbon fiber monocoque",
+      "Active suspension",
+      "Semi-automatic gearbox",
+      "Electronic control systems"
+    ],
+    "safety": "Safety measures were continuously improved. Carbon fiber chassis increased safety. Driver safety cell was developed.",
+    "racesPerSeason": "14-16 races",
+    "engineSpecs": "1.5 liter turbo V6, 1000+ HP (qualifying), 650-800 HP (race)",
+    "interestingFacts": [
+      "Turbo engines could produce 1000+ HP in qualifying",
+      "Rivalry between Senna and Prost is the most famous in F1 history",
+      "1988 McLaren MP4/4 is one of the most successful F1 cars",
+      "Turbo engines were banned in 1989"
+    ]
+  },
+  {
+    "startYear": 1990,
+    "endYear": 1999,
+    "title": "Electronic Revolution",
+    "description": "Electronic aids era",
+    "champions": ["Ayrton Senna", "Nigel Mansell", "Alain Prost", "Michael Schumacher", "Damon Hill", "Jacques Villeneuve", "Mika Häkkinen"],
+    "highlights": [
+      "ABS, Traction Control, Launch Control systems",
+      "Michael Schumacher's entry into F1",
+      "Ayrton Senna's tragic death (1994)",
+      "Williams and Benetton dominance",
+      "Banning of electronic aids (1994)"
+    ],
+    "technology": "3.5 liter naturally aspirated V10 engines. Traction Control, ABS, Launch Control. Carbon fiber monocoque chassis standard.",
+    "iconicMoments": [
+      "1994 San Marino Grand Prix - Senna's death and safety revolution",
+      "1993 European Grand Prix - Senna's legendary performance in the rain",
+      "1998 Belgian Grand Prix - Collision between Schumacher and Coulthard",
+      "1999 British Grand Prix - Schumacher finishing the race with a broken leg"
+    ],
+    "dominantTeams": ["Williams", "Benetton", "Ferrari", "McLaren"],
+    "keyDrivers": [
+      { "name": "Michael Schumacher", "achievements": "2 World Championships (1994-1995), entry into F1" },
+      { "name": "Ayrton Senna", "achievements": "3 World Championships, tragic death in 1994" },
+      { "name": "Mika Häkkinen", "achievements": "2 World Championships, with McLaren" }
+    ],
+    "technicalInnovations": [
+      "Electronic aids (Traction Control, ABS)",
+      "V10 engines",
+      "Carbon fiber chassis",
+      "Refueling strategies",
+      "Aerodynamic developments"
+    ],
+    "safety": "After the tragic crashes in 1994, a safety revolution began. Chicanes, safety barriers and driver safety equipment were improved. FIA tightened safety standards.",
+    "racesPerSeason": "16 races",
+    "engineSpecs": "3.5 liter V10, naturally aspirated, 700-800 HP",
+    "interestingFacts": [
+      "Electronic aids were banned in 1994",
+      "Senna's death started the safety revolution in F1",
+      "Schumacher's F1 career began in this period",
+      "Williams FW14B and FW15C were the most advanced cars"
+    ]
+  },
+  {
+    "startYear": 2000,
+    "endYear": 2009,
+    "title": "Schumacher Era",
+    "description": "Ferrari dominance",
+    "champions": ["Michael Schumacher", "Fernando Alonso", "Kimi Räikkönen", "Lewis Hamilton"],
+    "highlights": [
+      "Michael Schumacher's 5 consecutive championships",
+      "Ferrari's absolute dominance",
+      "Fernando Alonso's young championship",
+      "Lewis Hamilton's first championship",
+      "Transition to V8 engines (2006)"
+    ],
+    "technology": "3.0 liter V10 (2000-2005), 2.4 liter V8 (2006-2009). KERS system introduced. Aerodynamic complexity increased.",
+    "iconicMoments": [
+      "2004 Ferrari F2004 - Season where Schumacher won 13 races",
+      "2008 Brazilian Grand Prix - Hamilton winning the championship on the last lap",
+      "2005 Suzuka - Kimi Räikkönen passing Alonso on the last lap",
+      "2007 Brazilian Grand Prix - Hamilton coming very close to championship in his first season"
+    ],
+    "dominantTeams": ["Ferrari", "Renault", "McLaren", "BMW Sauber"],
+    "keyDrivers": [
+      { "name": "Michael Schumacher", "achievements": "5 consecutive championships (2000-2004), legendary period with Ferrari" },
+      { "name": "Fernando Alonso", "achievements": "2 World Championships, youngest champion (2005)" },
+      { "name": "Lewis Hamilton", "achievements": "1 World Championship (2008), first season with McLaren" }
+    ],
+    "technicalInnovations": [
+      "Transition to V8 engines (2006)",
+      "KERS system (2009)",
+      "Aerodynamic complexity",
+      "Electronic control systems",
+      "Data analysis and simulation"
+    ],
+    "safety": "Safety standards were continuously improved. HANS device became mandatory. Track safety was increased.",
+    "racesPerSeason": "17-18 races",
+    "engineSpecs": "3.0 liter V10 (2000-2005), 2.4 liter V8 (2006-2009), 750-900 HP",
+    "interestingFacts": [
+      "Schumacher won 13 races in 2004",
+      "Alonso became the youngest champion in 2005",
+      "Hamilton came very close to championship in his first season",
+      "KERS system was introduced in 2009"
+    ]
+  },
+  {
+    "startYear": 2010,
+    "endYear": 2019,
+    "title": "Hybrid Era",
+    "description": "V6 Turbo Hybrid engines",
+    "champions": ["Sebastian Vettel", "Lewis Hamilton", "Nico Rosberg", "Max Verstappen"],
+    "highlights": [
+      "Transition to V6 Turbo Hybrid engines (2014)",
+      "Red Bull's 4 consecutive championships",
+      "Mercedes dominance in the hybrid era",
+      "Introduction of DRS system",
+      "Addition of Halo safety system"
+    ],
+    "technology": "1.6 liter V6 Turbo Hybrid engines. ERS (Energy Recovery System). DRS system. Halo safety system.",
+    "iconicMoments": [
+      {
+        "text": "2014 Mercedes W05 - Beginning of hybrid era and Mercedes dominance",
+        "videoUrl": "https://www.youtube.com/watch?v=example_hybrid1"
+      },
+      {
+        "text": "2016 Abu Dhabi Grand Prix - Rosberg's championship and retirement",
+        "videoUrl": "https://www.youtube.com/watch?v=example_hybrid2"
+      },
+      {
+        "text": "2012 Brazilian Grand Prix - Vettel winning the championship on the last lap",
+        "videoUrl": "https://www.youtube.com/watch?v=98h_qLwMJHg"
+      },
+      {
+        "text": "2018 German Grand Prix - Hamilton's legendary performance in the rain",
+        "videoUrl": "https://www.youtube.com/watch?v=example_hybrid4"
+      }
+    ],
+    "dominantTeams": ["Red Bull", "Mercedes", "Ferrari"],
+    "keyDrivers": [
+      { "name": "Sebastian Vettel", "achievements": "4 World Championships (2010-2013), with Red Bull" },
+      { "name": "Lewis Hamilton", "achievements": "3 World Championships (2014-2015, 2017-2018), with Mercedes" },
+      { "name": "Max Verstappen", "achievements": "Entry into F1, first race wins with Red Bull" }
+    ],
+    "technicalInnovations": [
+      "V6 Turbo Hybrid engines",
+      "ERS (Energy Recovery System)",
+      "DRS system",
+      "Halo safety system",
+      "Advanced aerodynamics"
+    ],
+    "safety": "Halo safety system became mandatory in 2018. Safety standards reached the highest level.",
+    "racesPerSeason": "19-21 races",
+    "engineSpecs": "1.6 liter V6 Turbo Hybrid, 850-1000 HP (including ERS)",
+    "interestingFacts": [
+      "Mercedes established dominance in the hybrid era",
+      "Vettel won 4 consecutive championships with Red Bull",
+      "DRS system made overtaking easier",
+      "Halo system protected drivers"
+    ]
+  },
+  {
+    "startYear": 2020,
+    "endYear": 2024,
+    "title": "New Generation",
+    "description": "Return of ground effect",
+    "champions": ["Lewis Hamilton", "Max Verstappen"],
+    "highlights": [
+      "New technical rules in 2022 and return of Ground Effect",
+      "Max Verstappen's dominance with Red Bull",
+      "Lewis Hamilton approaching 8th championship",
+      "Budget Cap",
+      "Introduction of Sprint races"
+    ],
+    "technology": "Ground Effect aerodynamics returned. 18-inch tires. Sustainable fuels. Budget cap.",
+    "iconicMoments": [
+      {
+        "text": "2021 Abu Dhabi Grand Prix - Verstappen's first championship",
+        "videoUrl": "https://www.youtube.com/watch?v=BPyzqb6vcOg"
+      },
+      {
+        "text": "2021 Silverstone - Collision between Hamilton and Verstappen",
+        "videoUrl": "https://www.youtube.com/watch?v=oIKel6jVD3Q"
+      },
+      {
+        "text": "2022 Brazilian Grand Prix - Legendary battle between Verstappen and Hamilton",
+        "videoUrl": "https://www.youtube.com/watch?v=MTe12fH2xtQ"
+      },
+      {
+        "text": "2023 Monaco Grand Prix - Verstappen's legendary pole position in the rain",
+        "videoUrl": "https://www.youtube.com/watch?v=lZ0bHr8UW7k"
+      }
+    ],
+    "dominantTeams": ["Red Bull", "Mercedes", "Ferrari"],
+    "keyDrivers": [
+      { "name": "Max Verstappen", "achievements": "3 World Championships (2021-2023), dominance with Red Bull" },
+      { "name": "Lewis Hamilton", "achievements": "1 World Championship (2020), approached 8th championship" },
+      { "name": "Charles Leclerc", "achievements": "Race wins with Ferrari" }
+    ],
+    "technicalInnovations": [
+      "Ground Effect aerodynamics (2022)",
+      "18-inch tires",
+      "Sustainable fuels",
+      "Budget cap",
+      "Sprint race format"
+    ],
+    "safety": "Safety standards at the highest level. Halo system standard. Safety research continues.",
+    "racesPerSeason": "17-24 races",
+    "engineSpecs": "1.6 liter V6 Turbo Hybrid, 1000+ HP (including ERS)",
+    "interestingFacts": [
+      "2021 season was one of the most dramatic seasons in F1 history",
+      "Rivalry between Verstappen and Hamilton",
+      "Ground Effect returned in 2022",
+      "Budget cap increased competition between teams"
+    ]
+  }
+]

@@ -1,0 +1,602 @@
+[
+    {
+        "round": 1,
+        "name": "Australian Grand Prix",
+        "trackImage": "/images/tracks/Australia_Circuit.avif",
+        "location": "Melbourne",
+        "country": "Australia",
+        "date": "2025-03-16",
+        "stats": {
+            "last_winner": "Carlos Sainz",
+            "fastest_lap": {
+                "driver": "LEC",
+                "time": "1.19.813",
+                "s1": "28.044",
+                "s2": "17.572",
+                "s3": "34.197"
+            }
+        },
+        "sessions": {
+            "fp1": "2025-03-14 12:30",
+            "fp2": "2025-03-14 16:00",
+            "fp3": "2025-03-15 12:30",
+            "qualifying": "2025-03-15 16:00",
+            "race": "2025-03-16 15:00"
+        }
+    },
+    {
+        "round": 2,
+        "name": "Chinese Grand Prix",
+        "trackImage": "/images/tracks/China_Circuit.avif",
+        "location": "Shanghai",
+        "country": "China",
+        "date": "2025-03-23",
+        "stats": {
+            "last_winner": "Max Verstappen",
+            "fastest_lap": {
+                "driver": "ALO",
+                "time": "1.37.810",
+                "s1": "26.106",
+                "s2": "29.306",
+                "s3": "42.398"
+            }
+        },
+        "sessions": {
+            "fp1": "2025-03-21 11:30",
+            "sprint_quali": "2025-03-21 15:30",
+            "sprint": "2025-03-22 11:00",
+            "qualifying": "2025-03-22 15:00",
+            "race": "2025-03-23 15:00"
+        }
+    },
+    {
+        "round": 3,
+        "name": "Japanese Grand Prix",
+        "trackImage": "/images/tracks/Japan_Circuit.avif",
+        "location": "Suzuka",
+        "country": "Japan",
+        "date": "2025-04-06",
+        "stats": {
+            "last_winner": "Max Verstappen",
+            "fastest_lap": {
+                "driver": "VER",
+                "time": "1.33.706",
+                "s1": "33.404",
+                "s2": "42.141",
+                "s3": "18.161"
+            }
+        },
+        "sessions": {
+            "fp1": "2025-04-04 11:30",
+            "fp2": "2025-04-04 15:00",
+            "fp3": "2025-04-05 11:30",
+            "qualifying": "2025-04-05 15:00",
+            "race": "2025-04-06 14:00"
+        }
+    },
+    {
+        "round": 4,
+        "name": "Bahrain Grand Prix",
+        "trackImage": "/images/tracks/Bahrain_Circuit.avif",
+        "location": "Sakhir",
+        "country": "Bahrain",
+        "date": "2025-04-13",
+        "stats": {
+            "last_winner": "Max Verstappen",
+            "fastest_lap": {
+                "driver": "VER",
+                "time": "1.32.608",
+                "s1": "29.741",
+                "s2": "39.916",
+                "s3": "22.951"
+            }
+        },
+        "sessions": {
+            "fp1": "2025-04-11 14:30",
+            "fp2": "2025-04-11 18:00",
+            "fp3": "2025-04-12 15:30",
+            "qualifying": "2025-04-12 19:00",
+            "race": "2025-04-13 18:00"
+        }
+    },
+    {
+        "round": 5,
+        "name": "Saudi Arabian Grand Prix",
+        "trackImage": "/images/tracks/Saudi_Arabia_Circuit.avif",
+        "location": "Jeddah",
+        "country": "Saudi Arabia",
+        "date": "2025-04-20",
+        "stats": {
+            "last_winner": "Max Verstappen",
+            "fastest_lap": {
+                "driver": "LEC",
+                "time": "1.31.632",
+                "s1": "33.750",
+                "s2": "28.668",
+                "s3": "29.214"
+            }
+        },
+        "sessions": {
+            "fp1": "2025-04-18 16:30",
+            "fp2": "2025-04-18 20:00",
+            "fp3": "2025-04-19 16:30",
+            "qualifying": "2025-04-19 20:00",
+            "race": "2025-04-20 20:00"
+        }
+    },
+    {
+        "round": 6,
+        "name": "Miami Grand Prix",
+        "trackImage": "/images/tracks/Miami_Circuit.avif",
+        "location": "Miami Gardens",
+        "country": "United States",
+        "date": "2025-05-04",
+        "stats": {
+            "last_winner": "Lando Norris",
+            "fastest_lap": {
+                "driver": "PIA",
+                "time": "1.30.634",
+                "s1": "30.384",
+                "s2": "34.629",
+                "s3": "25.621"
+            }
+        },
+        "sessions": {
+            "fp1": "2025-05-02 12:30",
+            "sprint_quali": "2025-05-02 16:30",
+            "sprint": "2025-05-03 12:00",
+            "qualifying": "2025-05-03 16:00",
+            "race": "2025-05-04 16:00"
+        }
+    },
+    {
+        "round": 7,
+        "name": "Emilia Romagna Grand Prix",
+        "trackImage": "/images/tracks/Emilia_Romagna_Circuit.avif",
+        "location": "Imola",
+        "country": "Italy",
+        "date": "2025-05-18",
+        "stats": {
+            "last_winner": "Max Verstappen",
+            "fastest_lap": {
+                "driver": "RUS",
+                "time": "1.18.589",
+                "s1": "25.137",
+                "s2": "27.092",
+                "s3": "26.360"
+            }
+        },
+        "sessions": {
+            "fp1": "2025-05-16 13:30",
+            "fp2": "2025-05-16 17:00",
+            "fp3": "2025-05-17 12:30",
+            "qualifying": "2025-05-17 16:00",
+            "race": "2025-05-18 15:00"
+        }
+    },
+    {
+        "round": 8,
+        "name": "Monaco Grand Prix",
+        "trackImage": "/images/tracks/Monaco_Circuit.avif",
+        "location": "Monaco",
+        "country": "Monaco",
+        "date": "2025-05-25",
+        "stats": {
+            "last_winner": "Charles Leclerc",
+            "fastest_lap": {
+                "driver": "HAM",
+                "time": "1.14.165",
+                "s1": "19.548",
+                "s2": "34.854",
+                "s3": "19.763"
+            }
+        },
+        "sessions": {
+            "fp1": "2025-05-23 13:30",
+            "fp2": "2025-05-23 17:00",
+            "fp3": "2025-05-24 12:30",
+            "qualifying": "2025-05-24 16:00",
+            "race": "2025-05-25 15:00"
+        }
+    },
+    {
+        "round": 9,
+        "name": "Spanish Grand Prix",
+        "trackImage": "/images/tracks/Spain_Circuit.avif",
+        "location": "Barcelona",
+        "country": "Spain",
+        "date": "2025-06-01",
+        "stats": {
+            "last_winner": "Max Verstappen",
+            "fastest_lap": {
+                "driver": "NOR",
+                "time": "1.17.115",
+                "s1": "22.626",
+                "s2": "31.243",
+                "s3": "23.246"
+            }
+        },
+        "sessions": {
+            "fp1": "2025-05-30 13:30",
+            "fp2": "2025-05-30 17:00",
+            "fp3": "2025-05-31 12:30",
+            "qualifying": "2025-05-31 16:00",
+            "race": "2025-06-01 15:00"
+        }
+    },
+    {
+        "round": 10,
+        "name": "Canadian Grand Prix",
+        "trackImage": "/images/tracks/Canada_Circuit.avif",
+        "location": "Montréal",
+        "country": "Canada",
+        "date": "2025-06-15",
+        "stats": {
+            "last_winner": "Max Verstappen",
+            "fastest_lap": {
+                "driver": "HAM",
+                "time": "1.14.856",
+                "s1": "21.217",
+                "s2": "23.745",
+                "s3": "29.894"
+            }
+        },
+        "sessions": {
+            "fp1": "2025-06-13 13:30",
+            "fp2": "2025-06-13 17:00",
+            "fp3": "2025-06-14 12:30",
+            "qualifying": "2025-06-14 16:00",
+            "race": "2025-06-15 14:00"
+        }
+    },
+    {
+        "round": 11,
+        "name": "Austrian Grand Prix",
+        "trackImage": "/images/tracks/Austria_Circuit.avif",
+        "location": "Spielberg",
+        "country": "Austria",
+        "date": "2025-06-29",
+        "stats": {
+            "last_winner": "George Russell",
+            "fastest_lap": {
+                "driver": "ALO",
+                "time": "1.07.694",
+                "s1": "17.196",
+                "s2": "30.127",
+                "s3": "20.371"
+            }
+        },
+        "sessions": {
+            "fp1": "2025-06-27 13:30",
+            "fp2": "2025-06-27 17:00",
+            "fp3": "2025-06-28 12:30",
+            "qualifying": "2025-06-28 16:00",
+            "race": "2025-06-29 15:00"
+        }
+    },
+    {
+        "round": 12,
+        "name": "British Grand Prix",
+        "trackImage": "/images/tracks/Great_Britain_Circuit.avif",
+        "location": "Silverstone",
+        "country": "United Kingdom",
+        "date": "2025-07-06",
+        "stats": {
+            "last_winner": "Lewis Hamilton",
+            "fastest_lap": {
+                "driver": "SAI",
+                "time": "1.28.293",
+                "s1": "28.550",
+                "s2": "35.619",
+                "s3": "24.124"
+            }
+        },
+        "sessions": {
+            "fp1": "2025-07-04 12:30",
+            "fp2": "2025-07-04 16:00",
+            "fp3": "2025-07-05 11:30",
+            "qualifying": "2025-07-05 15:00",
+            "race": "2025-07-06 15:00"
+        }
+    },
+    {
+        "round": 13,
+        "name": "Belgian Grand Prix",
+        "trackImage": "/images/tracks/Belgium_Circuit.avif",
+        "location": "Spa-Francorchamps",
+        "country": "Belgium",
+        "date": "2025-07-27",
+        "stats": {
+            "last_winner": "Lewis Hamilton",
+            "fastest_lap": {
+                "driver": "PER",
+                "time": "1.44.701",
+                "s1": "30.808",
+                "s2": "45.309",
+                "s3": "28.584"
+            }
+        },
+        "sessions": {
+            "fp1": "2025-07-25 12:30",
+            "sprint_quali": "2025-07-25 16:30",
+            "sprint": "2025-07-26 12:00",
+            "qualifying": "2025-07-26 16:00",
+            "race": "2025-07-27 15:00"
+        }
+    },
+    {
+        "round": 14,
+        "name": "Hungarian Grand Prix",
+        "trackImage": "/images/tracks/Hungary_Circuit.avif",
+        "location": "Budapest",
+        "country": "Hungary",
+        "date": "2025-08-03",
+        "stats": {
+            "last_winner": "Oscar Piastri",
+            "fastest_lap": {
+                "driver": "RUS",
+                "time": "1.20.305",
+                "s1": "29.202",
+                "s2": "28.360",
+                "s3": "22.743"
+            }
+        },
+        "sessions": {
+            "fp1": "2025-08-01 13:30",
+            "fp2": "2025-08-01 17:00",
+            "fp3": "2025-08-02 12:30",
+            "qualifying": "2025-08-02 16:00",
+            "race": "2025-08-03 15:00"
+        }
+    },
+    {
+        "round": 15,
+        "name": "Dutch Grand Prix",
+        "trackImage": "/images/tracks/Netherlands_Circuit.avif",
+        "location": "Zandvoort",
+        "country": "Netherlands",
+        "date": "2025-08-31",
+        "stats": {
+            "last_winner": "Lando Norris",
+            "fastest_lap": {
+                "driver": "NOR",
+                "time": "1.13.817",
+                "s1": "24.876",
+                "s2": "26.837",
+                "s3": "22.104"
+            }
+        },
+        "sessions": {
+            "fp1": "2025-08-29 12:30",
+            "fp2": "2025-08-29 16:00",
+            "fp3": "2025-08-30 11:30",
+            "qualifying": "2025-08-30 15:00",
+            "race": "2025-08-31 15:00"
+        }
+    },
+    {
+        "round": 16,
+        "name": "Italian Grand Prix",
+        "trackImage": "/images/tracks/Italy_Circuit.avif",
+        "location": "Monza",
+        "country": "Italy",
+        "date": "2025-09-07",
+        "stats": {
+            "last_winner": "Charles Leclerc",
+            "fastest_lap": {
+                "driver": "NOR",
+                "time": "1.21.432",
+                "s1": "27.136",
+                "s2": "27.492",
+                "s3": "26.804"
+            }
+        },
+        "sessions": {
+            "fp1": "2025-09-05 13:30",
+            "fp2": "2025-09-05 17:00",
+            "fp3": "2025-09-06 12:30",
+            "qualifying": "2025-09-06 16:00",
+            "race": "2025-09-07 15:00"
+        }
+    },
+    {
+        "round": 17,
+        "name": "Azerbaijan Grand Prix",
+        "trackImage": "/images/tracks/Baku_Circuit.avif",
+        "location": "Baku",
+        "country": "Azerbaijan",
+        "date": "2025-09-21",
+        "stats": {
+            "last_winner": "Oscar Piastri",
+            "fastest_lap": {
+                "driver": "NOR",
+                "time": "1.45.255",
+                "s1": "37.555",
+                "s2": "42.537",
+                "s3": "25.163"
+            }
+        },
+        "sessions": {
+            "fp1": "2025-09-19 12:30",
+            "fp2": "2025-09-19 16:00",
+            "fp3": "2025-09-20 12:30",
+            "qualifying": "2025-09-20 16:00",
+            "race": "2025-09-21 15:00"
+        }
+    },
+    {
+        "round": 18,
+        "name": "Singapore Grand Prix",
+        "trackImage": "/images/tracks/Singapore_Circuit.avif",
+        "location": "Marina Bay",
+        "country": "Singapore",
+        "date": "2025-10-05",
+        "stats": {
+            "last_winner": "Lando Norris",
+            "fastest_lap": {
+                "driver": "RIC",
+                "time": "1.34.486",
+                "s1": "28.091",
+                "s2": "39.948",
+                "s3": "26.447"
+            }
+        },
+        "sessions": {
+            "fp1": "2025-10-03 17:30",
+            "fp2": "2025-10-03 21:00",
+            "fp3": "2025-10-04 17:30",
+            "qualifying": "2025-10-04 21:00",
+            "race": "2025-10-05 20:00"
+        }
+    },
+    {
+        "round": 19,
+        "name": "United States Grand Prix",
+        "trackImage": "/images/tracks/USA_Circuit.avif",
+        "location": "Austin",
+        "country": "United States",
+        "date": "2025-10-19",
+        "stats": {
+            "last_winner": "Charles Leclerc",
+            "fastest_lap": {
+                "driver": "OCO",
+                "time": "1.37.330",
+                "s1": "26.416",
+                "s2": "38.907",
+                "s3": "32.007"
+            }
+        },
+        "sessions": {
+            "fp1": "2025-10-17 12:30",
+            "sprint_quali": "2025-10-17 16:30",
+            "sprint": "2025-10-18 12:00",
+            "qualifying": "2025-10-18 16:00",
+            "race": "2025-10-19 14:00"
+        }
+    },
+    {
+        "round": 20,
+        "name": "Mexico City Grand Prix",
+        "trackImage": "/images/tracks/Mexico_Circuit.avif",
+        "location": "Mexico City",
+        "country": "Mexico",
+        "date": "2025-10-26",
+        "stats": {
+            "last_winner": "Carlos Sainz",
+            "fastest_lap": {
+                "driver": "LEC",
+                "time": "1.18.336",
+                "s1": "27.884",
+                "s2": "30.313",
+                "s3": "20.139"
+            }
+        },
+        "sessions": {
+            "fp1": "2025-10-24 12:30",
+            "fp2": "2025-10-24 16:00",
+            "fp3": "2025-10-25 11:30",
+            "qualifying": "2025-10-25 15:00",
+            "race": "2025-10-26 14:00"
+        }
+    },
+    {
+        "round": 21,
+        "name": "São Paulo Grand Prix",
+        "trackImage": "/images/tracks/Brazil_Circuit.avif",
+        "location": "São Paulo",
+        "country": "Brazil",
+        "date": "2025-11-09",
+        "stats": {
+            "last_winner": "Max Verstappen",
+            "fastest_lap": {
+                "driver": "VER",
+                "time": "1.20.472",
+                "s1": "20.546",
+                "s2": "42.236",
+                "s3": "17.690"
+            }
+        },
+        "sessions": {
+            "fp1": "2025-11-07 11:30",
+            "sprint_quali": "2025-11-07 15:30",
+            "sprint": "2025-11-08 11:00",
+            "qualifying": "2025-11-08 15:00",
+            "race": "2025-11-09 14:00"
+        }
+    },
+    {
+        "round": 22,
+        "name": "Las Vegas Grand Prix",
+        "trackImage": "/images/tracks/Las_Vegas_Circuit.avif",
+        "location": "Las Vegas",
+        "country": "United States",
+        "date": "2025-11-22",
+        "stats": {
+            "last_winner": "George Russell",
+            "fastest_lap": {
+                "driver": "NOR",
+                "time": "1.34.876",
+                "s1": "26.777",
+                "s2": "31.506",
+                "s3": "36.089"
+            }
+        },
+        "sessions": {
+            "fp1": "2025-11-20 16:30",
+            "fp2": "2025-11-20 20:00",
+            "fp3": "2025-11-21 16:30",
+            "qualifying": "2025-11-21 20:00",
+            "race": "2025-11-22 20:00"
+        }
+    },
+    {
+        "round": 23,
+        "name": "Qatar Grand Prix",
+        "trackImage": "/images/tracks/Qatar_Circuit.avif",
+        "location": "Lusail",
+        "country": "Qatar",
+        "date": "2025-11-30",
+        "stats": {
+            "last_winner": "Max Verstappen",
+            "fastest_lap": {
+                "driver": "NOR",
+                "time": "1.22.384",
+                "s1": "30.630",
+                "s2": "27.959",
+                "s3": "23.795"
+            }
+        },
+        "sessions": {
+            "fp1": "2025-11-28 16:30",
+            "sprint_quali": "2025-11-28 20:30",
+            "sprint": "2025-11-29 17:00",
+            "qualifying": "2025-11-29 21:00",
+            "race": "2025-11-30 19:00"
+        }
+    },
+    {
+        "round": 24,
+        "name": "Abu Dhabi Grand Prix",
+        "trackImage": "/images/tracks/Abu_Dhabi_Circuit.avif",
+        "location": "Yas Island",
+        "country": "United Arab Emirates",
+        "date": "2025-12-07",
+        "stats": {
+            "last_winner": "Lando Norris",
+            "fastest_lap": {
+                "driver": "MAG",
+                "time": "1.25.637",
+                "s1": "17.257",
+                "s2": "37.109",
+                "s3": "31.271"
+            }
+        },
+        "sessions": {
+            "fp1": "2025-12-05 13:30",
+            "fp2": "2025-12-05 17:00",
+            "fp3": "2025-12-06 14:30",
+            "qualifying": "2025-12-06 18:00",
+            "race": "2025-12-07 17:00"
+        }
+    }
+]
