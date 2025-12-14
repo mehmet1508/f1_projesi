@@ -21,6 +21,7 @@ const Engineer = require('./models/Engineer'); // YENİ
 const Technology = require('./models/Technology'); // YENİ
 const CriticalSituation = require('./models/CriticalSituations'); // YENİ
 const Circuit = require('./models/Circuit'); // YENİ
+const ModelInfo = require('./models/ModelInfo'); // YENİ
 
 
 const app = express();
@@ -233,6 +234,49 @@ app.get('/api/howitworks', (req, res) => {
         }
         res.json(JSON.parse(data));
     });
+});
+
+// History eras endpoint
+app.get('/api/history-eras', (req, res) => {
+    const dataPath = path.join(__dirname, 'data', 'history-eras.json');
+
+    fs.readFile(dataPath, 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ message: 'History eras verisi okunamadı' });
+        }
+        res.json(JSON.parse(data));
+    });
+});
+
+// Homepage content endpoint
+app.get('/api/homepage-content', (req, res) => {
+    const dataPath = path.join(__dirname, 'data', 'homepage-content.json');
+
+    fs.readFile(dataPath, 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ message: 'Homepage content could not be read' });
+        }
+        res.json(JSON.parse(data));
+    });
+});
+
+// Model info endpoint - MongoDB'den çek
+app.get('/api/model-info', async (req, res) => {
+    try {
+        // MongoDB'den model info verisini çek (tek doküman olarak saklanıyor)
+        const modelInfo = await ModelInfo.findOne();
+        
+        if (!modelInfo) {
+            return res.status(404).json({ message: 'Model info not found' });
+        }
+        
+        res.json(modelInfo);
+    } catch (err) {
+        console.error('Model info API error:', err);
+        res.status(500).json({ message: 'Model info could not be read', error: err.message });
+    }
 });
 
 // --- SUNUCUYU BAŞLATMA ---

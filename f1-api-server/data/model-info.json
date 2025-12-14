@@ -1,0 +1,77 @@
+{
+  "partInfos": [
+    {
+      "matchers": ["wheel", "tire", "tekerlek", "wheels"],
+      "title": "Wheel",
+      "description": "Information about tire compound, temperature, and aerodynamic effects."
+    },
+    {
+      "matchers": ["front", "nose", "wing", "front_wings"],
+      "title": "Front Wing",
+      "description": "The front wing directs airflow and generates downforce."
+    },
+    {
+      "matchers": ["rear", "back", "spoiler", "back_wings"],
+      "title": "Rear Wing",
+      "description": "Provides downforce at high speeds for balance, reduced with DRS."
+    },
+    {
+      "matchers": ["cockpit", "halo", "driver", "hola"],
+      "title": "Cockpit",
+      "description": "Driver protection and halo structure meet FIA standards."
+    },
+    {
+      "matchers": ["body", "chassis", "monocoque", "gövde"],
+      "title": "Body / Chassis",
+      "description": "Carbon monocoque structure, safety cell and structural rigidity."
+    },
+    {
+      "matchers": ["engine", "powerunit", "motor"],
+      "title": "Power Unit",
+      "description": "Internal combustion engine, turbo, MGU-K/H and battery pack management."
+    },
+    {
+      "matchers": ["sidepod", "radiator", "soğutma"],
+      "title": "Sidepod / Cooling",
+      "description": "Air intakes, radiator placement and thermal management."
+    },
+    {
+      "matchers": ["floor", "venturi", "taban"],
+      "title": "Floor / Venturi",
+      "description": "Ground effect channels that generate downforce through the floor structure."
+    }
+  ],
+  "hotspotInfoByKey": {
+    "wheels": {
+      "title": "Wheel",
+      "description": "Pirelli tires used in Formula 1 cars are manufactured with different compounds and compounds. Tire temperature, pressure and wear directly affect performance. Aerodynamically, wheels are an important component that directs airflow. Carbon fiber rims provide lightness and durability."
+    },
+    "hola": {
+      "title": "Cockpit",
+      "description": "The cockpit, designed for driver safety, is manufactured in accordance with FIA standards. The Halo system is a critical safety feature that has been mandatory since 2018. Inside the cockpit, driver position, viewing angle and ergonomics are optimized. The safety cell integrated with the monocoque structure protects the driver in collisions."
+    },
+    "back_wings": {
+      "title": "Rear Wing",
+      "description": "The rear wing generates downforce at high speeds and maintains vehicle balance. The DRS (Drag Reduction System) opens on straight sections to reduce drag and increase passing speed. Wing angle and elements can be adjusted according to track conditions. It is constantly developed for aerodynamic efficiency."
+    },
+    "front_wings": {
+      "title": "Front Wing",
+      "description": "The front wing is a critical aerodynamic component that controls airflow and generates downforce. Airflow is optimized with different elements and angles. Wing elements can be adjusted according to track conditions. Front wing design directly affects airflow throughout the vehicle and the performance of other aerodynamic components."
+    },
+    "sidepod": {
+      "title": "Sidepod / Cooling",
+      "description": "Sidepods house the engine and power unit cooling systems. Air intakes, radiators and cooling channels are placed in an optimized manner. Aerodynamically, sidepod design directs airflow and contributes to downforce generation. Thermal management is critical for engine performance and reliability."
+    },
+    "engine": {
+      "title": "Power Unit",
+      "description": "The modern Formula 1 power unit consists of a 1.6L V6 turbo engine, MGU-K (kinetic energy recovery), MGU-H (thermal energy recovery) and battery system. Total power reaches approximately 1000 horsepower. Hybrid technology optimizes performance while increasing fuel efficiency. Engine mapping and energy management are adjusted according to track conditions."
+    }
+  },
+  "trackInfo": {
+    "title": "F1 Tracks",
+    "description": "Discover the world's most famous Formula 1 tracks. Learn detailed information about each track's unique features and challenges.",
+    "buttonText": "Explore Tracks"
+  }
+}
+
+
