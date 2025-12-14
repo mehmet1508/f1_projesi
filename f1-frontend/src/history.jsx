@@ -54,9 +54,13 @@ export default function HistoryPage() {
     // Base eras ile API'den gelen detayları birleştir
     const eras = baseEras.map((baseEra, index) => {
         const details = erasDetails.find(d => d.startYear === baseEra.startYear);
+        // Eğer details bulunamazsa, tüm baseEra'yı details olarak kullan
+        const eraDetails = details || { ...baseEra };
+        // Base era'daki alanları details'ten çıkar (çünkü zaten baseEra'da var)
+        const { startYear, endYear, title, description, ...cleanDetails } = eraDetails;
         return {
             ...baseEra,
-            details: details || {}
+            details: cleanDetails
         };
     });
     
@@ -180,8 +184,12 @@ export default function HistoryPage() {
 
     // Explore butonuna tıklama
     const handleExploreClick = useCallback(() => {
-        setIsExploreOpen(prev => !prev);
-    }, []);
+        setIsExploreOpen(prev => {
+            const newState = !prev;
+            console.log('Explore panel açık:', newState, 'Selected era:', selectedEra?.title, 'Details:', selectedEra?.details);
+            return newState;
+        });
+    }, [selectedEra]);
 
     // Panel backdrop'ına tıklama (panel dışına tıklayınca kapat)
     const handlePanelBackdropClick = useCallback((e) => {
@@ -359,7 +367,7 @@ export default function HistoryPage() {
             </div>
 
             {/* Explore Detay Paneli */}
-            {selectedEra.details && Object.keys(selectedEra.details).length > 0 && (
+            {selectedEra && (
                 <div 
                     className={`era-details-panel ${isExploreOpen ? 'open' : ''}`}
                     onClick={handlePanelBackdropClick}
@@ -380,6 +388,7 @@ export default function HistoryPage() {
                             <span className="era-years">{selectedEra.startYear}-{selectedEra.endYear}</span>
                         </div>
                         
+                        {selectedEra.details && Object.keys(selectedEra.details).length > 0 ? (
                         <div className="era-details-sections">
                             {selectedEra.details.champions && selectedEra.details.champions.length > 0 && (
                                 <div className="details-section">
@@ -475,16 +484,43 @@ export default function HistoryPage() {
                                 <div className="details-section full-width">
                                     <h3>Iconic Moments</h3>
                                     <div className="iconic-moments-list">
-                                        {selectedEra.details.iconicMoments.map((moment, idx) => (
-                                            <div key={idx} className="iconic-moment-item">
-                                                <span className="moment-number">{idx + 1}</span>
-                                                <p className="iconic-moment">{moment}</p>
-                                            </div>
-                                        ))}
+                                        {selectedEra.details.iconicMoments.map((moment, idx) => {
+                                            // Hem string hem de obje formatını destekle
+                                            const momentText = typeof moment === 'string' ? moment : moment.text || moment;
+                                            const videoUrl = typeof moment === 'object' ? moment.videoUrl : null;
+                                            
+                                            return (
+                                                <div key={idx} className="iconic-moment-item">
+                                                    <span className="moment-number">{idx + 1}</span>
+                                                    {videoUrl ? (
+                                                        <a 
+                                                            href={videoUrl} 
+                                                            target="_blank" 
+                                                            rel="noopener noreferrer"
+                                                            className="iconic-moment-link"
+                                                        >
+                                                            <p className="iconic-moment">{momentText}</p>
+                                                            <span className="video-icon">▶</span>
+                                                        </a>
+                                                    ) : (
+                                                        <p className="iconic-moment">{momentText}</p>
+                                                    )}
+                                                </div>
+                                            );
+                                        })}
                                     </div>
                                 </div>
                             )}
                         </div>
+                        ) : (
+                            <div className="era-details-sections">
+                                <div className="details-section">
+                                    <p style={{ color: 'rgba(255, 255, 255, 0.6)', textAlign: 'center', padding: '40px' }}>
+                                        Detaylar yükleniyor...
+                                    </p>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
             )}

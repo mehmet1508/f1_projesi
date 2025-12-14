@@ -16,9 +16,9 @@ const navItems = [
     { text: 'Teams', slug: 'teams' },
     { text: 'Tracks', slug: 'tracks' },
     { text: 'Records Book', slug: 'records' },
-    { text: 'How ıt works', slug: 'how-it-works' },
-    { text: 'Hıstory', slug: 'history' },
-    { text: 'Breakıng News', slug: 'breaking-news' }
+    { text: 'How it works', slug: 'how-it-works' },
+    { text: 'History', slug: 'history' },
+    { text: 'Breaking News', slug: 'breaking-news' }
 ];
 
 const slugToPath = (slug) => (slug === 'main' ? '/' : `/${slug}`);
@@ -75,13 +75,25 @@ function App() {
     return (
         <div className="layout">
             <motion.aside
-                className={`sidebar ${sidebarOpen ? '' : 'collapsed'}`}
+                className={`sidebar ${sidebarOpen ? '' : 'collapsed'} ${normalizedPath === '/' ? 'sidebar--overlay' : ''}`}
                 id="sidebar"
                 initial={false}
                 animate={{ width: sidebarOpen ? 280 : 0 }}
                 transition={{ duration: 0.35, ease: 'easeInOut' }}
             >
-                <div className="sidebar-content">
+                <motion.div 
+                    className="sidebar-content"
+                    initial={false}
+                    animate={{ 
+                        opacity: sidebarOpen ? 1 : 0,
+                        pointerEvents: sidebarOpen ? 'auto' : 'none'
+                    }}
+                    transition={{ 
+                        duration: 0.2, 
+                        delay: sidebarOpen ? 0.35 : 0,
+                        ease: 'easeOut' 
+                    }}
+                >
                     {navItems.map((item, index) => (
                         <motion.button
                             key={item.slug}
@@ -90,10 +102,10 @@ function App() {
                             whileHover={{ scale: 1.02 }}
                             onClick={() => handleNavClick(item.slug)}
                         >
-                            {item.text}
+                            {item.text.toUpperCase()}
                         </motion.button>
                     ))}
-                </div>
+                </motion.div>
             </motion.aside>
 
             <main

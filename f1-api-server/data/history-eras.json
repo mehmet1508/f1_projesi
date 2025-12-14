@@ -272,10 +272,22 @@
     ],
     "technology": "1.6 liter V6 Turbo Hybrid engines. ERS (Energy Recovery System). DRS system. Halo safety system.",
     "iconicMoments": [
-      "2014 Mercedes W05 - Beginning of hybrid era and Mercedes dominance",
-      "2016 Abu Dhabi Grand Prix - Rosberg's championship and retirement",
-      "2012 Brazilian Grand Prix - Vettel winning the championship on the last lap",
-      "2018 German Grand Prix - Hamilton's legendary performance in the rain"
+      {
+        "text": "2014 Mercedes W05 - Beginning of hybrid era and Mercedes dominance",
+        "videoUrl": "https://www.youtube.com/watch?v=example_hybrid1"
+      },
+      {
+        "text": "2016 Abu Dhabi Grand Prix - Rosberg's championship and retirement",
+        "videoUrl": "https://www.youtube.com/watch?v=example_hybrid2"
+      },
+      {
+        "text": "2012 Brazilian Grand Prix - Vettel winning the championship on the last lap",
+        "videoUrl": "https://www.youtube.com/watch?v=98h_qLwMJHg"
+      },
+      {
+        "text": "2018 German Grand Prix - Hamilton's legendary performance in the rain",
+        "videoUrl": "https://www.youtube.com/watch?v=example_hybrid4"
+      }
     ],
     "dominantTeams": ["Red Bull", "Mercedes", "Ferrari"],
     "keyDrivers": [
@@ -315,10 +327,22 @@
     ],
     "technology": "Ground Effect aerodynamics returned. 18-inch tires. Sustainable fuels. Budget cap.",
     "iconicMoments": [
-      "2021 Abu Dhabi Grand Prix - Verstappen's first championship",
-      "2021 Silverstone - Collision between Hamilton and Verstappen",
-      "2022 Brazilian Grand Prix - Legendary battle between Verstappen and Hamilton",
-      "2023 Monaco Grand Prix - Verstappen's legendary pole position in the rain"
+      {
+        "text": "2021 Abu Dhabi Grand Prix - Verstappen's first championship",
+        "videoUrl": "https://www.youtube.com/watch?v=BPyzqb6vcOg"
+      },
+      {
+        "text": "2021 Silverstone - Collision between Hamilton and Verstappen",
+        "videoUrl": "https://www.youtube.com/watch?v=oIKel6jVD3Q"
+      },
+      {
+        "text": "2022 Brazilian Grand Prix - Legendary battle between Verstappen and Hamilton",
+        "videoUrl": "https://www.youtube.com/watch?v=MTe12fH2xtQ"
+      },
+      {
+        "text": "2023 Monaco Grand Prix - Verstappen's legendary pole position in the rain",
+        "videoUrl": "https://www.youtube.com/watch?v=lZ0bHr8UW7k"
+      }
     ],
     "dominantTeams": ["Red Bull", "Mercedes", "Ferrari"],
     "keyDrivers": [

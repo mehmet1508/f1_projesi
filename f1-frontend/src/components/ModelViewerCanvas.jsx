@@ -288,7 +288,7 @@ function LoadedModel({ config, index, total, activeIndex, onPartSelect, onHotspo
         
         // İlk yüklemede animasyon için başlangıç pozisyonunu sola kaydır
         if (isActive && !hasInitialAnimationRef.current) {
-            group.current.position.set(-25, finalY, finalZ); // Soldan başla (daha geriden)
+            group.current.position.set(-35, finalY, finalZ); // Soldan başla (daha geriden)
         } else {
             group.current.position.set(0, finalY, finalZ);
         }
@@ -354,7 +354,7 @@ function LoadedModel({ config, index, total, activeIndex, onPartSelect, onHotspo
                 const center = new THREE.Vector3();
                 box.getCenter(center);
                 // Hotspot pozisyonunu biraz daha aşağıya kaydır
-                center.y -= 0.25;
+                center.y -= 0.1;
                 return center;
             });
             const infos = hotspotNodesRef.current.map((node) => {
@@ -602,6 +602,7 @@ function ModelScene({ models, activeIndex }) {
     const [showInfoBox, setShowInfoBox] = useState(false);
     const [showTrackInfo, setShowTrackInfo] = useState(false);
     const [modelInfoData, setModelInfoData] = useState(null);
+    const [hdrLoaded, setHdrLoaded] = useState(false);
     const hoverTimeoutsRef = useRef({});
     const isOverMarkerRef = useRef(false);
     const markerVisibilityTimeoutRef = useRef(null);
@@ -743,6 +744,8 @@ function ModelScene({ models, activeIndex }) {
             shadows
             camera={{ position: [0, 3.6, 9.5], fov: 60 }}
             dpr={Math.min(devicePixelRatio, 2)}
+            gl={{ preserveDrawingBuffer: true, alpha: false }}
+            style={{ background: '#0b0b0e' }}
             onPointerMissed={() => {
                 clearSelection();
                 setHoveredHotspotIndex(null);
@@ -750,7 +753,7 @@ function ModelScene({ models, activeIndex }) {
                 setShowMarkers(false);
             }}
         >
-            <color attach="background" args={['#0b0b0e']} />
+            {!hdrLoaded && <color attach="background" args={['#0b0b0e']} />}
             <ambientLight intensity={0.7} />
             <ShadowLight />
             <directionalLight position={[-10, 5, 5]} intensity={0.6} />
@@ -1184,7 +1187,11 @@ function ModelScene({ models, activeIndex }) {
                         </button>
                     </Html>
                 )}
-                <Environment files="/assets/map.hdr" background />
+                <Environment 
+                    files="/assets/map.hdr" 
+                    background 
+                    onLoad={() => setHdrLoaded(true)}
+                />
                 <ShadowCatcher />
                 <ContactShadows 
                     position={[0, -0.001, 0]} 
