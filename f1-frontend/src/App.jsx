@@ -85,14 +85,14 @@ function App() {
             >
                 <motion.div 
                     className="sidebar-content"
-                    initial={false}
+                    initial={{ opacity: 0 }}
                     animate={{ 
                         opacity: sidebarOpen ? 1 : 0,
                         pointerEvents: sidebarOpen ? 'auto' : 'none'
                     }}
                     transition={{ 
-                        duration: 0.2, 
-                        delay: sidebarOpen ? 0.35 : 0,
+                        duration: 0.3, 
+                        delay: sidebarOpen ? 0.4 : 0,
                         ease: 'easeOut' 
                     }}
                 >
