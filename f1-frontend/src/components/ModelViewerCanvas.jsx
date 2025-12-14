@@ -223,6 +223,7 @@ function LoadedModel({ config, index, total, activeIndex, onPartSelect, onHotspo
     const wheelsRef = useRef([]);
     const shadowCatcherRef = useRef();
     const hotspotNodesRef = useRef([]);
+    const hasInitialAnimationRef = useRef(false);
     const isActive = index === activeIndex;
     const gltf = useGLTF(config.path);
     const clonedScene = useMemo(() => gltf.scene.clone(true), [gltf.scene]);
@@ -282,7 +283,16 @@ function LoadedModel({ config, index, total, activeIndex, onPartSelect, onHotspo
         const scale = config.scale ?? autoScale;
         group.current.scale.setScalar(scale);
         // Aktif araç merkezde (0,0,0), diğerleri geride
-        group.current.position.set(0, -box.min.y * scale, isActive ? 0 : -2);
+        const finalY = -box.min.y * scale;
+        const finalZ = isActive ? 0 : -2;
+        
+        // İlk yüklemede animasyon için başlangıç pozisyonunu sola kaydır
+        if (isActive && !hasInitialAnimationRef.current) {
+            group.current.position.set(-25, finalY, finalZ); // Soldan başla (daha geriden)
+        } else {
+            group.current.position.set(0, finalY, finalZ);
+        }
+        
         group.current.rotation.y = THREE.MathUtils.degToRad(config.rotationY ?? 90);
     }, [clonedScene, config.length, config.rotationY, config.scale, isActive]);
 
@@ -393,7 +403,49 @@ function LoadedModel({ config, index, total, activeIndex, onPartSelect, onHotspo
         lastPositionRef.current.copy(currentPos);
     });
 
-    // İlk yükleme animasyonu - model sağdan gelir
+    // İlk yükleme animasyonu - model soldan ekrana girer
+    useEffect(() => {
+        if (!group.current || !isActive) return;
+        
+        // Model yüklendikten sonra bir sonraki frame'de kontrol et
+        const rafId = requestAnimationFrame(() => {
+            if (!group.current) return;
+            
+            // İlk yüklemede soldan gelme animasyonu (sadece bir kez)
+            const currentX = group.current.position.x;
+            if (!hasInitialAnimationRef.current && currentX < -15) {
+                hasInitialAnimationRef.current = true;
+                // Kısa bir delay ile animasyonu başlat
+                setTimeout(() => {
+                    if (group.current && group.current.position.x < -15) {
+                        const startX = group.current.position.x;
+                        const distance = Math.abs(startX); // -25'ten 0'a gidiyor, mesafe 25
+                        
+                        // Model animasyonu
+                        gsap.to(group.current.position, {
+                            duration: 1.5,
+                            x: 0,
+                            ease: 'power3.out'
+                        });
+                        
+                        // Tekerlekleri döndür (model sağa gidiyor, tekerlekler pozitif yönde dönmeli)
+                        // Mesafeye göre dönme miktarı: her 0.6 birim için Math.PI * 0.5
+                        const rotationAmount = (distance / 0.6) * Math.PI * 0.5;
+                        wheelsRef.current.forEach((wheel) => {
+                            gsap.to(wheel.rotation, {
+                                duration: 1.5,
+                                x: wheel.rotation.x + rotationAmount,
+                                ease: 'power3.out'
+                            });
+                        });
+                    }
+                }, 300);
+            }
+        });
+        
+        return () => cancelAnimationFrame(rafId);
+    }, [isActive, clonedScene]);
+
     useEffect(() => {
         if (!group.current) return;
         // Sadece Z pozisyonunu güncelle (aktif/aktif değil)
@@ -412,7 +464,7 @@ function LoadedModel({ config, index, total, activeIndex, onPartSelect, onHotspo
             if (isZoomed) return;
             event.preventDefault();
             const direction = event.deltaY > 0 ? 1 : -1;
-            const moveAmount = direction * 0.6;
+            const moveAmount = direction * 3; // Hızı 2 katına çıkardık (0.6 -> 1.2)
             const forward = new THREE.Vector3(0, 0, -1)
                 .applyQuaternion(group.current.quaternion)
                 .setY(0)
@@ -420,15 +472,15 @@ function LoadedModel({ config, index, total, activeIndex, onPartSelect, onHotspo
             const targetX = group.current.position.x + forward.x * moveAmount;
             const targetZ = group.current.position.z + forward.z * moveAmount;
             gsap.to(group.current.position, {
-                duration: 0.5,
+                duration: 0.3, // Animasyon süresini kısalttık (0.5 -> 0.3)
                 x: targetX,
                 z: targetZ,
                 ease: 'power2.out'
             });
             wheelsRef.current.forEach((wheel) => {
                 gsap.to(wheel.rotation, {
-                    duration: 0.5,
-                    x: wheel.rotation.x - direction * Math.PI * 0.5,
+                    duration: 0.3, // Tekerlek animasyon süresini de kısalttık
+                    x: wheel.rotation.x - direction * Math.PI * 1.0, // Tekerlek dönme miktarını artırdık (0.5 -> 1.0)
                     ease: 'power2.out'
                 });
             });
