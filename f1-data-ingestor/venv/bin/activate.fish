@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV /home/kerem/Desktop/F1-Projesi/f1-data-ingestor/venv
+set -gx VIRTUAL_ENV '/home/kerem/Desktop/3.sınıf/F1-Projesi-Yeni/f1-data-ingestor/venv'
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"bin $PATH

@@ -11,6 +11,8 @@ const Engineer = require('./models/Engineer');
 const Technology = require('./models/Technology');
 const CriticalSituation = require('./models/CriticalSituations');
 const Circuit = require('./models/Circuit');
+const DriverPoints=require('./models/DriverPoints');
+const TeamPoitns=require('./models/TeamPoints');
 
 const MONGO_URI = "mongodb://localhost:27017/f1_db";
 
@@ -30,6 +32,8 @@ const importData = async () => {
         await Engineer.deleteMany();
         await Technology.deleteMany();
         await CriticalSituation.deleteMany();
+        await DriverPoints.deleteMany();
+        await TeamPoitns.deleteMany();
 
         // JSON DOSYALARINI OKU
         const legendsData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/legends.json'), 'utf-8'));
@@ -39,10 +43,13 @@ const importData = async () => {
         const technologiesData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/technologies.json'), 'utf-8'));
         const situationsData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/critical-situations.json'), 'utf-8'));
         const circuitsData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/circuits.json'), 'utf-8'));
+        const driverPointsData =JSON.parse(fs.readFileSync(path.join(__dirname, 'data/driverPoints.json'),'utf-8'));
+        const teamPointsData=JSON.parse(fs.readFileSync(path.join(__dirname,'data/teamPoints.json'),'utf-8'));
+
 
         // YENİ: TAKVİM DOSYASI OKU (FastF1 script ile ürettik)
         const calendarData = JSON.parse(
-            fs.readFileSync(path.join(__dirname, 'data/season_2024_schedule.json'), 'utf-8')
+            fs.readFileSync(path.join(__dirname, 'data/season_2025_schedule_detailed.json'), 'utf-8')
         );
 
         // VERİYİ YÜKLE
@@ -54,6 +61,9 @@ const importData = async () => {
         await Technology.insertMany(technologiesData);
         await CriticalSituation.insertMany(situationsData);
         await Circuit.insertMany(circuitsData);
+        await DriverPoints.insertMany(driverPointsData);
+        await TeamPoitns.insertMany(teamPointsData);
+
 
         console.log('TÜM VERİLER BAŞARILI ŞEKİLDE MONGODB\'YE AKTARILDI!');
 

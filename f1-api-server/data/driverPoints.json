@@ -1,0 +1,162 @@
+[
+  {
+    "_id": "VER",
+    "name": "Max Verstappen",
+    "number": 1,
+    "nationality": "",
+    "team_id": "redbull",
+    "points": 421
+  },
+  {
+    "_id": "PIA",
+    "name": "Oscar Piastri",
+    "number": 81,
+    "nationality": "",
+    "team_id": "mclaren",
+    "points": 410
+  },
+  {
+    "_id": "NOR",
+    "name": "Lando Norris",
+    "number": 4,
+    "nationality": "",
+    "team_id": "mclaren",
+    "points": 423
+  },
+  {
+    "_id": "LEC",
+    "name": "Charles Leclerc",
+    "number": 16,
+    "nationality": "",
+    "team_id": "ferrari",
+    "points": 242
+  },
+  {
+    "_id": "RUS",
+    "name": "George Russell",
+    "number": 63,
+    "nationality": "",
+    "team_id": "mercedes",
+    "points": 319
+  },
+  {
+    "_id": "ALO",
+    "name": "Fernando Alonso",
+    "number": 14,
+    "nationality": "",
+    "team_id": "astonmartin",
+    "points": 56
+  },
+  {
+    "_id": "OCO",
+    "name": "Esteban Ocon",
+    "number": 31,
+    "nationality": "",
+    "team_id": "haas",
+    "points": 38
+  },
+  {
+    "_id": "HAM",
+    "name": "Lewis Hamilton",
+    "number": 44,
+    "nationality": "",
+    "team_id": "ferrari",
+    "points": 156
+  },
+  {
+    "_id": "HUL",
+    "name": "Nico Hulkenberg",
+    "number": 27,
+    "nationality": "",
+    "team_id": "sauber",
+    "points": 51
+  },
+  {
+    "_id": "STR",
+    "name": "Lance Stroll",
+    "number": 18,
+    "nationality": "",
+    "team_id": "astonmartin",
+    "points": 33
+  },
+  {
+    "_id": "BOR",
+    "name": "Gabriel Bortoleto",
+    "number": 5,
+    "nationality": "",
+    "team_id": "sauber",
+    "points": 19
+  },
+  {
+    "_id": "BEA",
+    "name": "Oliver Bearman",
+    "number": 87,
+    "nationality": "",
+    "team_id": "haas",
+    "points": 41
+  },
+  {
+    "_id": "SAI",
+    "name": "Carlos Sainz",
+    "number": 55,
+    "nationality": "",
+    "team_id": "williams",
+    "points": 64
+  },
+  {
+    "_id": "TSU",
+    "name": "Yuki Tsunoda",
+    "number": 22,
+    "nationality": "",
+    "team_id": "redbull",
+    "points": 33
+  },
+  {
+    "_id": "ANT",
+    "name": "Kimi Antonelli",
+    "number": 12,
+    "nationality": "",
+    "team_id": "mercedes",
+    "points": 150
+  },
+  {
+    "_id": "ALB",
+    "name": "Alexander Albon",
+    "number": 23,
+    "nationality": "",
+    "team_id": "williams",
+    "points": 73
+  },
+  {
+    "_id": "HAD",
+    "name": "Isack Hadjar",
+    "number": 6,
+    "nationality": "",
+    "team_id": "rb",
+    "points": 51
+  },
+  {
+    "_id": "LAW",
+    "name": "Liam Lawson",
+    "number": 30,
+    "nationality": "",
+    "team_id": "rb",
+    "points": 38
+  },
+  {
+    "_id": "GAS",
+    "name": "Pierre Gasly",
+    "number": 10,
+    "nationality": "",
+    "team_id": "alpine",
+    "points": 22
+  },
+  {
+    "_id": "COL",
+    "name": "Franco Colapinto",
+    "number": 43,
+    "nationality": "",
+    "team_id": "alpine",
+    "points": 0
+  }
+]
