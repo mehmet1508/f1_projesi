@@ -16,9 +16,9 @@ const navItems = [
     { text: 'Teams', slug: 'teams' },
     { text: 'Tracks', slug: 'tracks' },
     { text: 'Records Book', slug: 'records' },
-    { text: 'How ıt works', slug: 'how-it-works' },
-    { text: 'Hıstory', slug: 'history' },
-    { text: 'Breakıng News', slug: 'breaking-news' }
+    { text: 'How it works', slug: 'how-it-works' },
+    { text: 'History', slug: 'history' },
+    { text: 'Breaking News', slug: 'breaking-news' }
 ];
 
 const slugToPath = (slug) => (slug === 'main' ? '/' : `/${slug}`);
@@ -90,7 +90,7 @@ function App() {
                             whileHover={{ scale: 1.02 }}
                             onClick={() => handleNavClick(item.slug)}
                         >
-                            {item.text}
+                            {item.text.toUpperCase()}
                         </motion.button>
                     ))}
                 </div>
