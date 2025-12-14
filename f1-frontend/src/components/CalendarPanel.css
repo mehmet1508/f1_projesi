@@ -1,0 +1,207 @@
+/* --- GENEL KONTEYNER --- */
+.calendar-container {
+    display: flex;
+    gap: 20px;
+    height: 520px; /* Yüksekliği biraz artırdım ki daha rahat sığsın */
+    background-color: #15151e;
+    border-radius: 12px;
+    padding: 20px;
+    color: white;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+/* --- SOL TARAF: YARIŞ LİSTESİ --- */
+.race-list-sidebar {
+    width: 30%;
+    border-right: 1px solid #38383f;
+    padding-right: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.race-list-sidebar h3 {
+    color: #e10600;
+    margin-bottom: 15px;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.race-list-scroll {
+    overflow-y: auto;
+    flex: 1;
+    padding-right: 5px;
+}
+
+/* Scrollbar Tasarımı */
+.race-list-scroll::-webkit-scrollbar,
+.sessions-table::-webkit-scrollbar { width: 6px; }
+
+.race-list-scroll::-webkit-scrollbar-thumb,
+.sessions-table::-webkit-scrollbar-thumb { background-color: #e10600; border-radius: 4px; }
+
+.race-list-scroll::-webkit-scrollbar-track,
+.sessions-table::-webkit-scrollbar-track { background-color: #1f1f2b; border-radius: 4px; }
+
+.race-item-box {
+    display: flex;
+    align-items: center;
+    background-color: #1f1f2b;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+}
+
+.race-item-box:hover { background-color: #2a2a35; }
+
+.race-item-box.active {
+    background-color: #2a2a35;
+    border-left: 3px solid #e10600;
+}
+
+.round-num {
+    font-size: 12px;
+    font-weight: bold;
+    color: #888;
+    margin-right: 10px;
+    min-width: 25px;
+}
+
+.race-info-mini { display: flex; flex-direction: column; }
+.race-country { font-weight: bold; font-size: 14px; }
+.race-date-mini { font-size: 11px; color: #8d8d99; }
+
+/* --- SAĞ TARAF: DETAYLAR (FLEX DÜZENİ) --- */
+.race-details-panel {
+    width: 70%;
+    padding-left: 10px;
+    /* BURASI ÖNEMLİ: Dikey hizalama yapıyoruz */
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Konteynerin tamamını kapla */
+    overflow: hidden; /* Dışarı taşmayı engelle */
+}
+
+.detail-header {
+    border-bottom: 1px solid #38383f;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    flex-shrink: 0; /* Küçülmesin */
+}
+
+.detail-header h2 { margin: 0; font-size: 26px; text-transform: uppercase; }
+.location-badge {
+    background-color: #38383f;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    color: #bbb;
+}
+
+/* İSTATİSTİK KARTLARI */
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+    flex-shrink: 0; /* Küçülmesin */
+}
+
+.stat-card {
+    background-color: #1f1f2b;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #333;
+}
+
+.stat-card h4 {
+    margin: 0 0 8px 0;
+    font-size: 11px;
+    color: #888;
+    text-transform: uppercase;
+}
+
+.winner-name { font-size: 16px; font-weight: bold; color: #ffd700; }
+.fastest-driver { font-size: 13px; font-weight: bold; color: #fff; }
+.lap-time {
+    font-size: 18px;
+    font-weight: bold;
+    color: #b162ff;
+    margin-bottom: 5px;
+}
+
+.sectors-display { display: flex; gap: 5px; }
+.sector {
+    flex: 1;
+    background-color: #15151e;
+    padding: 4px;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.sector span:first-child { color: #555; font-weight: bold; }
+.sector span:last-child { color: #00d2be; font-weight: bold; }
+
+/* --- SEANS SAATLERİ TABLOSU (SCROLL DÜZELTMESİ) --- */
+.sessions-table {
+    background-color: #1f1f2b;
+    padding: 0 10px; /* Üst/Alt padding'i kaldırdık, içeriye verdik */
+    border-radius: 8px;
+
+    /* ESNEK YAPI */
+    flex-grow: 1;     /* Kalan tüm boşluğu kapla */
+    overflow-y: auto; /* Sadece burası kaydırılsın */
+    min-height: 0;    /* Firefox için gerekli */
+
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #2a2a35;
+}
+
+/* Başlık */
+.sessions-table h4 {
+    margin: 0;
+    padding: 12px 0;
+    font-size: 12px;
+    color: #888;
+    text-transform: uppercase;
+    position: sticky; /* Başlık sabit kalsın */
+    top: 0;
+    background-color: #1f1f2b;
+    z-index: 2;
+    border-bottom: 1px solid #2a2a35;
+}
+
+/* Satırlar */
+.session-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5px;
+    border-bottom: 1px solid #2a2a35;
+    font-size: 13px;
+}
+
+.session-row:last-child { border-bottom: none; margin-bottom: 10px; }
+
+.session-name { display: flex; flex-direction: column; color: #ddd; }
+.session-day { font-size: 9px; color: #888; margin-top: 2px; text-transform: uppercase; }
+
+.session-time {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    color: #fff;
+    background: #15151e;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+/* Vurgular */
+.highlight-race .session-name { color: #e10600; font-weight: bold; }
+.highlight-race .session-time { background-color: #e10600; color: white; }
+.highlight-sprint .session-name { color: #00d2be; font-weight: bold; }

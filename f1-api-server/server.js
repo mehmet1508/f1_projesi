@@ -8,6 +8,9 @@ const {Pool} = require('pg');
 // Modelleri içe aktar
 const Team = require('./models/Team');
 const Driver = require('./models/Driver');
+const DriverPoints=require('./models/DriverPoints');
+const TeamPoints =require('./models/TeamPoints');
+const newsRoutes= require('./routes/news');
 
 
 const calendarRoutes = require('./routes/calendar');
@@ -36,6 +39,7 @@ app.use(cors()); // Farklı adreslerden gelen isteklere izin ver (Frontend için
 app.use(express.json()); // Gelen isteklerdeki JSON body'leri parse etmek için
 
 app.use('/api/calendar', calendarRoutes);
+app.use('/api/news', newsRoutes);
 app.use('/api/teams', require('./routes/teams'))
 
 // localhost:5000/api/standings adresine gelen istekleri standingsRoutes'a yönlendir
@@ -145,6 +149,15 @@ app.get('/api/teams', async (req, res) => {
     }
 });
 
+app.get('/api/teamPoints', async (req, res) => {
+    try {
+        const teamsPoints = await TeamPoints.find();
+        res.json(teamsPoints);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
 app.get('/api/circuitData', async (req, res) => {
     try {
         console.log("Fetching circuits..."); // Add this log to debug!
@@ -196,6 +209,14 @@ app.get('/api/drivers', async (req, res) => {
     try {
         const drivers = await Driver.find();
         res.json(drivers);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+app.get('/api/driverPoints', async (req, res) => {
+    try {
+        const driverPoints = await DriverPoints.find();
+        res.json(driverPoints);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }

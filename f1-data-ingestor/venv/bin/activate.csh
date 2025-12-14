@@ -9,7 +9,7 @@ alias deactivate 'test $?_OLD_VIRTUAL_PATH != 0 && setenv PATH "$_OLD_VIRTUAL_PA
 # Unset irrelevant variables.
 deactivate nondestructive
 
-setenv VIRTUAL_ENV /home/kerem/Desktop/F1-Projesi/f1-data-ingestor/venv
+setenv VIRTUAL_ENV '/home/kerem/Desktop/3.sınıf/F1-Projesi-Yeni/f1-data-ingestor/venv'
 
 set _OLD_VIRTUAL_PATH="$PATH"
 setenv PATH "$VIRTUAL_ENV/"bin":$PATH"
