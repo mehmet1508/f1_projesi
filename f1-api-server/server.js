@@ -8,6 +8,9 @@ const {Pool} = require('pg');
 // Modelleri içe aktar
 const Team = require('./models/Team');
 const Driver = require('./models/Driver');
+const DriverPoints=require('./models/DriverPoints');
+const TeamPoints =require('./models/TeamPoints');
+const newsRoutes= require('./routes/news');
 
 
 const calendarRoutes = require('./routes/calendar');
@@ -21,6 +24,7 @@ const Engineer = require('./models/Engineer'); // YENİ
 const Technology = require('./models/Technology'); // YENİ
 const CriticalSituation = require('./models/CriticalSituations'); // YENİ
 const Circuit = require('./models/Circuit'); // YENİ
+const ModelInfo = require('./models/ModelInfo'); // YENİ
 
 
 const app = express();
@@ -35,6 +39,7 @@ app.use(cors()); // Farklı adreslerden gelen isteklere izin ver (Frontend için
 app.use(express.json()); // Gelen isteklerdeki JSON body'leri parse etmek için
 
 app.use('/api/calendar', calendarRoutes);
+app.use('/api/news', newsRoutes);
 app.use('/api/teams', require('./routes/teams'))
 
 // localhost:5000/api/standings adresine gelen istekleri standingsRoutes'a yönlendir
@@ -144,6 +149,15 @@ app.get('/api/teams', async (req, res) => {
     }
 });
 
+app.get('/api/teamPoints', async (req, res) => {
+    try {
+        const teamsPoints = await TeamPoints.find();
+        res.json(teamsPoints);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
 app.get('/api/circuitData', async (req, res) => {
     try {
         console.log("Fetching circuits..."); // Add this log to debug!
@@ -199,6 +213,14 @@ app.get('/api/drivers', async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 });
+app.get('/api/driverPoints', async (req, res) => {
+    try {
+        const driverPoints = await DriverPoints.find();
+        res.json(driverPoints);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
 
 
 app.get('/api/legends', async (req, res) => {
@@ -233,6 +255,60 @@ app.get('/api/howitworks', (req, res) => {
         }
         res.json(JSON.parse(data));
     });
+});
+app.get('/api/raceinfo', (req, res) => {
+    try {
+        const filePath = path.join(__dirname, 'data', 'raceinfo.json');
+        const rawData = fs.readFileSync(filePath, 'utf-8');
+        const raceInfo = JSON.parse(rawData);
+        res.status(200).json(raceInfo);
+    } catch (err) {
+        console.error("RaceInfo API error:", err);
+        res.status(500).json({ message: "RaceInfo verisi okunamadı" });
+    }
+});
+
+// History eras endpoint
+app.get('/api/history-eras', (req, res) => {
+    const dataPath = path.join(__dirname, 'data', 'history-eras.json');
+
+    fs.readFile(dataPath, 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ message: 'History eras verisi okunamadı' });
+        }
+        res.json(JSON.parse(data));
+    });
+});
+
+// Homepage content endpoint
+app.get('/api/homepage-content', (req, res) => {
+    const dataPath = path.join(__dirname, 'data', 'homepage-content.json');
+
+    fs.readFile(dataPath, 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ message: 'Homepage content could not be read' });
+        }
+        res.json(JSON.parse(data));
+    });
+});
+
+// Model info endpoint - MongoDB'den çek
+app.get('/api/model-info', async (req, res) => {
+    try {
+        // MongoDB'den model info verisini çek (tek doküman olarak saklanıyor)
+        const modelInfo = await ModelInfo.findOne();
+        
+        if (!modelInfo) {
+            return res.status(404).json({ message: 'Model info not found' });
+        }
+        
+        res.json(modelInfo);
+    } catch (err) {
+        console.error('Model info API error:', err);
+        res.status(500).json({ message: 'Model info could not be read', error: err.message });
+    }
 });
 
 // --- SUNUCUYU BAŞLATMA ---

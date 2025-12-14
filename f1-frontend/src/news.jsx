@@ -1,37 +1,28 @@
 // src/BreakingNewsPage.jsx
 
-// src/news.jsx
-
-import React from "react";
-
-// Hatalı olan uzun yol yerine bunu kullan:
-import GPHeroSection from "./components/GPHeroSection.jsx";
-
-// DashboardContent için de aynısını yap:
-import DashboardContent from "./components/DashboardContent.jsx";
-
-import "./news.css";
-
-// ... kodun geri kalanı
-
-// Örnek veri (Gerçek uygulamada API'den çekilir)
-const mockGPData = {
-    name: "AZERBAIJAN GRAND PRIX",
-    date: "29 KASIM - 1 ARALIK 2025",
-    // Yüklediğiniz pist görselinin yolu buraya gelecek
-    trackImage: "/path/to/your/track/image.png",
-    kalanSure: "3 Gün 05 Saat"
-};
+import React, { useState } from 'react'; // useState eklendi
+import GPHeroSection from './components/GPHeroSection.jsx';
+import DashboardContent from './components/DashboardContent.jsx';
+import './news.css';
 
 export default function BreakingNewsPage() {
+    // Başlangıçta null olabilir veya bir "Yükleniyor" placeholder'ı koyabilirsin
+    const [heroGP, setHeroGP] = useState(null);
+
     return (
         <section className="page news-page">
 
             {/* 1. Tam Ekran GP Odak Alanı */}
-            <GPHeroSection upcomingGP={mockGPData} />
+            {/* Eğer veri henüz gelmediyse varsayılan veya loading göster */}
+            {heroGP ? (
+                <GPHeroSection upcomingGP={heroGP} />
+            ) : (
+                <div className="gp-hero-loading">Yarış Verileri Yükleniyor...</div>
+            )}
 
-            {/* 2. Hemen altında başlayan Ana İçerik */}
-            <DashboardContent />
+            {/* 2. Ana İçerik */}
+            {/* setHeroGP fonksiyonunu aşağıya gönderiyoruz ki CalendarPanel bunu kullanabilsin */}
+            <DashboardContent onRaceSelect={setHeroGP} />
 
         </section>
     );

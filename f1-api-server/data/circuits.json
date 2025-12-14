@@ -2,6 +2,7 @@
   {
     "id": "monaco",
     "name": "Circuit de Monaco",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Monte_Carlo_Formula_1_track_map.svg/500px-Monte_Carlo_Formula_1_track_map.svg.png",
     "center": { "lat": 43.7347, "lng": 7.4205, "altitude": 100 },
     "range": 800,
     "heading": 160,
@@ -20,6 +21,7 @@
   {
     "id": "albertpark",
     "name": "Albert Park Circuit",
+    "imgUrl":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Albert_Park_Circuit_2021.svg/500px-Albert_Park_Circuit_2021.svg.png",
     "center": { "lat": -37.8497, "lng": 144.9686, "altitude": 0 },
     "range": 1200,
     "heading": 180,
@@ -36,6 +38,7 @@
   {
     "id": "suzuka",
     "name": "Suzuka International Racing Course",
+    "imgUrl":"https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Suzuka_circuit_map--2005.svg/500px-Suzuka_circuit_map--2005.svg.png",
     "center": { "lat": 34.843, "lng": 136.5414, "altitude": 0 },
     "range": 1200,
     "heading": 240,
@@ -52,6 +55,7 @@
   {
     "id": "miami",
     "name": "Miami International Autodrome",
+    "imgUrl":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Hard_Rock_Stadium_Circuit_2022.svg/500px-Hard_Rock_Stadium_Circuit_2022.svg.png",
     "center": { "lat": 25.9582, "lng": -80.2392, "altitude": 0 },
     "range": 1000,
     "heading": 135,
@@ -68,6 +72,7 @@
   {
     "id": "imola",
     "name": "Autodromo Enzo e Dino Ferrari",
+    "imgUrl":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Imola_2009_moto.svg/500px-Imola_2009_moto.svg.png",
     "center": { "lat": 44.3435, "lng": 11.7161, "altitude": 20 },
     "range": 900,
     "heading": 270,
@@ -84,6 +89,7 @@
   {
     "id": "montreal",
     "name": "Circuit Gilles Villeneuve",
+    "imgUrl":"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/%C3%8Ele_Notre-Dame_%28Circuit_Gilles_Villeneuve%29.svg/500px-%C3%8Ele_Notre-Dame_%28Circuit_Gilles_Villeneuve%29.svg.png",
     "center": { "lat": 45.5, "lng": -73.5228, "altitude": 0 },
     "range": 1300,
     "heading": 180,
@@ -100,6 +106,7 @@
   {
     "id": "spielberg",
     "name": "Red Bull Ring",
+    "imgUrl":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Spielberg_bare_map_numbers_contextless_2021_corner_names.svg/500px-Spielberg_bare_map_numbers_contextless_2021_corner_names.svg.png",
     "center": { "lat": 47.2197, "lng": 14.7647, "altitude": 50 },
     "range": 900,
     "heading": 120,
@@ -116,6 +123,7 @@
   {
     "id": "silverstone",
     "name": "Silverstone Circuit",
+    "imgUrl":"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Silverstone_Circuit_2020.png/500px-Silverstone_Circuit_2020.png",
     "center": { "lat": 52.0783, "lng": -1.0163, "altitude": 0 },
     "range": 1100,
     "heading": 270,
@@ -132,6 +140,7 @@
   {
     "id": "zandvoort",
     "name": "Circuit Zandvoort",
+    "imgUrl":"https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Zandvoort_Circuit.png/500px-Zandvoort_Circuit.png",
     "center": { "lat": 52.3888, "lng": 4.5422, "altitude": 0 },
     "range": 800,
     "heading": 330,
@@ -148,6 +157,7 @@
   {
     "id": "cota",
     "name": "Circuit of the Americas (COTA)",
+    "imgUrl":"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Austin_circuit.svg/500px-Austin_circuit.svg.png",
     "center": { "lat": 30.1325, "lng": -97.6415, "altitude": 0 },
     "range": 1200,
     "heading": 180,
@@ -164,6 +174,7 @@
   {
     "id": "mexicocity",
     "name": "Autódromo Hermanos Rodríguez",
+    "imgUrl":"https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Autodromo_Hermanos_Rodriguez_%28National_Circuit_with_Foro_Sol%29.png/500px-Autodromo_Hermanos_Rodriguez_%28National_Circuit_with_Foro_Sol%29.png",
     "center": { "lat": 19.4042, "lng": -99.0917, "altitude": 0 },
     "range": 1000,
     "heading": 270,
@@ -180,6 +191,7 @@
   {
     "id": "saopaulo",
     "name": "Autódromo José Carlos Pace (Interlagos)",
+    "imgUrl":"https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Aut%C3%B3dromo_Jos%C3%A9_Carlos_Pace_%28AKA_Interlagos%29_track_map.svg/500px-Aut%C3%B3dromo_Jos%C3%A9_Carlos_Pace_%28AKA_Interlagos%29_track_map.svg.png",
     "center": { "lat":-23.702303, "lng": -46.691529, "altitude": 250 },
     "range": 1500,
     "heading": 120,
@@ -195,6 +207,7 @@
   {
     "id": "lasvegas",
     "name": "Las Vegas Street Circuit",
+    "imgUrl":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/2023_Las_Vegas_street_circuit.svg/500px-2023_Las_Vegas_street_circuit.svg.png",
     "center": { "lat": 36.114246, "lng": -115.163993, "altitude": 0 },
     "range": 1500,
     "heading": 270,
@@ -211,6 +224,7 @@
   {
     "id": "yasmarina",
     "name": "Yas Marina Circuit (Abu Dhabi)",
+    "imgUrl":"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Yas_Marina_Circuit.png/500px-Yas_Marina_Circuit.png",
     "center": { "lat": 24.4672, "lng": 54.6031, "altitude": 0 },
     "range": 1400,
     "heading": 180,

@@ -5,6 +5,7 @@ const TeamSchema = new mongoose.Schema({
     name: String,
     principal: String,
     base: String,
+    base_country: String,
     logo_url: String,
     points: { type: Number, default: 0 }, // Puan durumu için
     founded: String,

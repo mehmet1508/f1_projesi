@@ -8,7 +8,8 @@ const DriverSchema = new mongoose.Schema({
     team_id: { type: String, ref: 'Team' }, // Team modeline referans (Foreign Key)
     points: { type: Number, default: 0 } ,// Puan durumu için
     world_titles: Number, // Şampiyonluk Sayısı
-    image: String         // Pilot Resmi
+    image: String,        // Pilot Resmi
+    helmet: String
 });
 
 module.exports = mongoose.model('Driver', DriverSchema);

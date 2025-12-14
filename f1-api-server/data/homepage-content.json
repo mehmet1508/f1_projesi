@@ -1,0 +1,15 @@
+{
+  "dashboard": {
+    "header": "Calendar, standings and newsletter."
+  },
+  "gpHero": {
+    "nextRace": "Next Race",
+    "timeRemaining": "Time Remaining:",
+    "scrollHint": "Scroll Down for Standings and News"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "message": "You can select one of the available sections from the left menu."
+  }
+}
+

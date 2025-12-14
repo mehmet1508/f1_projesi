@@ -3,160 +3,220 @@
     "_id": "VER",
     "name": "Max Verstappen",
     "number": 1,
-    "nationality": "",
+    "nationality": "Dutch",
     "team_id": "redbull",
-    "points": 396
+    "points": 396,
+    "world_titles": 4,
+    "image": "https://images3.alphacoders.com/135/thumb-1920-1352207.png",
+    "helmet": "/images/helmets/H_max.png"
   },
   {
     "_id": "PIA",
     "name": "Oscar Piastri",
     "number": 81,
-    "nationality": "",
+    "nationality": "Australian",
     "team_id": "mclaren",
-    "points": 392
+    "points": 392,
+    "world_titles": 0,
+    "image": "https://cdn-6.motorsport.com/images/mgl/YBe5yNn2/s300/oscar-piastri-mclaren.webp",
+    "helmet": "/images/helmets/H_piastri.png"
   },
   {
     "_id": "SAI",
     "name": "Carlos Sainz",
     "number": 55,
-    "nationality": "",
+    "nationality": "Spanish",
     "team_id": "williams",
-    "points": 64
+    "points": 64,
+    "world_titles": 0,
+    "image": "https://cdn-7.motorsport.com/images/mgl/2jXPqrg6/s300/carlos-sainz-williams.webp",
+    "helmet": "/images/helmets/H_sainz.png"
   },
   {
     "_id": "NOR",
     "name": "Lando Norris",
     "number": 4,
-    "nationality": "",
+    "nationality": "British",
     "team_id": "mclaren",
-    "points": 408
+    "points": 408,
+    "world_titles": 1,
+    "image": "https://cdn-5.motorsport.com/images/mgl/YEQ1jk1Y/s300/lando-norris-mclaren.webp",
+    "helmet": "/images/helmets/H_norris.png"
   },
   {
     "_id": "ANT",
     "name": "Kimi Antonelli",
     "number": 12,
-    "nationality": "",
+    "nationality": "Italian",
     "team_id": "mercedes",
-    "points": 150
+    "points": 150,
+    "world_titles": 0,
+    "image": "/images/legends/pilots/kimi.png",
+    "helmet": "/images/helmets/H_kimi.png"
   },
   {
     "_id": "RUS",
     "name": "George Russell",
     "number": 63,
-    "nationality": "",
+    "nationality": "British",
     "team_id": "mercedes",
-    "points": 309
+    "points": 309,
+    "world_titles": 0,
+    "image": "https://cdn-7.motorsport.com/images/mgl/Y998Zb7Y/s300/george-russell-mercedes.webp",
+    "helmet": "/images/helmets/H_russel.png"
   },
   {
     "_id": "ALO",
     "name": "Fernando Alonso",
     "number": 14,
-    "nationality": "",
+    "nationality": "Spanish",
     "team_id": "astonmartin",
-    "points": 48
+    "points": 48,
+    "world_titles": 2,
+    "image": "https://cdn-2.motorsport.com/images/mgl/0ZRQbbN0/s300/fernando-alonso-aston-martin-r.webp",
+    "helmet": "/images/helmets/H_alonso.png"
   },
   {
     "_id": "LEC",
     "name": "Charles Leclerc",
     "number": 16,
-    "nationality": "",
+    "nationality": "Monegasque",
     "team_id": "ferrari",
-    "points": 230
+    "points": 230,
+    "world_titles": 0,
+    "image": "https://cdn-7.motorsport.com/images/mgl/YMdm7R32/s300/charles-leclerc-ferrari.webp",
+    "helmet": "/images/helmets/H_leclerc.png"
   },
   {
     "_id": "LAW",
     "name": "Liam Lawson",
     "number": 30,
-    "nationality": "",
+    "nationality": "New Zealander",
     "team_id": "rb",
-    "points": 38
+    "points": 38,
+    "world_titles": 0,
+    "image": "https://cdn-6.motorsport.com/images/mgl/68yGp5V0/s300/liam-lawson.webp",
+    "helmet": "/images/helmets/H_lawson.png"
   },
   {
     "_id": "TSU",
     "name": "Yuki Tsunoda",
     "number": 22,
-    "nationality": "",
+    "nationality": "Japanese",
     "team_id": "redbull",
-    "points": 33
+    "points": 33,
+    "world_titles": 0,
+    "image": "https://cdn-6.motorsport.com/images/mgl/2y3jXqg6/s300/yuki-tsunoda-red-bull-racing.webp",
+    "helmet": "/images/helmets/H_yuki.png"
   },
   {
     "_id": "ALB",
     "name": "Alexander Albon",
     "number": 23,
-    "nationality": "",
+    "nationality": "Thai",
     "team_id": "williams",
-    "points": 73
+    "points": 73,
+    "world_titles": 0,
+    "image": "https://cdn-9.motorsport.com/images/mgl/0rG38zm2/s300/alex-albon-williams.webp",
+    "helmet": "/images/helmets/H_albon.png"
   },
   {
     "_id": "HAM",
     "name": "Lewis Hamilton",
     "number": 44,
-    "nationality": "",
+    "nationality": "British",
     "team_id": "ferrari",
-    "points": 152
+    "points": 152,
+    "world_titles": 7,
+    "image": "https://cdn-7.motorsport.com/images/mgl/2y3j5bg6/s300/lewis-hamilton-ferrari.webp",
+    "helmet": "/images/helmets/H_hamilton.png"
   },
   {
     "_id": "BOR",
     "name": "Gabriel Bortoleto",
     "number": 5,
-    "nationality": "",
+    "nationality": "Brazilian",
     "team_id": "sauber",
-    "points": 19
+    "points": 19,
+    "world_titles": 0,
+    "image": "/images/legends/pilots/gabriel.png",
+    "helmet": "/images/helmets/H_barleto.png"
   },
   {
     "_id": "COL",
     "name": "Franco Colapinto",
     "number": 43,
-    "nationality": "",
+    "nationality": "Argentinian",
     "team_id": "alpine",
-    "points": 0
+    "points": 0,
+    "world_titles": 0,
+    "image": "/images/legends/pilots/franco.png",
+    "helmet": "/images/helmets/H_franco.jpeg"
   },
   {
     "_id": "OCO",
     "name": "Esteban Ocon",
     "number": 31,
-    "nationality": "",
+    "nationality": "French",
     "team_id": "haas",
-    "points": 32
+    "points": 32,
+    "world_titles": 0,
+    "image": "https://cdn-3.motorsport.com/images/mgl/Y99KyPxY/s300/esteban-ocon-haas-f1-team.webp",
+    "helmet": "/images/helmets/H_ocon.png"
   },
   {
     "_id": "GAS",
     "name": "Pierre Gasly",
     "number": 10,
-    "nationality": "",
+    "nationality": "French",
     "team_id": "alpine",
-    "points": 22
+    "points": 22,
+    "world_titles": 0,
+    "image": "https://cdn-3.motorsport.com/images/mgl/2eADy3P2/s300/pierre-gasly-alpine.webp",
+    "helmet": "/images/helmets/H_gasly.png"
   },
   {
     "_id": "STR",
     "name": "Lance Stroll",
     "number": 18,
-    "nationality": "",
+    "nationality": "Canadian",
     "team_id": "astonmartin",
-    "points": 32
+    "points": 32,
+    "world_titles": 0,
+    "image": "https://cdn-8.motorsport.com/images/mgl/0ZRQlG80/s300/lance-stroll-aston-martin.webp",
+    "helmet": "/images/helmets/H_stroll.png"
   },
   {
     "_id": "HAD",
     "name": "Isack Hadjar",
     "number": 6,
-    "nationality": "",
+    "nationality": "French",
     "team_id": "rb",
-    "points": 51
+    "points": 51,
+    "world_titles": 0,
+    "image": "https://cdn-9.motorsport.com/images/mgl/Yv8yaEv0/s300/isack-hadjar.webp",
+    "helmet": "/images/helmets/H_hajdar.png"
   },
   {
     "_id": "BEA",
     "name": "Oliver Bearman",
     "number": 87,
-    "nationality": "",
+    "nationality": "British",
     "team_id": "haas",
-    "points": 41
+    "points": 41,
+    "world_titles": 0,
+    "image": "https://cdn-7.motorsport.com/images/mgl/6D1JxPO0/s400/oliver-bearman-haas.webp",
+    "helmet": "/images/helmets/H_bearman.png"
   },
   {
     "_id": "HUL",
     "name": "Nico Hulkenberg",
     "number": 27,
-    "nationality": "",
+    "nationality": "German",
     "team_id": "sauber",
-    "points": 49
+    "points": 49,
+    "world_titles": 0,
+    "image": "https://cdn-2.motorsport.com/images/mgl/0RrX8LO0/s300/nico-hulkenberg-stake-f1-team.webp",
+    "helmet": "/images/helmets/H_hulkenberg.png"
   }
 ]

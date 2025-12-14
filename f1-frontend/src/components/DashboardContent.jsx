@@ -5,16 +5,17 @@ import CalendarPanel from './CalendarPanel.jsx';
 import StandingsPanel from './StandingsPanel.jsx';
 import NewsPanel from './NewsPanel.jsx';
 
-export default function DashboardContent() {
+// onRaceSelect prop'unu aldık
+export default function DashboardContent({ onRaceSelect }) {
     return (
-        // Bu bölüm GPHeroSection biter bitmez ekranda görünmeye başlar.
         <section className="dashboard-content-wrapper">
             <header className="page-header">
                 <p>Takvim, puan durumu ve bülten.</p>
             </header>
             <div className="dashboard-grid">
                 <div className="panel calendar-section">
-                    <CalendarPanel />
+                    {/* Fonksiyonu CalendarPanel'e iletiyoruz */}
+                    <CalendarPanel onRaceSelect={onRaceSelect} />
                 </div>
                 <div className="panel standings-section">
                     <StandingsPanel />
