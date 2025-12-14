@@ -234,6 +234,17 @@ app.get('/api/howitworks', (req, res) => {
         res.json(JSON.parse(data));
     });
 });
+app.get('/api/raceinfo', (req, res) => {
+    try {
+        const filePath = path.join(__dirname, 'data', 'raceinfo.json');
+        const rawData = fs.readFileSync(filePath, 'utf-8');
+        const raceInfo = JSON.parse(rawData);
+        res.status(200).json(raceInfo);
+    } catch (err) {
+        console.error("RaceInfo API error:", err);
+        res.status(500).json({ message: "RaceInfo verisi okunamadı" });
+    }
+});
 
 // --- SUNUCUYU BAŞLATMA ---
 app.listen(PORT, () => {

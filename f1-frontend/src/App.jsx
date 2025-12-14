@@ -10,6 +10,7 @@ import HowItWorksPage from './howItWorks.jsx';
 import HistoryPage from './history.jsx';
 import BreakingNewsPage from './news.jsx';
 import MapPage from './MapPage.jsx';
+import RaceInfo from './raceinfo';
 
 const navItems = [
     { text: 'F1-Fever', slug: 'main' },
@@ -18,7 +19,9 @@ const navItems = [
     { text: 'Records Book', slug: 'records' },
     { text: 'How ıt works', slug: 'how-it-works' },
     { text: 'Hıstory', slug: 'history' },
-    { text: 'Breakıng News', slug: 'breaking-news' }
+    { text: 'Breakıng News', slug: 'breaking-news' },
+    { text: 'Information of Race ', slug: 'raceinfo' }
+
 ];
 
 const slugToPath = (slug) => (slug === 'main' ? '/' : `/${slug}`);
@@ -109,6 +112,7 @@ function App() {
                     <Route path="/how-it-works" element={<HowItWorksPage />} />
                     <Route path="/history" element={<HistoryPage />} />
                     <Route path="/breaking-news" element={<BreakingNewsPage />} />
+                    <Route path="/raceinfo" element={<RaceInfo />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </main>
