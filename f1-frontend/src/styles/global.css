@@ -33,10 +33,23 @@ body {
     z-index: 200; /* Panel'in üstünde kalsın */
 }
 
+/* Ana sayfada (model görüntüleme) sidebar overlay olarak */
+.sidebar--overlay {
+    position: fixed;
+    left: 0;
+    background: #050506;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+}
+
 .sidebar.collapsed {
     width: 0;
     border-right: none;
     overflow: hidden; /* Kapalıyken içeriği gizle */
+}
+
+.sidebar-content {
+    width: 280px;
+    height: 100%;
 }
 
 .sidebar .menu-item {

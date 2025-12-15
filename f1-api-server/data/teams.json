@@ -4,79 +4,129 @@
     "name": "Red Bull Racing",
     "principal": "Christian Horner",
     "base": "Milton Keynes, UK",
-    "logo_url": "/images/logos/redbull.png",
-    "points": 426
+    "base_country": "gb",
+    "logo_url": "/images/logos/red-bull-logo.webp",
+    "points": 426,
+    "founded": 2005,
+    "engine": "Honda RBPT",
+    "championships": 6,
+    "color": "#4781D7"
   },
   {
     "_id": "mclaren",
     "name": "McLaren",
     "principal": "Andrea Stella",
     "base": "Woking, UK",
-    "logo_url": "/images/logos/mclaren.png",
-    "points": 800
+    "base_country": "gb",
+    "logo_url": "/images/logos/mclaren-logo.webp",
+    "points": 800,
+    "founded": 1963,
+    "engine": "Mercedes",
+    "championships": 12,
+    "color": "#F47600"
   },
   {
     "_id": "williams",
     "name": "Williams",
     "principal": "James Vowles",
     "base": "Grove, UK",
-    "logo_url": "/images/logos/williams.png",
-    "points": 137
+    "base_country": "gb",
+    "logo_url": "/images/logos/williams-logo.webp",
+    "points": 137,
+    "founded": 1966,
+    "engine": "Mercedes",
+    "championships": 9,
+    "color": "#1868DB"
   },
   {
     "_id": "mercedes",
     "name": "Mercedes",
     "principal": "Toto Wolff",
     "base": "Brackley, UK",
-    "logo_url": "/images/logos/mercedes.png",
-    "points": 459
+    "base_country": "gb",
+    "logo_url": "/images/logos/mercedes-logo.webp",
+    "points": 459,
+    "founded": 2010,
+    "engine": "Mercedes",
+    "championships": 8,
+    "color": "#00D7B6"
   },
   {
     "_id": "astonmartin",
     "name": "Aston Martin",
     "principal": "Mike Krack",
     "base": "Silverstone, UK",
-    "logo_url": "/images/logos/astonmartin.png",
-    "points": 80
+    "base_country": "gb",
+    "logo_url": "/images/logos/logo-aston-martin.webp",
+    "points": 80,
+    "founded": 2021,
+    "engine": "Mercedes",
+    "championships": 0,
+    "color": "#229971"
   },
   {
     "_id": "ferrari",
     "name": "Ferrari",
     "principal": "Frédéric Vasseur",
     "base": "Maranello, Italy",
-    "logo_url": "/images/logos/ferrari.png",
-    "points": 382
+    "base_country": "it",
+    "logo_url": "/images/logos/scuderia-ferrari-logo.webp",
+    "points": 382,
+    "founded": 1929,
+    "engine": "Ferrari",
+    "championships": 16,
+    "color": "#ED1131"
   },
   {
     "_id": "rb",
     "name": "Racing Bulls",
     "principal": "Laurent Mekies",
     "base": "Faenza, Italy",
-    "logo_url": "/images/logos/rb.png",
-    "points": 92
+    "base_flag": "it",
+    "logo_url": "/images/logos/racingbulls-logo.webp",
+    "points": 92,
+    "founded": 1985,
+    "engine": "Honda RBPT",
+    "championships": 0,
+    "color": "#6C98FF"
   },
   {
     "_id": "sauber",
     "name": "Kick Sauber",
     "principal": "Alessandro Alunni Bravi",
     "base": "Hinwil, Switzerland",
-    "logo_url": "/images/logos/sauber.png",
-    "points": 68
+    "base_flag": "ch",
+    "logo_url": "/images/logos/sauber-logo.jpg",
+    "points": 68,
+    "founded": 1970,
+    "engine": "Ferrari",
+    "championships": 0,
+    "color": "#01C00E"
   },
   {
     "_id": "alpine",
     "name": "Alpine",
     "principal": "Bruno Famin",
     "base": "Enstone, UK",
-    "logo_url": "/images/logos/alpine.png",
-    "points": 22
+    "base_country": "gb",
+    "logo_url": "/images/logos/alpine-logo.webp",
+    "points": 22,
+    "founded": 2021,
+    "engine": "Renault",
+    "championships": 0,
+    "color": "#00A1E8"
   },
   {
     "_id": "haas",
     "name": "Haas F1 Team",
     "principal": "Ayao Komatsu",
     "base": "Kannapolis, USA",
-    "logo_url": "/images/logos/haas.png",
-    "points": 73
+    "base_country": "us",
+    "logo_url": "/images/logos/haas-logo.webp",
+    "points": 73,
+    "founded": 2014,
+    "engine": "Ferrari",
+    "championships": 0,
+    "color": "#9C9FA2"
   }
 ]

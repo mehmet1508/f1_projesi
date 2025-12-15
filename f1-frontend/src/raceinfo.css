@@ -1,0 +1,77 @@
+.raceinfo {
+    background: linear-gradient(to bottom, #050505, #0f0f0f);
+    color: #fff;
+    padding: 40px;
+}
+
+.raceinfo h1 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 30px;
+    color: #ff2d2d;
+}
+
+.raceinfo-search {
+    width: 60%;
+    margin: 0 auto 60px;
+    display: block;
+    padding: 15px 25px;
+    border-radius: 30px;
+    border: none;
+    background: #111;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.info-section {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 40px;
+    margin-bottom: 100px;
+    align-items: center;
+    animation: fadeUp 0.8s ease both;
+}
+
+.info-section.reverse {
+    grid-template-columns: 1fr 420px;
+}
+
+.info-section img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.2);
+}
+
+.info-section h2 {
+    color: #ff2d2d;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+.warning {
+    margin-top: 15px;
+    padding-left: 15px;
+    border-left: 4px solid red;
+    color: #ffaaaa;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 900px) {
+    .info-section,
+    .info-section.reverse {
+        grid-template-columns: 1fr;
+    }
+    .raceinfo-search {
+        width: 90%;
+    }
+}

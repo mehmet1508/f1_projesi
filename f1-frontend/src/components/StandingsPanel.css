@@ -1,76 +1,89 @@
-.standings-wrapper {
-    height: 100%;
+.standings-wrapper { background-color: #15151e; border-radius: 12px; overflow: hidden; color: #fff; font-family: 'Titillium Web', sans-serif; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+.standings-header { display: flex; background-color: #1f1f2b; border-bottom: 2px solid #38383f; }
+.standings-header button { flex: 1; padding: 15px; background: none; border: none; color: #8d8d99; font-weight: 700; cursor: pointer; transition: 0.3s; }
+.standings-header button:hover { color: #fff; background-color: #2a2a35; }
+.standings-header button.active { color: #fff; border-bottom: 3px solid #e10600; background-color: #15151e; }
+.standings-list { padding: 10px; }
+table { width: 100%; border-collapse: collapse; }
+thead th { text-align: left; color: #676778; font-size: 11px; padding: 10px; border-bottom: 1px solid #38383f; }
+.th-points { text-align: right; }
+tbody tr { border-bottom: 1px solid #252530; }
+tbody tr:hover { background-color: #1f1f2b; }
+.pos-cell { width: 40px; font-weight: bold; text-align: center; color: #fff; }
+tbody tr:nth-child(1) .pos-cell { color: #ffd700; }
+tbody tr:nth-child(2) .pos-cell { color: #c0c0c0; }
+tbody tr:nth-child(3) .pos-cell { color: #cd7f32; }
+.points-cell { text-align: right; font-weight: bold; font-size: 16px; padding-right: 15px; color: #fff; }
+.pts-label { font-size: 10px; color: #676778; font-weight: normal; }
+.info-flex { display: flex; align-items: center; gap: 12px; }
+/* RESİM DÜZELTMESİ BURADA */
+.img-container { width: 45px; height: 45px; background-color: #fff; border-radius: 8px; display: flex; justify-content: center; align-items: center; padding: 2px; }
+.team-logo-bg { background-color: rgba(255,255,255,0.9); }
+.img-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.team-bar { width: 4px; height: 25px; border-radius: 2px; background-color: #ccc; }
+.team-bar.redbull { background-color: #0600ef; } .team-bar.ferrari { background-color: #e8002d; } .team-bar.mercedes { background-color: #00d2be; } .team-bar.mclaren { background-color: #ff8700; } .team-bar.astonmartin { background-color: #006f62; } .team-bar.alpine { background-color: #0090ff; } .team-bar.williams { background-color: #005aff; } .team-bar.rb { background-color: #1634cb; } .team-bar.sauber { background-color: #00e701; } .team-bar.haas { background-color: #b6babd; }
+.text-info { display: flex; flex-direction: column; }
+.main-name { font-size: 14px; font-weight: 700; color: #fff; }
+.sub-name { font-size: 11px; color: #8d8d99; }
+/* --- TAKIM İÇİ SÜRÜCÜ LİSTESİ TASARIMI --- */
+
+.team-row-container {
     display: flex;
     flex-direction: column;
+    gap: 8px; /* Takım adı ile sürücüler arası boşluk */
 }
 
-.standings-header {
+/* Takım sürücü listesi kutusu */
+.team-drivers-list {
+    margin-left: 58px; /* Resim hizasından biraz içeriden başlasın */
+    background-color: rgba(255, 255, 255, 0.05); /* Çok hafif bir fon */
+    border-radius: 6px;
+    padding: 6px 10px;
     display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-    border-bottom: 1px solid #333;
-    padding-bottom: 10px;
+    flex-direction: column;
+    gap: 4px;
 }
 
-.standings-header button {
-    flex: 1;
-    background: transparent;
-    border: 1px solid #444;
+.mini-driver-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #ccc;
+    padding-bottom: 2px;
+    border-bottom: 1px dashed rgba(255,255,255,0.1);
+}
+
+.mini-driver-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.mini-driver-name {
+    font-weight: 500;
+}
+
+.mini-driver-points {
     color: #888;
-    padding: 8px;
-    cursor: pointer;
-    font-family: 'Titillium Web', sans-serif;
-    font-weight: bold;
-    border-radius: 4px;
-    transition: 0.3s;
+    font-family: monospace;
 }
 
-.standings-header button.active {
-    background-color: #e10600; /* F1 Kırmızısı */
-    color: white;
-    border-color: #e10600;
+/* Sürücü isminin yanındaki küçük renkli nokta */
+.dot {
+    font-size: 14px;
+    margin-right: 4px;
+    line-height: 0;
+    position: relative;
+    top: 2px;
 }
 
-.standings-list {
-    flex-grow: 1;
-    overflow-y: auto;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.9rem;
-}
-
-td, th {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #2a2a2a;
-}
-
-th {
-    color: #666;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-}
-
-.pos {
-    color: #e10600;
-    font-weight: bold;
-    width: 30px;
-}
-
-.name-cell {
-    font-weight: 600;
-}
-
-.text-right {
-    text-align: right;
-}
-
-.points {
-    background-color: #2a2a2a;
-    border-radius: 4px;
-    padding: 2px 6px;
-    font-size: 0.85rem;
-}
+/* Noktaların renkleri (Takım ID'sine göre) */
+.dot.redbull { color: #0600ef; }
+.dot.ferrari { color: #e8002d; }
+.dot.mercedes { color: #00d2be; }
+.dot.mclaren { color: #ff8700; }
+.dot.astonmartin { color: #006f62; }
+.dot.alpine { color: #0090ff; }
+.dot.williams { color: #005aff; }
+.dot.rb { color: #1634cb; }
+.dot.sauber { color: #00e701; }
+.dot.haas { color: #b6babd; }

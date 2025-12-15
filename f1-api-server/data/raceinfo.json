@@ -1,0 +1,326 @@
+{
+  "flags": [
+    {
+      "id": "yellow-flag",
+      "title": "Yellow Flag",
+      "image": "/images/raceinfo/yellow-flag.jpg",
+      "sections": {
+        "display": "Displayed trackside by marshals, shown as yellow sectors on timing screens, and indicated on the driver's steering wheel LEDs. Broadcast graphics usually show 'YELLOW FLAG – SECTOR X'.",
+        "meaning": "Indicates danger on or near the track such as an accident, stopped car, or debris. The warning is local to the affected sector.",
+        "restriction": "Overtaking is strictly forbidden and drivers must significantly reduce speed. Setting competitive lap times is not permitted.",
+        "impact": "Lap times in the affected sector increase, qualifying laps may be deleted, and race gaps may compress.",
+        "penalty": "Ignoring yellow flags can lead to time penalties, deletion of lap times, grid penalties, or disqualification."
+      }
+    },
+
+    {
+      "id": "double-yellow-flag",
+      "title": "Double Yellow Flag",
+      "image": "/images/raceinfo/double-yellow-flag.jpg",
+      "sections": {
+        "display": "Two yellow flags waved together and highlighted on timing screens as double yellow sectors.",
+        "meaning": "There is a serious hazard on or near the track and marshals may be working in the area.",
+        "restriction": "Drivers must slow down significantly and be prepared to stop if necessary. Overtaking is prohibited.",
+        "impact": "Drivers lose substantial time and must prioritize safety over race position.",
+        "penalty": "Failure to slow sufficiently can result in severe penalties including stop-go penalties or race bans."
+      }
+    },
+
+    {
+      "id": "green-flag",
+      "title": "Green Flag",
+      "image": "/images/raceinfo/green-flag.jpg",
+      "sections": {
+        "display": "Green flag waved trackside and shown as green sectors on timing screens.",
+        "meaning": "The track is clear and normal racing conditions have resumed.",
+        "restriction": "No restrictions apply.",
+        "impact": "Drivers may overtake and push at full racing speed again.",
+        "penalty": "No penalties associated with green flag conditions."
+      }
+    },
+
+    {
+      "id": "red-flag",
+      "title": "Red Flag",
+      "image": "/images/raceinfo/red-flag.jpg",
+      "sections": {
+        "display": "Red flags waved trackside, timing screens turn red, and broadcasts show 'SESSION STOPPED'.",
+        "meaning": "The session or race has been stopped due to severe danger such as major accidents or extreme weather.",
+        "restriction": "Drivers must slow down immediately and return to the pit lane without overtaking.",
+        "impact": "Race or session is suspended. Strategies may reset and tyre disadvantages may be removed.",
+        "penalty": "Ignoring red flag instructions can result in disqualification."
+      }
+    },
+
+    {
+      "id": "blue-flag",
+      "title": "Blue Flag",
+      "image": "/images/raceinfo/blue-flag.jpg",
+      "sections": {
+        "display": "Blue flag waved trackside and indicated on the driver's dashboard.",
+        "meaning": "A faster car is approaching and intends to lap the driver.",
+        "restriction": "The slower driver must allow the faster car to pass safely at the earliest opportunity.",
+        "impact": "Backmarkers lose time while leaders maintain race flow.",
+        "penalty": "Repeatedly ignoring blue flags can result in time penalties."
+      }
+    },
+
+    {
+      "id": "black-and-white-flag",
+      "title": "Black and White Flag",
+      "image": "/images/raceinfo/black-white-flag.jpg",
+      "sections": {
+        "display": "Diagonal black and white flag shown with a driver's number.",
+        "meaning": "Official warning for unsportsmanlike behavior or exceeding track limits.",
+        "restriction": "Driver must immediately correct behavior.",
+        "impact": "Serves as a final warning before penalties are applied.",
+        "penalty": "Further infringement will result in time penalties."
+      }
+    },
+
+    {
+      "id": "black-flag",
+      "title": "Black Flag",
+      "image": "/images/raceinfo/black-flag.jpg",
+      "sections": {
+        "display": "Black flag waved with the driver's number.",
+        "meaning": "The driver has been disqualified from the session or race.",
+        "restriction": "Driver must return to the pit lane immediately.",
+        "impact": "Immediate removal from competition.",
+        "penalty": "Disqualification from the race or session."
+      }
+    },
+
+    {
+      "id": "black-orange-flag",
+      "title": "Black with Orange Circle Flag",
+      "image": "/images/raceinfo/black-orange-flag.jpg",
+      "sections": {
+        "display": "Black flag with an orange disc shown alongside the driver's number.",
+        "meaning": "The car has a mechanical problem that may be dangerous.",
+        "restriction": "Driver must pit immediately for repairs.",
+        "impact": "Forced pit stop may compromise race strategy.",
+        "penalty": "Failure to pit can result in disqualification."
+      }
+    },
+
+    {
+      "id": "white-flag",
+      "title": "White Flag",
+      "image": "/images/raceinfo/white-flag.jpg",
+      "sections": {
+        "display": "White flag waved trackside.",
+        "meaning": "A slow-moving vehicle is on the circuit ahead.",
+        "restriction": "Drivers must be prepared to react and pass with caution.",
+        "impact": "Minor interruption to racing rhythm.",
+        "penalty": "No direct penalties unless rules are breached."
+      }
+    },
+
+    {
+      "id": "chequered-flag",
+      "title": "Chequered Flag",
+      "image": "/images/raceinfo/chequered-flag.jpg",
+      "sections": {
+        "display": "Black and white chequered flag waved at the finish line.",
+        "meaning": "The session or race has ended.",
+        "restriction": "Drivers must slow down and complete the cool-down lap safely.",
+        "impact": "Final race classification is determined.",
+        "penalty": "Post-race penalties may still be applied after the chequered flag."
+      }
+    }
+  ],
+
+
+
+  "penalties": [
+    {
+      "id": "time-penalty",
+      "title": "Time Penalties (5s / 10s)",
+      "image": "/images/raceinfo/penalty-time.jpg",
+      "sections": {
+        "reason": "Time penalties are issued for relatively minor sporting infringements such as exceeding track limits, unsafe pit releases, forcing another driver off the track, or causing avoidable contact.",
+        "application": "If the driver enters the pit lane, the penalty time must be served before any work is carried out on the car. If the penalty is not served during the race, it is added to the driver's total race time after the chequered flag.",
+        "impact": "Time penalties can nullify undercut strategies, force drivers to push harder in clean air, and often result in loss of position after pit stop cycles or at the race finish."
+      }
+    },
+
+    {
+      "id": "drive-through",
+      "title": "Drive-Through Penalty",
+      "image": "/images/raceinfo/penalty-drive-through.jpg",
+      "sections": {
+        "reason": "Typically given for pit lane speed limit violations, jump starts, or ignoring instructions from race control.",
+        "application": "The driver must drive through the pit lane at the regulated speed without stopping at their pit box.",
+        "impact": "A drive-through penalty usually costs between 18 and 25 seconds, often dropping the driver several positions."
+      }
+    },
+
+    {
+      "id": "stop-and-go",
+      "title": "Stop & Go Penalty",
+      "image": "/images/raceinfo/penalty-stop-go.jpg",
+      "sections": {
+        "reason": "Issued for more serious infringements such as dangerous driving, causing major collisions, or gaining a significant advantage illegally.",
+        "application": "The driver must stop in their pit box for a specified time (usually 10 seconds) without any work being performed on the car.",
+        "impact": "This penalty is extremely costly and often removes the driver from competitive contention."
+      }
+    },
+
+    {
+      "id": "grid-penalty",
+      "title": "Grid Penalty",
+      "image": "/images/raceinfo/penalty-grid.jpg",
+      "sections": {
+        "reason": "Grid penalties are applied for technical infringements such as exceeding the allowed number of power unit components or gearbox changes.",
+        "application": "The driver is moved back a set number of grid positions for the race start. Multiple penalties may result in starting from the back of the grid.",
+        "impact": "Grid penalties significantly affect race strategy, forcing drivers to overtake from lower positions."
+      }
+    },
+
+    {
+      "id": "start-from-pit-lane",
+      "title": "Start from Pit Lane",
+      "image": "/images/raceinfo/penalty-pit-lane-start.jpg",
+      "sections": {
+        "reason": "Applied when teams make setup changes under parc fermé conditions or breach technical regulations before the race.",
+        "application": "The driver must start the race from the pit lane instead of the grid.",
+        "impact": "This severely compromises early race positioning and strategy."
+      }
+    },
+
+    {
+      "id": "penalty-points",
+      "title": "Penalty Points",
+      "image": "/images/raceinfo/penalty-points.jpg",
+      "sections": {
+        "reason": "Penalty points are assigned for driving infringements such as causing collisions or repeated dangerous behavior.",
+        "application": "Points are added to the driver's super licence and remain valid for 12 months.",
+        "impact": "Accumulating 12 penalty points results in an automatic one-race ban."
+      }
+    },
+
+    {
+      "id": "race-ban",
+      "title": "Race Ban",
+      "image": "/images/raceinfo/penalty-ban.jpg",
+      "sections": {
+        "reason": "A race ban is imposed when a driver accumulates 12 penalty points within a 12-month period.",
+        "application": "The driver is suspended for the next race event.",
+        "impact": "The team must replace the driver for that race, affecting championship points."
+      }
+    },
+
+    {
+      "id": "disqualification",
+      "title": "Disqualification",
+      "image": "/images/raceinfo/penalty-disqualification.jpg",
+      "sections": {
+        "reason": "Disqualification occurs due to serious sporting or technical breaches, such as illegal car components or ignoring black flag instructions.",
+        "application": "The driver is removed from the race results entirely.",
+        "impact": "All race points are lost and reputational damage may occur."
+      }
+    },
+
+    {
+      "id": "warning",
+      "title": "Official Warning",
+      "image": "/images/raceinfo/penalty-warning.jpg",
+      "sections": {
+        "reason": "Warnings are issued for minor first-time offences such as track limits or unsporting behavior.",
+        "application": "No immediate sporting penalty is applied.",
+        "impact": "Serves as a formal notice; repeated offences will lead to harsher penalties."
+      }
+    },
+
+    {
+      "id": "reprimand",
+      "title": "Reprimand",
+      "image": "/images/raceinfo/penalty-reprimand.jpg",
+      "sections": {
+        "reason": "Reprimands are given for procedural or minor rule breaches by drivers or teams.",
+        "application": "Recorded by the stewards without immediate race impact.",
+        "impact": "Accumulation of reprimands may result in grid penalties."
+      }
+    }
+  ],
+
+  "scenarios": [
+    {
+      "id": "safety-car",
+      "title": "Safety Car",
+      "image": "/images/raceinfo/safety-car.jpg",
+      "sections": {
+        "trigger": "The Safety Car is deployed following serious accidents, stranded vehicles, or debris that requires marshals to enter the track safely.",
+        "pace": "All drivers must reduce speed and form a single-file queue behind the Safety Car. Overtaking is prohibited unless instructed otherwise.",
+        "strategy": "Safety Car periods dramatically alter strategy by compressing the field and offering 'free pit stops', allowing drivers to change tyres with minimal time loss."
+      }
+    },
+
+    {
+      "id": "virtual-safety-car",
+      "title": "Virtual Safety Car",
+      "image": "/images/raceinfo/vsc.jpg",
+      "sections": {
+        "difference": "Unlike the physical Safety Car, no vehicle enters the circuit. Instead, a controlled speed limit is imposed across the entire track.",
+        "delta": "The circuit is divided into mini-sectors, each with a target time. Drivers must remain above this delta time to avoid penalties.",
+        "impact": "VSC periods reward precise timing. Drivers who pit during VSC often gain track position, while others may lose strategic advantage."
+      }
+    }
+  ],
+
+  "stewards": [
+    {
+      "id": "steward-decisions",
+      "title": "Steward Decisions",
+      "sections": {
+        "incident": "'Incident Noted' indicates that race stewards are aware of a situation and will analyze available data.",
+        "investigation": "'Under Investigation' confirms that footage, telemetry, and driver statements are being reviewed.",
+        "noAction": "'No Further Action' means the stewards determined no regulation was breached.",
+        "confirmed": "'Penalty Confirmed' indicates that a rule violation has been established and a sanction will be applied."
+      }
+    }
+  ],
+
+  "strategy": [
+    {
+      "id": "strategy-impact",
+      "title": "Strategy Impact",
+      "sections": {
+        "sc": "Safety Car deployments can turn losing strategies into winning ones by neutralizing time gaps and enabling cost-effective pit stops.",
+        "rf": "Red Flags remove tyre degradation disadvantages and often reset race dynamics, benefiting drivers who were previously off-strategy.",
+        "tp": "Time penalties influence strategic choices by discouraging aggressive undercuts and favoring longer stints or overcut strategies."
+      }
+    }
+  ],
+  "flow": [
+    {
+      "event": "Safety Car deployed",
+      "changes": [
+        "Field gaps are neutralized",
+        "Pit stop time loss is reduced",
+        "Midfield drivers gain strategic advantage"
+      ]
+    },
+    {
+      "event": "Red Flag shown",
+      "changes": [
+        "Race is suspended",
+        "Tyre disadvantages are reset",
+        "Strategy plans are invalidated"
+      ]
+    },
+    {
+      "event": "Time penalty applied",
+      "changes": [
+        "Undercut becomes risky",
+        "Driver must push harder in clean air",
+        "Position may be lost after pit cycle"
+      ]
+    }
+  ]
+}
+
+
+
+

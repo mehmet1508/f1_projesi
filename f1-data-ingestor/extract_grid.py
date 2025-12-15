@@ -9,7 +9,7 @@ if not os.path.exists('cache_folder'):
 fastf1.Cache.enable_cache('cache_folder')
 
 YEAR = 2025
-TARGET_RACE = 'Qatar'
+TARGET_RACE = 'Abu Dhabi'
 
 print(f"--- {YEAR} SEZONU TAM HESAPLAMA (SÜRÜCÜ + TAKIM) ---")
 
@@ -171,10 +171,10 @@ output_dir = '../f1-api-server/data'
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
-with open(f'{output_dir}/drivers.json', 'w', encoding='utf-8') as f:
+with open(f'{output_dir}/driverPoints.json', 'w', encoding='utf-8') as f:
     json.dump(drivers_list, f, indent=2, ensure_ascii=False)
     print("BAŞARILI: drivers.json güncellendi.")
 
-with open(f'{output_dir}/teams.json', 'w', encoding='utf-8') as f:
+with open(f'{output_dir}/teamPoints.json', 'w', encoding='utf-8') as f:
     json.dump(teams_list, f, indent=2, ensure_ascii=False)
     print("BAŞARILI: teams.json güncellendi (Puanlar dahil).")
