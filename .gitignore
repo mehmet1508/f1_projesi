@@ -9,3 +9,18 @@ __pycache__/
 # Node Modules (Her ihtimale karşı ana dizinde de olsun)
 node_modules/
 .env
+
+# ===== Python =====
+venv/
+.venv/
+__pycache__/
+*.pyc
+.env
+
+# ===== Node =====
+node_modules/
+
+# ===== OS / Editor =====
+.vscode/
+.DS_Store
+Thumbs.db
