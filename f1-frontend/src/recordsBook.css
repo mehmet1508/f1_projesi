@@ -1,17 +1,19 @@
-/* =========================================
-   BACK TO CONTENTS BUTTON — SAĞ ALT
-========================================= */
+
+:root {
+    --book-font: 'Playfair Display', serif;
+}
+
 .back-to-contents {
     position: absolute;
-    bottom: 14px;
-    right: 18px;
+    bottom: 5px;
+    right: 50px;
 
     font-size: 0.95rem;
-    color: #ffdd99;
+    color: #ffdd99d8;
     cursor: pointer;
-    background: rgba(0, 0, 0, 0.45);
+    background: rgba(182, 182, 182, 0.781);
 
-    padding: 6px 12px;
+    padding: 1px 3px;
     border-radius: 6px;
 
     transition: 0.25s ease;
@@ -96,6 +98,7 @@
         !important;
 
     background-blend-mode: overlay, normal !important;
+    border-radius: 2%;
 }
 
 .f1-book .cover::after {
@@ -119,17 +122,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     width: 100%;
     min-height: 100vh;
     padding-top: 10px;   
     margin: 0;
-    overflow-y: auto;
+    margin-top: 24px;
+    overflow:hidden;
     perspective: 1800px;
     background: url("/assets/images/wood_texture.jpg");
     background-size: cover;
     background-position: center;
-    padding-top: 40px;
+    padding-top: 5px;
 }
 
 
@@ -142,7 +146,17 @@
 .f1-book {
     margin-top: -75px;
     transform-origin: top center;
+    will-change: transform;
+    backface-visibility: hidden;
+
+    position: relative;   /* ⚠️ ŞART */
+    overflow: visible;    /* ⚠️ ŞART */
 }
+
+
+
+
+
 
 @media (max-height: 900px) {
     .f1-book {
@@ -166,26 +180,20 @@
 /* =========================================
    ✓ GENEL SAYFA TASARIMI
 ========================================= */
-.book-page {
-    background: rgba(10, 10, 12, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
+.book-page { 
+ border: 1px solid rgba(255, 255, 255, 0.08);
+ padding: 24px;
+ display: flex; 
+ flex-direction: column; 
+ height: 100%; /* FlipBook ile uyumlu */ 
+ box-sizing: border-box; 
+ background: rgba(255, 255, 255, 0.95); 
+ border: 1px solid rgba(255,255,255,0.08); 
+ backdrop-filter: blur(2px); 
+ box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.074),
+ 0 0 18px rgba(0, 0, 0, 0.3); }
 
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
 
-    height: 100%;   /* FlipBook ile uyumlu */
-    box-sizing: border-box;
-    background: rgba(14, 14, 17, 0.95);
-    border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.08);
-    backdrop-filter: blur(2px);
-
-    box-shadow:
-        inset 0 0 20px rgba(0, 0, 0, 0.35),
-        0 0 18px rgba(0, 0, 0, 0.3);
-}
 
 
 /* =========================================
@@ -193,13 +201,13 @@
 ========================================= */
 .driver-title {
     font-size: 1.6rem;
-    color: #ff9999;
+    color: #a80000;
     margin-bottom: 5px;
     text-transform: uppercase;
 }
 
 .driver-team {
-    color: #bbbbbb;
+    color: #410000;
     margin-bottom: 16px;
 }
 
@@ -220,7 +228,7 @@
 }
 
 .driver-desc {
-    color: #ccc;
+    color: #000000;
     font-size: 0.9rem;
     margin-top: auto;
 }
@@ -239,25 +247,6 @@
     font-size: 1.2rem;
 }
 
-.contents-list {
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
-    font-size: 1.3rem;
-}
-
-.contents-list li {
-    margin: 15px 0;
-    cursor: pointer;
-    color: #ffd27b;
-    transition: 0.2s;
-}
-
-.contents-list li:hover {
-    color: #ffffff;
-    text-shadow: 0 0 8px #ffcf62;
-    transform: translateX(5px);
-}
 
 .f1-book.closed {
     transform:
@@ -279,3 +268,152 @@
     box-shadow:
         0px 20px 40px rgba(0,0,0,0.35);
 }
+
+.driver-stats {
+    margin: 5px 0 12px 0;
+    font-size: 0.85rem;
+    color: #ff0000;
+    line-height: 1.4;
+}
+
+.driver-stats p {
+    margin: 2px 0;
+}
+
+.driver-stats strong {
+    color: #000000;
+    letter-spacing: 0.5px;
+}
+
+.more-link {
+    display: inline-block;
+    margin-top: 0.1px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.more-link:hover {
+    color: #ff0000;
+    text-decoration: underline;
+}
+
+
+.contents-page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #ffffff;
+}
+
+.contents-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+    margin-top: 10;
+    color: #000000;
+    letter-spacing: 1px;
+}
+
+.contents-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.contents-list li {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 1.8rem;
+    padding: 18px 10px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    transition: 0.25s ease;
+}
+
+.contents-list li:hover {
+    transform: translateX(10px);
+    background: rgba(0,0,0,0.03);
+}
+
+.contents-index {
+    font-weight: bold;
+    color: #000000;
+    width: 30px;
+}
+
+.contents-text {
+    font-weight: 600;
+}
+
+/* renkler */
+.contents-text.pilots {
+    color: #000000c4;
+}
+
+.contents-text.others {
+    color: #000000c4;
+}
+
+.contents-text.media {
+    color: #000000c4;
+}
+
+.contents-title,
+.contents-text,
+.section-page-title,
+.driver-title {
+    font-family: var(--book-font);
+}
+
+/* Ortak bölüm başlığı */
+.book-section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-top: 200px;
+    line-height: 1.2;
+}
+
+/* Bölüme özel renkler */
+.book-section-title.pilots {
+    color: #7b5a5a;
+}
+
+.book-section-title.others {
+    color: #9a7a3f;
+}
+
+.book-section-title.media {
+    color: #5a7b8a;
+}
+
+/* Alt başlık (subtitle) */
+.book-section-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: #7a4c4c;
+    text-align: center;
+    margin-top: 18px;
+    opacity: 0.85;
+}
+
+.keyboard-hint {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    color: #aaa;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
