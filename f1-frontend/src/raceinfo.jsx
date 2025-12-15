@@ -101,6 +101,7 @@ export default function RaceInfo() {
                     <img src={p.image} alt={p.title} />
                     <div>
                         <h3>{p.title}</h3>
+                        <p><strong>Display:</strong> {p.sections.display}</p>
                         <p><strong>Reason:</strong> {p.sections.reason}</p>
                         <p><strong>Application:</strong> {p.sections.application}</p>
                         <p><strong>Impact:</strong> {p.sections.impact}</p>

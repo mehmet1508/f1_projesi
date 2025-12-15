@@ -210,6 +210,7 @@ function CameraInitializer({ focusPoint, onZoomComplete }) {
     );
 }
 
+
 function LoadingFallback() {
     return (
         <Html center>
@@ -218,7 +219,7 @@ function LoadingFallback() {
     );
 }
 
-function LoadedModel({ config, index, total, activeIndex, onPartSelect, onHotspotPositions, onHotspotInfos, onHoverHotspotIndex, onMarkerVisibilityChange, isZoomed }) {
+function LoadedModel({ config, index, total, activeIndex, onModelLoaded, onPartSelect, onHotspotPositions, onHotspotInfos, onHoverHotspotIndex, onMarkerVisibilityChange, isZoomed }) {
     const group = useRef();
     const wheelsRef = useRef([]);
     const shadowCatcherRef = useRef();
@@ -229,72 +230,131 @@ function LoadedModel({ config, index, total, activeIndex, onPartSelect, onHotspo
     const clonedScene = useMemo(() => gltf.scene.clone(true), [gltf.scene]);
     const { scene, raycaster } = useThree();
 
+    const playIntro = () => {
+        if (!group.current) return;
+        if (hasInitialAnimationRef.current) return;
+
+        hasInitialAnimationRef.current = true;
+
+        const startX = -35;
+        const endX = 0;
+
+        group.current.position.x = startX;
+
+        const distance = Math.abs(startX - endX);
+        const wheelRotation = (distance / 0.6) * Math.PI * 0.5;
+
+        gsap.to(group.current.position, {
+            x: endX,
+            duration: 1.5,
+            ease: 'power3.out'
+        });
+
+        wheelsRef.current.forEach((wheel) => {
+            gsap.to(wheel.rotation, {
+                x: wheel.rotation.x + wheelRotation,
+                duration: 1.5,
+                ease: 'power3.out'
+            });
+        });
+    };
+
+    useEffect(() => {
+        if (isActive && onModelLoaded && group.current) {
+            requestAnimationFrame(() => {
+                playIntro();
+                onModelLoaded();
+            });
+        }
+    }, [isActive]);
+
     useEffect(() => {
         if (!group.current) return;
+
         group.current.clear();
         wheelsRef.current = [];
         hotspotNodesRef.current = [];
+
         const root = clonedScene;
+
         root.traverse((child) => {
-            if (child.isMesh) {
-                child.castShadow = true;
-                child.receiveShadow = true;
-                const name = child.name ? child.name.toLowerCase() : '';
-                const hotspotInfo = resolveHotspotInfo(name);
-                const shouldHide = isHotspotName(child.name || '');
-                // Belirli meshleri görünmez yap ama tıklanabilir kalsın
-                if (shouldHide) {
-                    child.castShadow = false;
-                    child.receiveShadow = false;
-                    if (child.material) {
-                        const original = child.material;
-                        const cloneAndHide = (mat) => {
-                            const cloned = mat.clone();
-                            cloned.transparent = true;
-                            cloned.opacity = 0;
-                            cloned.depthWrite = false;
-                            cloned.side = THREE.DoubleSide;
-                            return cloned;
-                        };
-                        if (Array.isArray(original)) {
-                            child.material = original.map(cloneAndHide);
-                        } else {
-                            child.material = cloneAndHide(original);
-                        }
-                    }
-                    child.userData.isHotspot = true;
-                    if (hotspotInfo) {
-                        child.userData.hotspotInfo = hotspotInfo;
-                    }
-                    hotspotNodesRef.current.push(child);
+            if (!child.isMesh) return;
+
+            child.castShadow = true;
+            child.receiveShadow = true;
+
+            const name = child.name ? child.name.toLowerCase() : '';
+            const hotspotInfo = resolveHotspotInfo(name);
+            const shouldHide = isHotspotName(child.name || '');
+
+            if (shouldHide) {
+                child.castShadow = false;
+                child.receiveShadow = false;
+
+                if (child.material) {
+                    const cloneAndHide = (mat) => {
+                        const cloned = mat.clone();
+                        cloned.transparent = true;
+                        cloned.opacity = 0;
+                        cloned.depthWrite = false;
+                        cloned.side = THREE.DoubleSide;
+                        return cloned;
+                    };
+                    child.material = Array.isArray(child.material)
+                        ? child.material.map(cloneAndHide)
+                        : cloneAndHide(child.material);
                 }
-                if (name.includes('wheel') || name.includes('tire') || name.includes('tekerlek')) {
-                    wheelsRef.current.push(child);
+
+                child.userData.isHotspot = true;
+                if (hotspotInfo) {
+                    child.userData.hotspotInfo = hotspotInfo;
                 }
+
+                hotspotNodesRef.current.push(child);
+            }
+
+            if (
+                name.includes('wheel') ||
+                name.includes('tire') ||
+                name.includes('tekerlek')
+            ) {
+                wheelsRef.current.push(child);
             }
         });
+
         group.current.add(root);
 
         const box = new THREE.Box3().setFromObject(root);
         const size = box.getSize(new THREE.Vector3());
         const maxDim = Math.max(size.x, size.y, size.z);
+
         const targetLength = config.length || 15;
         const autoScale = targetLength / maxDim;
         const scale = config.scale ?? autoScale;
         group.current.scale.setScalar(scale);
-        // Aktif araç merkezde (0,0,0), diğerleri geride
+
         const finalY = -box.min.y * scale;
         const finalZ = isActive ? 0 : -2;
-        
-        // İlk yüklemede animasyon için başlangıç pozisyonunu sola kaydır
+
         if (isActive && !hasInitialAnimationRef.current) {
-            group.current.position.set(-35, finalY, finalZ); // Soldan başla (daha geriden)
+            group.current.position.set(-35, finalY, finalZ);
         } else {
             group.current.position.set(0, finalY, finalZ);
         }
-        
+
         group.current.rotation.y = THREE.MathUtils.degToRad(config.rotationY ?? 90);
-    }, [clonedScene, config.length, config.rotationY, config.scale, isActive]);
+
+        // 🔥 MODEL HAZIR SİNYALİ
+        if (isActive && onModelLoaded) {
+            requestAnimationFrame(onModelLoaded);
+        }
+    }, [
+        clonedScene,
+        config.length,
+        config.rotationY,
+        config.scale,
+        isActive
+    ]);
 
     // Hotspot world pozisyonlarını bildir
     useEffect(() => {
@@ -480,7 +540,7 @@ function LoadedModel({ config, index, total, activeIndex, onPartSelect, onHotspo
             wheelsRef.current.forEach((wheel) => {
                 gsap.to(wheel.rotation, {
                     duration: 0.3, // Tekerlek animasyon süresini de kısalttık
-                    x: wheel.rotation.x - direction * Math.PI * 1.0, // Tekerlek dönme miktarını artırdık (0.5 -> 1.0)
+                    x: wheel.rotation.x - direction * Math.PI * 2.0, // Tekerlek dönme miktarını artırdık (0.5 -> 1.0)
                     ease: 'power2.out'
                 });
             });
@@ -592,7 +652,7 @@ function ShadowLight() {
     );
 }
 
-function ModelScene({ models, activeIndex }) {
+function ModelScene({ models, activeIndex, onModelLoaded })  {
     const navigate = useNavigate();
     const [selectedPart, setSelectedPart] = useState(null);
     const [hotspotPositions, setHotspotPositions] = useState([]);
@@ -765,6 +825,7 @@ function ModelScene({ models, activeIndex }) {
                         index={index}
                         total={models.length}
                         activeIndex={activeIndex}
+                        onModelLoaded={onModelLoaded}
                         onPartSelect={setSelectedPart}
                         onHotspotPositions={setHotspotPositions}
                         onHotspotInfos={setHotspotInfos}
@@ -1211,8 +1272,14 @@ function ModelScene({ models, activeIndex }) {
     );
 }
 
-export default function ModelViewerCanvas({ models, activeIndex }) {
-    return <ModelScene models={models} activeIndex={activeIndex} />;
-}
+export default function ModelViewerCanvas({ models, activeIndex, onModelLoaded }) {
+       return (
+              <ModelScene
+            models={models}
+                activeIndex={activeIndex}
+                onModelLoaded={onModelLoaded}
+               />
+            );
+    }
 
 useGLTF.preload('/assets/model.glb');

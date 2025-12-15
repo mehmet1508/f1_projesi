@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import ModelViewerCanvas from './components/ModelViewerCanvas.jsx';
 import { useModelConfigs } from './hooks/useModelConfigs.js';
 import TeamsPage from './teams.jsx';
@@ -37,6 +37,8 @@ function App() {
     const [activeModelIndex, setActiveModelIndex] = useState(0);
     const location = useLocation();
     const navigate = useNavigate();
+    const [minTimeElapsed, setMinTimeElapsed] = useState(false);
+    const [modelReady, setModelReady] = useState(false);
 
     const normalizedPath = useMemo(() => normalizePath(location.pathname), [location.pathname]);
 
@@ -63,16 +65,76 @@ function App() {
         },
         [navigate]
     );
+    useEffect(() => {
+        // SADECE anasayfaya girildiğinde çalışsın
+        if (location.pathname === '/') {
+            // loading'i resetle
+            setModelReady(false);
+            setMinTimeElapsed(false);
+
+            // süreyi tekrar başlat
+            const timer = setTimeout(() => {
+                setMinTimeElapsed(true);
+            }, 1000);
+
+            return () => clearTimeout(timer);
+        }
+    }, [location.pathname]);
+
 
     const viewerContent = useMemo(() => {
-        if (loading) {
-            return <div className="loading-banner">Model listesi yükleniyor...</div>;
-        }
         if (error) {
             return <div className="loading-banner">Model listesi alınırken hata oluştu.</div>;
         }
-        return <ModelViewerCanvas models={models} activeIndex={activeModelIndex} />;
-    }, [activeModelIndex, models, loading, error]);
+
+        const isLoading = loading || !minTimeElapsed || !modelReady;
+
+        return (
+            <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+
+                {/* 🔴 LOADING PERDESİ */}
+                <AnimatePresence>
+                    {isLoading && (
+                        <motion.div
+                            className="loading-container"
+                            initial={{ opacity: 1 }}
+                            exit={{ opacity: 0, transition: { duration: 0.5 } }}
+                            style={{
+                                position: 'absolute',
+                                inset: 0,
+                                zIndex: 50,
+                                background: '#0b0b0e',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center'
+                            }}
+                        >
+                            <div className="loading-content loading-car-stage">
+
+                                <img src="/images/car.png" className="loading-f1-car" />
+                                <img src="/images/redtyre.png" className="real-wheel-spin wheel-left" />
+                                <img src="/images/redtyre.png" className="real-wheel-spin wheel-right" />
+
+                            </div>
+
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+
+                {/* 🟢 CANVAS – ARKADA HEP ÇALIŞIR */}
+                <div style={{ position: 'absolute', inset: 0, zIndex: 1 }}>
+                    {!loading && models.length > 0 && (
+                        <ModelViewerCanvas
+                            models={models}
+                            activeIndex={activeModelIndex}
+                            onModelLoaded={() => setModelReady(true)}
+                        />
+                    )}
+                </div>
+            </div>
+        );
+    }, [loading, error, minTimeElapsed, modelReady, models, activeModelIndex]);
+
 
     return (
         <div className="layout">

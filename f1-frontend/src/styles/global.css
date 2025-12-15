@@ -206,3 +206,98 @@ body {
     text-align: center;
     padding: 24px;
 }
+/* Tüm ekranı kaplayan kapsayıcı - SABİT POZİSYON */
+.loading-container {
+    position: fixed; /* Sayfada sabit durur, kaydırma ile hareket etmez */
+    top: 0;
+    left: 0;
+    width: 100%;  /* Tüm genişlik */
+    height: 100%; /* Tüm yükseklik */
+    display: flex;
+    justify-content: center; /* Yatayda ortala */
+    align-items: center;     /* Dikeyde ortala */
+    background: #101010;     /* Koyu zemin rengi */
+    color: white;            /* Yazı rengi */
+    z-index: 9999; /* Diğer tüm içeriklerin üzerinde görünsün */
+}
+.loading-content {
+    position: relative; /* 🔥 EN KRİTİK SATIR */
+}
+
+/* İçerik (Tekerlekler ve Yazı) */
+.loading-container {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #101010;
+    z-index: 9999;
+}
+.loading-car-stage {
+    position: relative;
+    width: 520px;
+    height: 360px; /* ❗ 220 → 320 */
+}
+
+/* 🏎️ Ferrari araç (arkada, sabit) */
+.loading-f1-car {
+    width: 520px;
+    display: block;
+    z-index: 1;
+    pointer-events: none;
+    filter: drop-shadow(0px 12px 24px rgba(0,0,0,0.7));
+}
+wheels-overlay {
+    position: relative;
+
+    /* 🔥 EN ÖNEMLİ DEĞİŞİKLİK: Tekerlekleri yukarı taşı */
+    top: -10px; /* ❗ 40px yerine -10px, tahmini bir değer. Deneyerek ayarlayın. */
+
+    left: 0;
+    width: 540px;
+    display: block;
+
+    /* Ferrari ön/arka tekerlek hizalaması */
+    padding-left: 4px;
+    padding-right: 4px;
+
+    z-index: 2;
+    pointer-events: none;
+}
+/* Tekerleklerin yan yana durması için bir kapsayıcı */
+
+/* Gerçek Tekerlek Stili (Aynı kalıyor) */
+.real-wheel-spin {
+    position: absolute;
+    width: 70px; /* Boyutu biraz büyüttüm, daha iyi görünsün */
+    filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.6));
+    animation: spin 0.3s linear infinite;
+    will-change: transform;
+    transform-origin: 50% 50%;
+    backface-visibility: hidden;
+}
+
+/* Dönme Hareketi (Aynı kalıyor) */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Yazı stili */
+.loading-content h2 {
+    display: none;
+}
+
+/* Tek tek tekerlek ayarı */
+.wheel-left {
+    left: 25px;
+    top: 150px; /* ⬇️ */
+}
+
+.wheel-right {
+    right: 85px;
+    top: 150px;
+}
+
+
