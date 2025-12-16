@@ -16,7 +16,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100px;
+    width: 80px;
     height: 100vh;
     background-color: #000;
     background-image: 
@@ -41,7 +41,7 @@
     position: fixed;
     top: 0;
     right: 0;
-    width: 100px;
+    width: 90px;
     height: 100vh;
     background-color: #000;
     background-image: 
@@ -820,4 +820,26 @@
     .info-detail-item {
         padding: 12px 16px;
     }
+}
+.scroll-to-top {
+    position: fixed;
+    bottom: 44px;
+    right: 0px;
+    width: 96px;
+    height: 46px;
+    border-radius: 20%;
+    background: #07306a; /* F1 kırmızısı */
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(12, 1, 1, 0.1);
+    color: white;
+    border: #090101;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: justify;
+    cursor: pointer;
+    z-index: 999;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.scroll-to-top:hover {
+    transform: translateY(-4px);
 }

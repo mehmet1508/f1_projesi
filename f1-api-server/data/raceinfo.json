@@ -29,7 +29,7 @@
     {
       "id": "green-flag",
       "title": "Green Flag",
-      "image": "/images/raceinfo/green.jpg",
+      "image": "/images/raceinfo/Green.webp",
       "sections": {
         "display": "Green flags are waved trackside and green sectors appear on timing screens. Broadcast messages confirm that normal racing conditions have resumed.",
         "meaning": "A green flag signals that a previously reported hazard has been cleared and the track is once again safe for racing.",
@@ -94,7 +94,7 @@
     {
       "id": "chequered-flag",
       "title": "Chequered Flag",
-      "image": "/images/raceinfo/blackwhite.jpg",
+      "image": "/images/raceinfo/chequered.jpg",
       "sections": {
         "display": "The chequered flag is waved at the finish line to signal the end of a session or race.",
         "meaning": "The competitive portion of the session has concluded.",
@@ -227,6 +227,143 @@
         "application": "The reprimand is officially recorded without immediate race consequences.",
         "impact": "Accumulation of reprimands can later result in grid penalties or other sporting sanctions."
       }
+    }
+  ],
+  "vocabulary": [
+    {
+      "id": "aerodynamics",
+      "title": "Aerodynamics",
+      "description": "Aerodynamics is the study of how air flows around and through an F1 car. It determines how much downforce and drag the car produces, which directly affects cornering grip and straight-line speed. Teams constantly balance aerodynamic efficiency depending on track characteristics."
+    },
+    {
+      "id": "apex",
+      "title": "Apex",
+      "description": "The apex is the key middle point of a corner where a driver aims to be closest to the inside line. Hitting the apex correctly maximizes exit speed and reduces lap time. Missing it often forces a wider line and compromises acceleration out of the turn."
+    },
+    {
+      "id": "lock-up",
+      "title": "Lock-up",
+      "description": "A lock-up happens when a tyre stops rotating under heavy braking and slides across the asphalt. This can create flat spots, vibrations, and longer braking distances. Even a small lock-up can ruin tyre performance and affect strategy later in the stint."
+    },
+    {
+      "id": "gravel-trap",
+      "title": "Gravel Trap",
+      "description": "A gravel trap is a run-off area filled with gravel designed to slow cars that leave the track. It reduces impact speed before barriers and increases safety. However, cars can get beached in the gravel and be unable to rejoin."
+    },
+    {
+      "id": "downforce",
+      "title": "Downforce",
+      "description": "Downforce is aerodynamic load that pushes the car onto the track surface, increasing grip in corners. More downforce typically improves corner speed but can reduce top speed due to increased drag. Wings and the floor are the main contributors to downforce generation."
+    },
+    {
+      "id": "drs",
+      "title": "DRS",
+      "description": "DRS (Drag Reduction System) opens a flap in the rear wing to reduce drag and increase straight-line speed. In races, it is usually available in designated zones when a driver is within a specified gap to the car ahead. It’s a key overtaking tool, but it changes how drivers defend and attack."
+    },
+    {
+      "id": "ers",
+      "title": "ERS",
+      "description": "ERS (Energy Recovery System) is the hybrid system that recovers energy from braking and heat and stores it for later use. Drivers can deploy this stored energy for extra power during acceleration and overtaking. Managing ERS effectively is crucial for lap time and race battles."
+    },
+    {
+      "id": "fia",
+      "title": "FIA",
+      "description": "The FIA is the governing body that sets and enforces Formula 1 sporting and technical regulations. It oversees safety standards, officiating, and rule interpretation via race control and stewards. Most penalties and procedural decisions ultimately trace back to FIA regulations."
+    },
+    {
+      "id": "formation-lap",
+      "title": "Formation Lap",
+      "description": "The formation lap is the lap before the race start where cars circulate to warm tyres and brakes. Drivers practice launches, weave to generate tyre temperature, and confirm systems are working. Any issues here can lead to starting from the pit lane or an aborted start."
+    },
+    {
+      "id": "g-force",
+      "title": "G-Force",
+      "description": "G-force describes the acceleration forces acting on drivers during braking, cornering, and high speed direction changes. F1 drivers experience extreme lateral and longitudinal loads, especially in fast corners and heavy braking zones. This is why neck and core strength are critical in Formula 1."
+    },
+    {
+      "id": "grid",
+      "title": "Grid",
+      "description": "The grid is the starting order and physical formation of cars before the race begins. It is primarily decided by qualifying results, though penalties can alter positions. Starting position heavily influences opening lap risk and early strategy options."
+    },
+    {
+      "id": "halo",
+      "title": "Halo",
+      "description": "The Halo is a strong protective structure mounted around the cockpit area to protect the driver’s head. It is designed to deflect large debris and reduce injury risk in severe accidents. It has become a major safety feature in modern F1."
+    },
+    {
+      "id": "slipstream",
+      "title": "Slipstream",
+      "description": "Slipstreaming happens when a car follows closely behind another and experiences reduced air resistance. This can provide a speed boost on straights and increase overtaking opportunities. The downside is ‘dirty air’ in corners, which can reduce grip and overheat tyres."
+    },
+    {
+      "id": "kerb",
+      "title": "Kerb",
+      "description": "Kerbs are raised edges at the inside or outside of corners that help define track limits. Drivers may use them to shorten the corner or rotate the car, but hitting kerbs aggressively can destabilize the car. Some kerbs can even damage floors or suspension if attacked too hard."
+    },
+    {
+      "id": "cockpit",
+      "title": "Cockpit",
+      "description": "The cockpit is the driver’s seat area inside the survival cell (monocoque). It contains the steering wheel, safety systems, and the driver’s primary controls. Its design prioritizes crash protection, visibility, and secure driver restraint."
+    },
+    {
+      "id": "paddock",
+      "title": "Paddock",
+      "description": "The paddock is the restricted area behind the garages where teams base their operations during a race weekend. It includes hospitality units, engineering spaces, and media zones. Much of the behind-the-scenes strategy and coordination happens in and around the paddock."
+    },
+    {
+      "id": "parc-ferme",
+      "title": "Parc Fermé",
+      "description": "Parc fermé rules restrict teams from making major setup changes after qualifying and before the race. Only limited work is allowed to preserve fairness and prevent performance changes based on later information. Breaking parc fermé conditions can result in penalties such as starting from the pit lane."
+    },
+    {
+      "id": "pit-wall",
+      "title": "Pit Wall",
+      "description": "The pit wall is where team strategists and engineers monitor live timing, telemetry, and race developments. They communicate with the driver to make decisions about pace, pit stops, and tactical moves. A strong pit wall can win races through better timing and faster reactions."
+    },
+    {
+      "id": "pit-stop",
+      "title": "Pit Stop",
+      "description": "A pit stop is when a car enters the pits for service, most commonly a tyre change. It can also involve front wing adjustments or repairs depending on the situation. Pit stop timing is a core strategic weapon, especially during safety car or VSC periods."
+    },
+    {
+      "id": "pole-position",
+      "title": "Pole Position",
+      "description": "Pole position is the first starting spot on the grid, awarded to the fastest driver in qualifying. It often provides an advantage at the start and the best chance to control the race pace. On some tracks, pole position is especially valuable because overtaking is difficult."
+    },
+    {
+      "id": "sector",
+      "title": "Sector",
+      "description": "A lap is divided into sectors (usually three) to measure performance in parts of the circuit. Sector times help identify where a driver is gaining or losing time. Timing screens and broadcasts frequently highlight sectors for pace comparisons and incident tracking."
+    },
+    {
+      "id": "spin",
+      "title": "Spin",
+      "description": "A spin occurs when a driver loses control and the car rotates around its axis, often due to oversteer, poor grip, or contact. Spins typically cost time, can damage tyres, and may cause the driver to drop positions. In bad cases, a spin can lead to a collision or a retirement."
+    },
+    {
+      "id": "chassis",
+      "title": "Chassis",
+      "description": "The chassis is the main structural body of the car, including the monocoque survival cell. It is the foundation to which the engine, suspension, and aerodynamic components are attached. Chassis design strongly affects handling, weight distribution, and safety."
+    },
+    {
+      "id": "chicane",
+      "title": "Chicane",
+      "description": "A chicane is a sequence of tight left-right (or right-left) corners often placed to slow cars down after long straights. It creates heavy braking zones and overtaking opportunities. Drivers must balance aggressiveness with precision to avoid kerbs and time loss."
+    },
+    {
+      "id": "team-orders",
+      "title": "Team Orders",
+      "description": "Team orders are instructions given by a team to its drivers to achieve a strategic goal. This can include swapping positions, managing pace, or protecting tyres. Team orders are often controversial because they can change on-track outcomes for championship reasons."
+    },
+    {
+      "id": "telemetry",
+      "title": "Telemetry",
+      "description": "Telemetry is the stream of technical data sent from the car to the team, including speed, throttle, braking, temperatures, and energy usage. Teams use it to diagnose issues and optimize performance. It is also used during steward reviews to understand what happened in an incident."
+    },
+    {
+      "id": "torque",
+      "title": "Torque",
+      "description": "Torque is the rotational force produced by the power unit, strongly affecting acceleration out of corners. Higher effective torque delivery can improve traction and responsiveness, but it must be managed to avoid wheelspin. In modern F1, torque behavior is shaped by engine mapping and hybrid deployment."
     }
   ],
   "scenarios": [

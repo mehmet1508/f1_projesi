@@ -165,7 +165,8 @@ const TeamsPage = () => {
                                             alt={`${team.name} Logo`}
                                             className="team-logo"
                                         />
-                                        <h3>{team.name}</h3>
+                                        <h3>{team.name.toUpperCase()}</h3>
+
                                     </div>
 
                                     <div className="card-body">
@@ -206,7 +207,7 @@ const TeamsPage = () => {
                                         className="card-header"
                                         style={{ backgroundColor: team.color }}
                                     >
-                                        <h3>Pilotlar</h3>
+                                        <h3>PILOTS</h3>
                                     </div>
 
                                     <div className="driver-profiles-container">
