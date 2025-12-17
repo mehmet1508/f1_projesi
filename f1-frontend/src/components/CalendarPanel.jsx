@@ -3,9 +3,9 @@ import axios from 'axios';
 import './CalendarPanel.css';
 
 const sessionTranslations = {
-    fp1: "1. Antrenman", fp2: "2. Antrenman", fp3: "3. Antrenman",
-    sprint_quali: "Sprint Sıralama", sprint: "Sprint Yarışı",
-    qualifying: "Sıralama Turları", race: "YARIŞ"
+    fp1: "PRACTICE 1", fp2: "PRACTICE 2", fp3: "PRACTICE 3",
+    sprint_quali: "SPRINT QUALIFYLING", sprint: "SPRINT RACE",
+    qualifying: "QUALIFYLING", race: "RACE"
 };
 
 export default function CalendarPanel({ onRaceSelect }) {
@@ -30,7 +30,7 @@ export default function CalendarPanel({ onRaceSelect }) {
             const timeStr = selectedRace.sessions[key]; // Mongoose Map'ten geliyorsa .sessions[key] veya .sessions.get(key)
             if (!timeStr) return null;
             const [dPart, tPart] = timeStr.split(' ');
-            const dayName = new Date(dPart).toLocaleDateString('tr-TR', { weekday: 'long' });
+            const dayName = new Date(dPart).toLocaleDateString('en-US', { weekday: 'long' });
             return (
                 <div key={key} className={`session-row ${key === 'race' ? 'highlight-race' : ''} ${key === 'sprint' ? 'highlight-sprint' : ''}`}>
                     <div className="session-name">{sessionTranslations[key]}<span className="session-day">{dayName}</span></div>
@@ -40,12 +40,12 @@ export default function CalendarPanel({ onRaceSelect }) {
         });
     };
 
-    if (!selectedRace) return <div className="loading">Yükleniyor...</div>;
+    if (!selectedRace) return <div className="loading">Loading</div>;
 
     return (
         <div className="calendar-container">
             <div className="race-list-sidebar">
-                <h3>2025 TAKVİMİ</h3>
+                <h3>2025 SCHEDULE</h3>
                 <div className="race-list-scroll">
                     {races.map(r => (
                         <div key={r.round} className={`race-item-box ${selectedRace._id === r._id ? 'active' : ''}`} onClick={() => {setSelectedRace(r); if(onRaceSelect) onRaceSelect(r);}}>
@@ -58,9 +58,9 @@ export default function CalendarPanel({ onRaceSelect }) {
             <div className="race-details-panel">
                 <div className="detail-header"><h2>{selectedRace.name}</h2><span className="location-badge">{selectedRace.location}</span></div>
                 <div className="stats-grid">
-                    <div className="stat-card winner-card"><h4>SON KAZANAN</h4><div className="winner-name">🏆 {selectedRace.stats.last_winner}</div></div>
+                    <div className="stat-card winner-card"><h4>LAST WINNER</h4><div className="winner-name">🏆 {selectedRace.stats.last_winner}</div></div>
                     <div className="stat-card lap-card">
-                        <h4>EN HIZLI TUR (2024)</h4>
+                        <h4>FASTEST LAP (2024)</h4>
                         <div className="fastest-driver">{selectedRace.stats.fastest_lap.driver || "-"}</div>
                         <div className="lap-time">{selectedRace.stats.fastest_lap.time || "-"}</div>
                         <div className="sectors-display">
@@ -70,7 +70,7 @@ export default function CalendarPanel({ onRaceSelect }) {
                         </div>
                     </div>
                 </div>
-                <div className="sessions-table"><h4>HAFTA SONU PROGRAMI</h4>{renderSessions()}</div>
+                <div className="sessions-table"><h4>WEEKEND PROGRAMME</h4>{renderSessions()}</div>
             </div>
         </div>
     );
