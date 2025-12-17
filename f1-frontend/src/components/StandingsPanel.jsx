@@ -43,7 +43,7 @@ const StandingsPanel = () => {
                     // --- TAKIMLAR TABLOSU ---
                     // Takım bilgilerini çek
                     const [teamPointsRes, teamStaticRes] = await Promise.all([
-                        axios.get('http://localhost:5000/api/teams'),
+                        axios.get('http://localhost:5000/api/teamPoints'),
                         axios.get('http://localhost:5000/api/teams')
                     ]);
 
