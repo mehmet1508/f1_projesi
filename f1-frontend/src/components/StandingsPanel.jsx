@@ -43,7 +43,7 @@ const StandingsPanel = () => {
                     // --- TAKIMLAR TABLOSU ---
                     // Takım bilgilerini çek
                     const [teamPointsRes, teamStaticRes] = await Promise.all([
-                        axios.get('http://localhost:5000/api/teams'),
+                        axios.get('http://localhost:5000/api/teamPoints'),
                         axios.get('http://localhost:5000/api/teams')
                     ]);
 
@@ -90,13 +90,13 @@ const StandingsPanel = () => {
                     className={activeTab === 'driverPoints' ? 'active' : ''}
                     onClick={() => setActiveTab('driverPoints')}
                 >
-                    SÜRÜCÜLER
+                    DRİVERS
                 </button>
                 <button
                     className={activeTab === 'teams' ? 'active' : ''}
                     onClick={() => setActiveTab('teams')}
                 >
-                    TAKIMLAR
+                    TEAMS
                 </button>
             </div>
 
@@ -107,9 +107,9 @@ const StandingsPanel = () => {
                     <table>
                         <thead>
                         <tr>
-                            <th className="th-pos">#</th>
-                            <th className="th-name">{activeTab === 'driverPoints' ? 'PİLOT' : 'TAKIM & SÜRÜCÜLER'}</th>
-                            <th className="th-points">PUAN</th>
+                            <th className="th-pos">POS</th>
+                            <th className="th-name">{activeTab === 'driverPoints' ? 'DRİVER' : 'TEAMS AND DRİVERS'}</th>
+                            <th className="th-points">POİNTS</th>
                         </tr>
                         </thead>
                         <tbody>

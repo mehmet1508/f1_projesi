@@ -30,7 +30,7 @@ export default function NewsPanel() {
 
     return (
         <div className="news-container">
-            <h3>SON DAKİKA - F1 DÜNYASI</h3>
+            <h3>LAST MINUTE - F1 WORLD</h3>
 
             {/* BURAYI DEĞİŞTİRDİK: news-grid yerine news-scroll-wrapper */}
             <div className="news-scroll-wrapper">

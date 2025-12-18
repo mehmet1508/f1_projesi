@@ -10,7 +10,7 @@ export default function DashboardContent({ onRaceSelect }) {
     return (
         <section className="dashboard-content-wrapper">
             <header className="page-header">
-                <p>Takvim, puan durumu ve bülten.</p>
+
             </header>
             <div className="dashboard-grid">
                 <div className="panel calendar-section">
