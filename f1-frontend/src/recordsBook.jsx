@@ -47,10 +47,9 @@ export default function RecordsBookPage() {
 
   const goToPage = (page) => {
     if (bookRef.current) {
-      bookRef.current.pageFlip().flip(page+2);
+      bookRef.current.pageFlip().flip(page + 2);
     }
   };
- 
 
   const goToContents = () => bookRef.current.pageFlip().flip(0);
 
@@ -127,7 +126,8 @@ export default function RecordsBookPage() {
 
         {/* PILOTS TITLE PAGE */}
         <div className="book-page">
-          <h1 className="book-section-title pilots">{/*f1 driver helmet is to long */}
+          <h1 className="book-section-title pilots">
+            {/*f1 driver helmet is to long */}
             <svg
               id="Motorbike-Helmet--Streamline-Openmoji"
               viewBox="0 0 72 72"
@@ -288,7 +288,10 @@ export default function RecordsBookPage() {
               </div>
             )}
 
-            <p className="driver-desc">{p.bio}</p>
+            <p className="driver-desc">{p.bio} <a href={p.related_link} className="more-link" target="_blank">
+                  More..
+              </a>
+            </p>
           </div>
         ))}
 
@@ -330,9 +333,22 @@ export default function RecordsBookPage() {
               </div>
             )}
 
-            <p className="driver-desc">{p.bio}</p>
+            <p className="driver-desc">{p.bio}
+              {" "}
+              <a href={p.related_link} className="more-link" target="_blank">
+                More..
+              </a>
+            </p>
           </div>
         ))}
+        <div className="book-page cover back-cover">
+          {/*<h2 className="back-cover-title">F1 Legends</h2>*/}
+          {/*<p className="back-cover-subtitle">Speed • Innovation • Legacy</p>*/}
+
+          <img src="/assets/images/f1logo.png" className="back-cover-logo" />
+
+          <p className="back-cover-footer">© Formula One History Archive</p>
+        </div>
       </HTMLFlipBook>
     </section>
   );

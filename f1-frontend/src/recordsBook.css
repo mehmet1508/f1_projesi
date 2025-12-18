@@ -417,3 +417,53 @@
     pointer-events: none;
 }
 
+/* =========================================
+   ✓ ARKA KAPAK
+========================================= */
+.back-cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at bottom,
+            rgba(120, 0, 0, 0.9) 0%,
+            rgba(40, 0, 0, 0.95) 50%,
+            rgba(10, 0, 0, 1) 100%
+        );
+}
+
+.back-cover-title {
+    font-size: 2.4rem;
+    color: #f5e6c8;
+    margin-bottom: 12px;
+    font-family: var(--book-font);
+    text-shadow: 0 0 10px rgba(255, 200, 120, 0.6);
+}
+
+.back-cover-subtitle {
+    font-size: 1rem;
+    color: #d6b97a;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+.back-cover-logo {
+    width: 160px;
+    margin-bottom: 40px;
+    filter:
+        brightness(2.2)
+        sepia(1)
+        saturate(4);
+}
+
+.back-cover-footer {
+    position: absolute;
+    bottom: 20px;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+}
+
