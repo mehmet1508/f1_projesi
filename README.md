@@ -36,9 +36,12 @@ node server.js # Starts the live server , make sure this runs everytime before y
 ## Google Maps API setup
 # Go to your **Google Cloud Console** -> **Credentials** and generate a new Google Maps Javascript APı key With Map ID , the existing ones are unavailable at the moment
 ## Replace the Google Maps APı and Maps Id section with your own API keys in the useGoogleMaps Hook under the hooks folder
+```
 
 ## Run the Application
+```bash
 cd f1-fever-frontend
 ## Navigate to frontend and run :
 npm install
 npm run dev
+```
