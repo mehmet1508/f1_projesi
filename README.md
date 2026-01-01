@@ -23,7 +23,33 @@ This project utilizes a **4-Tier Architecture**:
 * Python (3.8+)
 * MongoDB (Local or Atlas URI)
 
-### 1. Backend Setup (The Engine)
+
+### 1. Data Ingestor (The Fuel) 🐍
+A virtual environment (venv) setup is required to run the Python data processing pipeline.
+
+**Installation Steps:**
+1. Navigate to the folder:
+```bash
+cd f1-fever-backend/f1-data-ingestor
+```
+2. Create the Virtual Environment:
+```bash
+python -m venv venv
+```
+3. Activate the Virtual Environment:
+* **For Windows:**
+```bash
+venv\Scripts\activate
+```
+* **For Mac/Linux:**
+```bash
+source venv/bin/activate
+```
+4. Start the data fetching process:
+```bash
+python dataload.py
+```
+### 2. Backend Setup (The Engine)
 The backend serves the API and connects to the database.
 ```bash
 cd f1-fever-backend/f1-api-server
@@ -38,7 +64,7 @@ node server.js # Starts the live server , make sure this runs everytime before y
 ## Replace the Google Maps APı and Maps Id section with your own API keys in the useGoogleMaps Hook under the hooks folder
 ```
 
-## Run the Application
+## 3. Run the Application
 ```bash
 cd f1-fever-frontend
 ## Navigate to frontend and run :
